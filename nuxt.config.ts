@@ -1,3 +1,4 @@
+import { defineNuxtConfig } from "nuxt/config";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
@@ -49,12 +50,18 @@ export default defineNuxtConfig({
   pluginsIgnore: [/^ignored-plugin/, /another-ignored-plugin/],
   plugins: [
     // {src: '~/node_modules/bootstrap/dist/js/bootstrap.js', mode: 'client'}
-    { src: "./plugins/useBootstrap.client.ts", mode: "client" },
+    // { src: "./plugins/useBootstrap.client.ts", mode: "client" },
     { src: "./plugins/showToast.client.js", mode: "client" },
     // { src: './plugins/paypal.client.js' }
     // { src: 'https://checkout.stripe.com/checkout.js'}
   ],
   build: {
+    transpile: ["bootstrap"],
+    postcss: {
+      plugins: {
+        autoprefixer: {},
+      },
+    },
     loaders: {
       scss: {
         implementation: require("sass"),

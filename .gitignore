@@ -33,3 +33,5 @@ yarn.lock
 
 .env
 .nuxt
+package-lock.json
+.output
