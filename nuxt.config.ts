@@ -19,6 +19,7 @@ export default defineNuxtConfig({
 
   css: ["@/assets/scss/app.scss"],
   ssr: true,
+
   modules: [
     "nuxt-icon",
     "@nuxt/image-edge",
@@ -32,6 +33,7 @@ export default defineNuxtConfig({
       },
     ],
   ],
+
   // i18n: {
   //   strategy: "prefix_except_default",
   //   defaultLocale: "en",
@@ -48,6 +50,7 @@ export default defineNuxtConfig({
   //   vueI18n: "./i18n.config.ts"
   // },
   pluginsIgnore: [/^ignored-plugin/, /another-ignored-plugin/],
+
   plugins: [
     // {src: '~/node_modules/bootstrap/dist/js/bootstrap.js', mode: 'client'}
     // { src: "./plugins/useBootstrap.client.ts", mode: "client" },
@@ -55,20 +58,25 @@ export default defineNuxtConfig({
     // { src: './plugins/paypal.client.js' }
     // { src: 'https://checkout.stripe.com/checkout.js'}
   ],
+
   build: {
     transpile: ["bootstrap"],
-    postcss: {
-      plugins: {
-        autoprefixer: {},
-      },
-    },
-    loaders: {
-      scss: {
-        implementation: require("sass"),
-      },
+    // loaders: {
+    //   scss: {
+    //     implementation: require("sass"),
+    //   },
+    // },
+  },
+
+  postcss: {
+    plugins: {
+      autoprefixer: {},
     },
   },
+
   typescript: {
     shim: false,
   },
+
+  compatibilityDate: "2024-07-25",
 });
