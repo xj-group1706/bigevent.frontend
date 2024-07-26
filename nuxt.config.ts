@@ -21,9 +21,9 @@ export default defineNuxtConfig({
   ssr: true,
 
   modules: [
+    "@nuxtjs/i18n",
     "nuxt-icon",
     "@nuxt/image-edge",
-    // "@nuxtjs/i18n",
     "@vueuse/nuxt",
     // 'vue-toastification/nuxt',
     [
@@ -34,21 +34,41 @@ export default defineNuxtConfig({
     ],
   ],
 
-  // i18n: {
-  //   strategy: "prefix_except_default",
-  //   defaultLocale: "en",
-  //   locales: [
-  //     {
-  //       code: "en",
-  //       name: "English",
-  //     },
-  //     {
-  //       code: "fr",
-  //       name: "Français",
-  //     },
-  //   ],
-  //   vueI18n: "./i18n.config.ts"
-  // },
+  i18n: {
+    strategy: "prefix_except_default",
+    defaultLocale: "en",
+    locales: [
+      {
+        code: "en",
+        iso: "en-US",
+        file: "en.json",
+      },
+      {
+        code: "ru",
+        iso: "ru-RU",
+        file: "ru.json",
+      },
+      {
+        code: "uz",
+        iso: "uz-UZ",
+        file: "uz.json",
+      },
+    ],
+    lazy: true,
+    langDir: "locales/",
+    // locales: [
+    //   {
+    //     code: "en",
+    //     name: "English",
+    //   },
+    //   {
+    //     code: "fr",
+    //     name: "Français",
+    //   },
+    // ],
+    // vueI18n: "./i18n.config.ts"
+  },
+
   pluginsIgnore: [/^ignored-plugin/, /another-ignored-plugin/],
 
   plugins: [

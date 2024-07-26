@@ -5,7 +5,9 @@
         <div class="col-lg-6">
           <div class="header-contact">
             <ul>
-              <li class="text-red-500">Welcome to Our store Multikart</li>
+              <li class="text-red-500">
+                Welcome to Our store Multikart {{ $t("account") }}
+              </li>
               <li>
                 <i class="fa fa-phone" aria-hidden="true"></i>Call Us: 123 - 456
                 - 7890
