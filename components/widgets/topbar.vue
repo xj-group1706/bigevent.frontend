@@ -5,9 +5,10 @@
         <div class="col-lg-6">
           <div class="header-contact">
             <ul>
-              <li>Welcome to Our store Multikart</li>
+              <li class="text-red-500">Welcome to Our store Multikart</li>
               <li>
-                <i class="fa fa-phone" aria-hidden="true"></i>Call Us: 123 - 456 - 7890
+                <i class="fa fa-phone" aria-hidden="true"></i>Call Us: 123 - 456
+                - 7890
               </li>
             </ul>
           </div>
@@ -22,8 +23,10 @@
             <li class="onhover-dropdown mobile-account">
               <i class="fa fa-user" aria-hidden="true"></i> My Account
               <ul class="onhover-show-div">
-                <li  @click="logout">
-                  <nuxt-link to="javascript:void(0)"> {{isLogin ? 'Logout':'Login'}} </nuxt-link>
+                <li @click="logout">
+                  <nuxt-link to="javascript:void(0)">
+                    {{ isLogin ? "Logout" : "Login" }}
+                  </nuxt-link>
                   <!-- <nuxt-link v-else to="/page/account/login">Login</nuxt-link> -->
                 </li>
                 <li>
@@ -39,28 +42,26 @@
 </template>
 
 <script>
-
-import UserAuth from '../../pages/page/auth/auth'
+import UserAuth from "../../pages/page/auth/auth";
 export default {
   data() {
     return {
-      isLogin: false
-    }
+      isLogin: false,
+    };
   },
- 
+
   methods: {
     logout: function () {
-       if(this.isLogin){
-         UserAuth.Logout()
-        this.$router.replace('/page/account/login')
-       }
-       else{
-          this.$router.push('/page/account/login')
-       }
-    }
+      if (this.isLogin) {
+        UserAuth.Logout();
+        this.$router.replace("/page/account/login");
+      } else {
+        this.$router.push("/page/account/login");
+      }
+    },
   },
-   created() {
-      this.isLogin = useCookie('userlogin').value
+  created() {
+    this.isLogin = useCookie("userlogin").value;
   },
-}
+};
 </script>

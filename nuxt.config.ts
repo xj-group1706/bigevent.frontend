@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     },
   },
 
-  css: ["@/assets/scss/app.scss"],
+  css: ["@/assets/scss/app.scss", "@/assets/css/tailwind.css"],
   ssr: true,
 
   modules: [
@@ -71,6 +71,7 @@ export default defineNuxtConfig({
   postcss: {
     plugins: {
       autoprefixer: {},
+      tailwindcss: {},
     },
   },
 
