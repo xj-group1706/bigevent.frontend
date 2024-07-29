@@ -2,10 +2,11 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "yarn i18n && nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "i18n": "ts-node generate-i18n-files.ts"
   },
   "devDependencies": {
     "@nuxtjs/i18n": "^8.3.1",
@@ -38,6 +39,7 @@
     "pinia": "^2.0.27",
     "postinstall-postinstall": "^2.1.0",
     "swiper": "^9.3.1",
+    "ts-node": "^10.9.2",
     "vee-validate": "^4.7.3",
     "vue": "^3.2.45",
     "vue-easy-lightbox": "^1.11.0",
