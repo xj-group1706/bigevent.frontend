@@ -1,7 +1,6 @@
 <template>
   <div>
     <header>
-     
       <div class="mobile-fix-option"></div>
       <WidgetsTopbar />
       <div class="container">
@@ -15,11 +14,18 @@
                       <i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
                     </div>
                   </a>
-                  <WidgetsLeftSidebar :leftSidebarVal="leftSidebarVal" @closeVal="closeBarValFromChild" />
+                  <WidgetsLeftSidebar
+                    :leftSidebarVal="leftSidebarVal"
+                    @closeVal="closeBarValFromChild"
+                  />
                 </div>
                 <div class="brand-logo">
-                  <nuxt-link :to="{ path: '/shop/fashion' }">
-                    <img src="/images/icon/logo.png" class="img-fluid" alt />
+                  <nuxt-link :to="localePath('index')">
+                    <img
+                      src="/images/logo_line.png"
+                      class="img-fluid max-w-80"
+                      alt="logo"
+                    />
                   </nuxt-link>
                 </div>
               </div>
@@ -34,23 +40,16 @@
     </header>
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      leftSidebarVal: false
-    }
-  },
-  
-  methods: {
-    left_sidebar() {
-      this.leftSidebarVal = !this.leftSidebarVal
-    },
-    closeBarValFromChild(val) {
-      this.leftSidebarVal = val
-    }
-  },
+<script setup lang="ts">
+const localePath = useLocalePath();
 
+const leftSidebarVal = ref(false);
 
+function left_sidebar() {
+  leftSidebarVal.value = leftSidebarVal.value;
+}
+
+function closeBarValFromChild(val: boolean) {
+  leftSidebarVal.value = val;
 }
 </script>

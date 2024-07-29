@@ -2,20 +2,7 @@
   <div class="top-header">
     <div class="container">
       <div class="row">
-        <div class="col-lg-6">
-          <div class="header-contact">
-            <ul>
-              <li class="text-red-500">
-                Welcome to Our store Multikart {{ $t("account") }}
-              </li>
-              <li>
-                <i class="fa fa-phone" aria-hidden="true"></i>Call Us: 123 - 456
-                - 7890
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-6 text-end">
+        <div class="text-end">
           <ul class="header-dropdown">
             <li class="mobile-wishlist">
               <nuxt-link to="/page/account/wishlist">

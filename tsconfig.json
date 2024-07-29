@@ -3,6 +3,9 @@
   "extends": "./.nuxt/tsconfig.json",
   "include": ["generate-i18n-files.ts"],
   "compilerOptions": {
-    "types": ["node"]
+    "types": ["node", "@nuxtjs/i18n", "./types/i18n.d.ts"],
+    "paths": {
+      "#i18n": ["./node_modules/@nuxtjs/i18n/dist/runtime/composables"]
+    }
   }
 }

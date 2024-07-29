@@ -1,102 +1,17 @@
 {
-  "data": [{
+  "data": [
+    {
       "title": "Home",
       "type": "sub",
       "badgeValue": "new",
-      "active": false,
-      "children": [{
-          "title": "clothing",
-          "type": "sub",
-          "active": false,
-          "children": [{
-              "path": "/shop/fashion",
-              "title": "Fashion 1",
-              "type": "link"
-            },
-            {
-              "path": "/shop/fashion-2",
-              "title": "Fashion 2",
-              "type": "link"
-            },
-            {
-              "path": "/shop/fashion-3",
-              "title": "Fashion 3",
-              "type": "link"
-            },
-            {
-              "path": "/shop/kids",
-              "title": "kids",
-              "type": "link"
-            }
-          ]
-        },
-        {
-          "path": "/shop/watch",
-          "title": "Watch",
-          "type": "link"
-        },
-        {
-          "path": "/shop/shoes",
-          "title": "Shoes",
-          "type": "link"
-        },
-        {
-          "path": "/shop/bags",
-          "title": "Bags",
-          "type": "link"
-        },
-        {
-          "path": "/shop/pets",
-          "title": "pets",
-          "type": "link"
-        },
-        {
-          "path": "/shop/furniture",
-          "title": "Furniture",
-          "type": "link"
-        },
-        {
-          "path": "/shop/flower",
-          "title": "Flower",
-          "type": "link"
-        },
-        {
-          "path": "/shop/electronics-1",
-          "title": "Electronics",
-          "type": "link"
-        },
-        {
-          "path": "/shop/vegetables",
-          "title": "Vegetables",
-          "type": "link"
-        },
-        {
-          "path": "/shop/beauty",
-          "title": "Beauty",
-          "type": "link"
-        },
-        {
-          "path": "/shop/tools",
-          "title": "Tools",
-          "type": "link"
-        },
-        {
-          "path": "/shop/jewellery",
-          "title": "Jewellery",
-          "type": "link"
-        },
-        {
-          "path": "/shop/gym",
-          "title": "gym",
-          "type": "link"
-        }
-      ]
+      "active": false
     },
     {
       "title": "Shop",
       "type": "sub",
       "active": false,
-      "children": [{
+      "children": [
+        {
           "path": "/collection/leftsidebar/all",
           "title": "Left Sidebar",
           "type": "link"
@@ -147,11 +62,13 @@
       "title": "Products",
       "type": "sub",
       "active": false,
-      "children": [{
+      "children": [
+        {
           "title": "Sidebar",
           "type": "sub",
           "active": false,
-          "children": [{
+          "children": [
+            {
               "path": "/product/sidebar/1",
               "title": "left sidebar",
               "type": "link"
@@ -172,7 +89,8 @@
           "title": "Thumbnail Image",
           "type": "sub",
           "active": false,
-          "children": [{
+          "children": [
+            {
               "path": "/product/thumbnail-image/left-image",
               "title": "left Image",
               "type": "link"
@@ -193,7 +111,8 @@
           "title": "3 column",
           "type": "sub",
           "active": false,
-          "children": [{
+          "children": [
+            {
               "path": "/product/three-column/thumbnail-left",
               "title": "Thumbnail left",
               "type": "link"
@@ -227,11 +146,13 @@
       "type": "sub",
       "megamenu": true,
       "active": false,
-      "children": [{
+      "children": [
+        {
           "title": "portfolio",
           "type": "megasub",
           "active": false,
-          "children": [{
+          "children": [
+            {
               "path": "/page/portfolio/portfolio-2-col",
               "title": "portfolio grid 2",
               "type": "link"
@@ -272,7 +193,8 @@
           "title": "Add to cart",
           "type": "megasub",
           "active": false,
-          "children": [{
+          "children": [
+            {
               "path": "/shop/shoes",
               "title": "Cart top",
               "type": "link"
@@ -303,7 +225,8 @@
           "title": "theme elements",
           "type": "megasub",
           "active": false,
-          "children": [{
+          "children": [
+            {
               "path": "/page/element/collection-banner",
               "title": "collection banner",
               "type": "link"
@@ -334,7 +257,8 @@
           "title": "Product elements",
           "type": "megasub",
           "active": false,
-          "children": [{
+          "children": [
+            {
               "path": "/page/element/product-slider",
               "title": "Product slider",
               "type": "link"
@@ -362,11 +286,13 @@
       "title": "Pages",
       "type": "sub",
       "active": false,
-      "children": [{
+      "children": [
+        {
           "title": "Account",
           "type": "sub",
           "active": false,
-          "children": [{
+          "children": [
+            {
               "path": "/page/account/wishlist",
               "title": "Wishlist",
               "type": "link"
@@ -442,7 +368,8 @@
           "title": "Compare",
           "type": "sub",
           "active": false,
-          "children": [{
+          "children": [
+            {
               "path": "/page/compare/compare-1",
               "title": "Compare-1",
               "type": "link"
@@ -490,7 +417,8 @@
       "title": "Blog",
       "type": "sub",
       "active": false,
-      "children": [{
+      "children": [
+        {
           "path": "/blog/blog-leftsidebar",
           "title": "Left Sidebar",
           "type": "link"

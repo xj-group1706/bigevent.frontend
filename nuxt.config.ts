@@ -17,6 +17,10 @@ export default defineNuxtConfig({
     },
   },
 
+  imports: {
+    dirs: ["composables"],
+  },
+
   css: ["@/assets/scss/app.scss", "@/assets/css/tailwind.css"],
   ssr: true,
 
@@ -41,32 +45,27 @@ export default defineNuxtConfig({
       {
         code: "en",
         iso: "en-US",
+        name: "English",
         file: "en.json",
       },
       {
         code: "ru",
         iso: "ru-RU",
+        name: "Русский язык",
         file: "ru.json",
       },
       {
         code: "uz",
         iso: "uz-UZ",
+        name: "O'zbek tili",
         file: "uz.json",
       },
     ],
     lazy: true,
     langDir: "locales/",
-    // locales: [
-    //   {
-    //     code: "en",
-    //     name: "English",
-    //   },
-    //   {
-    //     code: "fr",
-    //     name: "Français",
-    //   },
-    // ],
-    // vueI18n: "./i18n.config.ts"
+    vuei18n: {
+      fallbackLocale: "en",
+    },
   },
 
   pluginsIgnore: [/^ignored-plugin/, /another-ignored-plugin/],
