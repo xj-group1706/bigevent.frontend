@@ -42,7 +42,6 @@
 </template>
 <script setup lang="ts">
 const localePath = useLocalePath();
-
 const leftSidebarVal = ref(false);
 
 function left_sidebar() {
