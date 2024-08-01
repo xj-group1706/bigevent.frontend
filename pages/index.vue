@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <ShopFashionSlider />
+    <HomeBanner />
     <ShopFashionCollection_banner />
     <ShopFashionProduct_slider
       :products="products"
