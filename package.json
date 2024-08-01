@@ -4,6 +4,7 @@
     "build": "nuxt build",
     "dev": "yarn i18n && nuxt dev",
     "generate": "nuxt generate",
+    "start": "nuxt start",
     "preview": "nuxt preview",
     "postinstall": "patch-package",
     "i18n": "ts-node generate-i18n-files.ts"
