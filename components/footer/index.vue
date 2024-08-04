@@ -9,18 +9,34 @@
                 <div class="subscribe">
                   <div>
                     <h4>KNOW IT ALL FIRST!</h4>
-                    <p>Never Miss Anything From Multikart By Signing Up To Our Newsletter.</p>
+                    <p>
+                      Never Miss Anything From bigEVENT By Signing Up To Our
+                      Newsletter.
+                    </p>
                   </div>
                 </div>
               </div>
               <div class="col-lg-6">
-                <form class="form-inline subscribe-form auth-form needs-validation" method="post"
-                  id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+                <form
+                  class="form-inline subscribe-form auth-form needs-validation"
+                  method="post"
+                  id="mc-embedded-subscribe-form"
+                  name="mc-embedded-subscribe-form"
+                  target="_blank"
+                >
                   <div class="form-group mx-sm-3">
-                    <input type="text" class="form-control" name="EMAIL" id="mce-EMAIL" placeholder="Enter your email"
-                      required="required" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="EMAIL"
+                      id="mce-EMAIL"
+                      placeholder="Enter your email"
+                      required
+                    />
                   </div>
-                  <button type="submit" class="btn btn-solid" id="mc-submit">subscribe</button>
+                  <button type="submit" class="btn btn-solid" id="mc-submit">
+                    subscribe
+                  </button>
                 </form>
               </div>
             </div>
@@ -36,10 +52,13 @@
               </div>
               <div class="footer-contant">
                 <div class="footer-logo">
-                  <img src='/images/icon/logo.png' alt="logo" />
+                  <img src="/images/logos/logo_line.png" alt="logo" />
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                  et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam,
+                </p>
                 <div class="footer-social">
                   <ul>
                     <li>
@@ -79,16 +98,10 @@
                 <div class="footer-contant">
                   <ul>
                     <li>
-                      <a href="#">mens</a>
-                    </li>
-                    <li>
                       <a href="#">womens</a>
                     </li>
                     <li>
                       <a href="#">clothing</a>
-                    </li>
-                    <li>
-                      <a href="#">accessories</a>
                     </li>
                     <li>
                       <a href="#">featured</a>
@@ -131,17 +144,14 @@
                 <div class="footer-contant">
                   <ul class="contact-list">
                     <li>
-                      <i class="fa fa-map-marker"></i>Multikart Demo Store, Demo store India 345-659
+                      <i class="fa fa-map-marker"></i>Tashkent, Uzbekistan
                     </li>
                     <li>
-                      <i class="fa fa-phone"></i>Call Us: 123-456-7898
+                      <i class="fa fa-phone"></i>Call Us: +998 93 949-98-96
                     </li>
                     <li>
                       <i class="fa fa-envelope-o"></i>Email Us:
-                      <a href="#">Support@Fiot.com</a>
-                    </li>
-                    <li>
-                      <i class="fa fa-fax"></i>Fax: 123456
+                      bigeventuz@gmail.com
                     </li>
                   </ul>
                 </div>
@@ -156,7 +166,8 @@
             <div class="col-xl-6 col-md-6 col-sm-12">
               <div class="footer-end">
                 <p>
-                  <i class="fa fa-copyright" aria-hidden="true"></i> 2017-18 themeforest powered by pixelstrap
+                  <i class="fa fa-copyright" aria-hidden="true"></i> 2024
+                  xjgroup.uz
                 </p>
               </div>
             </div>
@@ -165,27 +176,27 @@
                 <ul>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/visa.png' alt />
+                      <img src="/images/icon/visa.png" />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/mastercard.png' alt />
+                      <img src="/images/icon/mastercard.png" />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/paypal.png' alt />
+                      <img src="/images/icon/paypal.png" />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/american-express.png' alt />
+                      <img src="/images/icon/american-express.png" />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/discover.png' alt />
+                      <img src="/images/icon/discover.png" />
                     </a>
                   </li>
                 </ul>

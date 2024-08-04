@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     head: {
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
-      title: "Multikart Ecommerce | Vuejs shopping theme",
+      title: "bigEVENT",
       meta: [{ name: "description", content: "My amazing site." }],
       script: [
         { src: "https://www.paypal.com/sdk/js?client-id=test&currency=USD" },
