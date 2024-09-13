@@ -44,19 +44,19 @@ export default defineNuxtConfig({
     locales: [
       {
         code: "en",
-        iso: "en-US",
+        language: "en-US",
         name: "English",
         file: "en.json",
       },
       {
         code: "ru",
-        iso: "ru-RU",
+        language: "ru-RU",
         name: "Русский язык",
         file: "ru.json",
       },
       {
         code: "uz",
-        iso: "uz-UZ",
+        language: "uz-UZ",
         name: "O'zbek tili",
         file: "uz.json",
       },
@@ -96,6 +96,12 @@ export default defineNuxtConfig({
 
   typescript: {
     shim: false,
+  },
+
+  runtimeConfig: {
+    public: {
+      apiBaseUrl: process.env.VITE_API_URL || "http://localhost:1337/api",
+    },
   },
 
   compatibilityDate: "2024-07-25",
