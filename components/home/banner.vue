@@ -11,23 +11,28 @@
         >
           <swiper-slide
             class="swiper-slide"
-            v-for="(item, index) in items"
+            v-for="(item, index) in directoryStore.directions"
             :key="index"
           >
             <div
               class="home text-center"
-              :class="item.alignclass"
               v-bind:style="{
-                'background-image': 'url(' + item.imagepath + ')',
+                'background-image': 'url(' + imageUrl + item.banner.url + ')',
               }"
             >
               <div class="container">
                 <div class="row">
                   <div class="col">
-                    <div class="slider-contain">
+                    <div class="slider-contain justify-start">
                       <div>
-                        <h4>{{ item.title }}</h4>
-                        <h1>{{ item.subtitle }}</h1>
+                        <h2 class="sm:text-4xl text-2xl font-bold mb-6">
+                          {{ item.name[locale] }}
+                        </h2>
+                        <p
+                          class="sm:text-lg text-base text-center text-gray-200"
+                        >
+                          {{ item.description[locale] }}
+                        </p>
                         <nuxt-link
                           :to="{ path: '/collection/leftsidebar/all' }"
                           class="btn btn-solid"
@@ -45,36 +50,19 @@
     </section>
   </div>
 </template>
-<script type="text/javascript">
+<script setup lang="ts">
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
-export default {
-  components: { Swiper, SwiperSlide },
+import { useI18n } from "vue-i18n";
+import { useDirectoryStore } from "./../../store/directory";
 
-  setup() {
-    return {
-      modules: [Navigation],
-    };
-  },
-  data() {
-    return {
-      items: [
-        {
-          imagepath: "/images/banner/wedding-dress-resize.png",
-          title: "welcome to the wedding dresses",
-          subtitle: "wedding dresses",
-          alignclass: "p-left",
-        },
-        {
-          imagepath: "/images/banner/party-dress-resize.jpg",
-          title: "welcome to the party dresses",
-          subtitle: "party dresses",
-          alignclass: "p-left",
-        },
-      ],
-    };
-  },
-};
+const directoryStore = useDirectoryStore();
+const { locale } = useI18n();
+
+const config = useRuntimeConfig();
+const imageUrl = config.public.imageUrl;
+
+const modules = [Navigation];
 </script>

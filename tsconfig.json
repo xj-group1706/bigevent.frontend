@@ -5,7 +5,8 @@
   "compilerOptions": {
     "types": ["node", "@nuxtjs/i18n", "./types/i18n.d.ts"],
     "paths": {
-      "#i18n": ["./node_modules/@nuxtjs/i18n/dist/runtime/composables"]
+      "#i18n": ["./node_modules/@nuxtjs/i18n/dist/runtime/composables"],
+      "@/*": ["./*"]
     }
   }
 }

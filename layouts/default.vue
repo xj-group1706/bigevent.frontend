@@ -1,9 +1,9 @@
 <template>
   <div>
     <div id="body-content" />
-    <!-- <Header/> -->
+    <Header />
     <slot />
-    <WidgetsLayoutSetting />
+    <!-- <WidgetsLayoutSetting /> -->
     <ClientOnly>
       <div
         class="tap-top top-cls"

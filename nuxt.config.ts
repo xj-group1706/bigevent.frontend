@@ -3,7 +3,9 @@ import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
   routeRules: {},
-
+  devtools: {
+    enabled: true,
+  },
   app: {
     head: {
       charset: "utf-8",
@@ -18,6 +20,7 @@ export default defineNuxtConfig({
   },
 
   imports: {
+    autoImport: true,
     dirs: ["composables"],
   },
 
@@ -101,6 +104,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiBaseUrl: process.env.VITE_API_URL || "http://localhost:1337/api",
+      imageUrl: process.env.VITE_IMAGE_URL || "http://localhost:1337",
     },
   },
 
