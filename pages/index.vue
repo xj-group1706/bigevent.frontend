@@ -1,14 +1,11 @@
 <template>
   <div>
     <HomeBanner />
-    <!-- <ShopFashionCollection_banner />
-    <ShopFashionProduct_slider
-      :products="products"
-      @openQuickview="showQuickview"
+    <ShopFashionProduct_slider :products="productStore.products" />
+    <!-- @openQuickview="showQuickview"
       @openCompare="showCoampre"
-      @openCart="showCart"
-    />
-    <ShopFashionBanner />
+      @openCart="showCart" -->
+    <!-- <ShopFashionBanner />
     <ShopFashionProductTab
       :products="products"
       :category="category"
@@ -35,20 +32,24 @@
       :productData="cartproduct"
       @closeCart="closeCartModal"
       :products="products"
-    /> -->
-    <pre>{{ directoryStore.directions }}</pre>
-    <WidgetsNewsletterPopup />
+    />
+    <WidgetsNewsletterPopup /> -->
     <Footer />
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { ref, onMounted } from "vue";
+import { useAsyncData } from "nuxt/app";
 
-import { useDirectoryStore } from "@/store/directory";
+import { useDirectoryStore } from "./../store/directory";
+import { useProductStore } from "./../store/products";
 
 const directoryStore = useDirectoryStore();
+const productStore = useProductStore();
 
 useAsyncData("directions", () => directoryStore.getDirections());
+
+const products = ref([]);
 
 // onMounted(async () => {
 //   directoryStore.fetchDirections();

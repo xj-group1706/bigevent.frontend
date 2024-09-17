@@ -56,6 +56,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import { useI18n } from "vue-i18n";
+import { useRuntimeConfig } from "nuxt/app";
 import { useDirectoryStore } from "./../../store/directory";
 
 const directoryStore = useDirectoryStore();
