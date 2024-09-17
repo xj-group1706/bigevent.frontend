@@ -21,6 +21,7 @@ export interface IProductDetail {
 
 export interface IProduct {
   id: number;
+  createdAt: Date;
   name: {
     [key in LanguageCode]: string;
   };

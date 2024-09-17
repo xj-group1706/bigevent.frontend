@@ -1,6 +1,7 @@
 <template>
   <div>
     <HomeBanner />
+    <TopCollection v-if="topProducts.length > 0" :products="topProducts" />
     <ShopFashionProduct_slider :products="productStore.products" />
     <!-- @openQuickview="showQuickview"
       @openCompare="showCoampre"
@@ -39,21 +40,34 @@
 </template>
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import { useAsyncData } from "nuxt/app";
+import { useAsyncData, useFetch } from "nuxt/app";
+
+import TopCollection from "../components/home/topCollection.vue";
 
 import { useDirectoryStore } from "./../store/directory";
-import { useProductStore } from "./../store/products";
+import { useProductsStore } from "./../store/newProducts";
+import { useProductStore } from "../store/products";
+
+import type { IProduct } from "../types/product";
 
 const directoryStore = useDirectoryStore();
+const newProductStore = useProductsStore();
 const productStore = useProductStore();
+
+const topProducts = ref<IProduct[]>([]);
 
 useAsyncData("directions", () => directoryStore.getDirections());
 
-const products = ref([]);
-
-// onMounted(async () => {
-//   directoryStore.fetchDirections();
-// });
+onMounted(async () => {
+  newProductStore
+    .getProducts({
+      populate:
+        "country.flag, direction, company, colors, product_details, product_details.color, product_details.media",
+    })
+    .then((res) => {
+      topProducts.value = res as IProduct[];
+    });
+});
 
 // export default {
 //   data() {

@@ -1,11 +1,14 @@
 import { defineNuxtConfig } from "nuxt/config";
-// https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
   routeRules: {},
   devtools: {
     enabled: true,
   },
+  // typescript: {
+  //   strict: true,
+  //   typeCheck: true,
+  // },
   app: {
     head: {
       charset: "utf-8",
@@ -40,6 +43,10 @@ export default defineNuxtConfig({
       },
     ],
   ],
+
+  image: {
+    domains: ["http://localhost:1337"],
+  },
 
   i18n: {
     strategy: "prefix_except_default",

@@ -16,7 +16,7 @@ export interface IMeta {
 
 export interface IReqFilter {
   populate: string;
-  pagination: {
+  pagination?: {
     page: number;
     pageSize: number;
   };
