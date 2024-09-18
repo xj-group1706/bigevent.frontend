@@ -36,4 +36,6 @@ export interface IProduct {
   country: ICountry;
   colors: IColor[];
   product_details: IProductDetail[];
+  rate: number;
+  raters: number;
 }

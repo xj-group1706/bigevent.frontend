@@ -11,7 +11,7 @@ const PRODUCT_STORE = "productStore";
 export const useProductsStore = defineStore(PRODUCT_STORE, () => {
   const products = ref<IProduct[]>([]);
 
-  function getProducts(payload: IReqFilter) {
+  function getProducts(payload: IReqFilter): Promise<IProduct[]> {
     return new Promise((resolve, reject) => {
       const { getProducts } = useProduct();
       getProducts(payload)

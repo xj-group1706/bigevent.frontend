@@ -65,7 +65,7 @@ onMounted(async () => {
         "country.flag, direction, company, colors, product_details, product_details.color, product_details.media",
     })
     .then((res) => {
-      topProducts.value = res as IProduct[];
+      topProducts.value = res;
     });
 });
 

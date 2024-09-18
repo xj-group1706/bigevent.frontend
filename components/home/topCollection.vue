@@ -73,7 +73,6 @@ const showcomapreModal = ref(false);
 const quickviewproduct = ref({});
 const comapreproduct = ref({});
 const cartproduct = ref({});
-const dismissSecs = ref(5);
 const dismissCountDown = ref(0);
 
 const alert = (item) => {

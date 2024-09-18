@@ -79,13 +79,20 @@
     </div>
   </div>
   <div class="product-detail">
-    <div class="rating">
-      <i class="fa fa-star"></i>
-      <i class="fa fa-star"></i>
-      <i class="fa fa-star"></i>
-      <i class="fa fa-star"></i>
-      <i class="fa fa-star"></i>
-    </div>
+    <StarRating
+      :rating="product.rate"
+      :increment="0.01"
+      :read-only="true"
+      :star-size="15"
+      :rounded-corners="true"
+      :show-rating="false"
+      :star-points="[
+        23, 2, 14, 17, 0, 19, 10, 34, 7, 50, 23, 43, 38, 50, 36, 34, 46, 19, 31,
+        17,
+      ]"
+      :active-color="'#ffa200'"
+      :inactive-color="'#eaeaea'"
+    />
     <nuxt-link :to="{ path: '/product/sidebar/' + product.id }">
       <h6>{{ product.name[$i18n.locale] }}</h6>
     </nuxt-link>
@@ -101,6 +108,7 @@
     <ul class="color-variant" v-if="product.product_details.length > 0">
       <li v-for="(detail, ind) in product.product_details" :key="ind">
         <a
+          class="border border-gray-700"
           @click="getProductDetailByColor(detail.color)"
           v-bind:style="{ 'background-color': `#${detail.color.code}` }"
         ></a>
@@ -129,8 +137,7 @@ const emits = defineEmits([
   "showCompareModal",
 ]);
 
-const selectedDetail = ref(props.product.product_details[0]);
-const symbol = ref("$");
+const selectedDetail = ref<IProductDetail>(props.product.product_details[0]);
 const imageSrc = ref<IMedia>();
 const quickviewProduct = ref({});
 const compareProduct = ref({});
@@ -138,10 +145,6 @@ const cartProduct = ref({});
 const showquickview = ref(false);
 const showCompareModal = ref(false);
 const cartval = ref(false);
-const variants = ref({
-  productId: "",
-  image: "",
-});
 const dismissSecs = ref(5);
 const dismissCountDown = ref(0);
 
@@ -156,12 +159,6 @@ const isNew = computed(() => {
 const isSale = computed(() => {
   return props.product.product_details.find((detail) => detail.sale > 0);
 });
-const productslist = computed(() => {
-  return useProductStore().productslist;
-});
-const curr = computed(() => {
-  return useProductStore().changeCurrency;
-});
 
 function getProductDetailByColor(color: IColor) {
   selectedDetail.value = props.product.product_details.find(
@@ -169,10 +166,6 @@ function getProductDetailByColor(color: IColor) {
   );
   imageSrc.value = selectedDetail.value.media[0];
 }
-
-const getImgUrl = (path) => {
-  return "/images/" + path;
-};
 
 const addToCart = (product) => {
   cartval.value = true;
@@ -201,37 +194,8 @@ const addToCompare = (product) => {
 
   useProductStore().addToCompare(product);
 };
-const Color = (variants) => {
-  const uniqColor = [];
-  for (let i = 0; i < Object.keys(variants).length; i++) {
-    if (uniqColor.indexOf(variants[i].color) === -1) {
-      uniqColor.push(variants[i].color);
-    }
-  }
-  return uniqColor;
-};
-const productColorchange = (color, product) => {
-  product.variants.map((item) => {
-    if (item.color === color) {
-      product.images.map((img) => {
-        if (img.image_id === item.image_id) {
-          imageSrc.value = img.src;
-        }
-      });
-    }
-  });
-};
+
 const productVariantChange = (img) => {
   imageSrc.value = img;
-};
-const countDownChanged = (dismissCountDown) => {
-  dismissCountDown.value = dismissCountDown;
-  emits("alertseconds", dismissCountDown.value);
-};
-const discountedPrice = (product) => {
-  const price =
-    (product.price - (product.price * product.discount) / 100) *
-    curr.value.curr;
-  return price;
 };
 </script>
