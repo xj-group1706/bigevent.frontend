@@ -15,21 +15,23 @@
               : getImageUrl(selectedDetail.media[0].url)
           "
           class="img-fluid bg-img media"
-          :alt="selectedDetail.media[0].name"
+          :alt="imageSrc ? imageSrc.name : selectedDetail.media[0].name"
         />
       </nuxt-link>
     </div>
-    <!-- <div class="back" v-if="product.images.length > 1">
-      <nuxt-link :to="{ path: '/product/sidebar/' + product.id }">
+    <div class="back" v-if="selectedDetail.media.length > 1">
+      <nuxt-link :to="{ path: '/product/' + product.id }">
         <img
-          :src="getImgUrl(imageSrc ? imageSrc : product.images[1].src)"
-          :key="index"
-          :id="product.id"
-          alt=""
+          :src="
+            imageSrc
+              ? getImageUrl(imageSrc.url)
+              : getImageUrl(selectedDetail.media[1].url)
+          "
+          :alt="imageSrc ? imageSrc.name : selectedDetail.media[1].name"
           class="img-fluid m-auto media"
         />
       </nuxt-link>
-    </div> -->
+    </div>
     <ul class="product-thumb-list">
       <li
         class="grid_thumb_img"
@@ -48,7 +50,7 @@
         data-toggle="modal"
         data-target="#modal-cart"
         title="Add to cart"
-        @click="addToCart(product)"
+        @click="addToBasket(selectedDetail)"
         variant="primary"
       >
         <i class="ti-shopping-cart"></i>
@@ -118,10 +120,13 @@
 </template>
 
 <script setup lang="ts">
+import { computed, ref } from "vue";
 import { getImageUrl } from "../../utils/tools";
 
+import { useBasketStore } from "../../store/basket";
 import { useProductStore } from "../../store/products";
 import { useCartStore } from "../../store/cart";
+
 import type { IProduct, IProductDetail } from "../../types/product";
 import type { IColor } from "../../types/color";
 import type { IMedia } from "../../types/media";
@@ -131,11 +136,14 @@ const props = defineProps<{
 }>();
 
 const emits = defineEmits([
+  "addToBasket",
   " opencartmodel",
   "openquickview",
   "alertseconds",
   "showCompareModal",
 ]);
+
+const basketStore = useBasketStore();
 
 const selectedDetail = ref<IProductDetail>(props.product.product_details[0]);
 const imageSrc = ref<IMedia>();
@@ -161,10 +169,16 @@ const isSale = computed(() => {
 });
 
 function getProductDetailByColor(color: IColor) {
-  selectedDetail.value = props.product.product_details.find(
-    (detail) => detail.color.id === color.id
-  );
+  selectedDetail.value =
+    props.product.product_details.find(
+      (detail) => detail.color.id === color.id
+    ) || selectedDetail.value;
   imageSrc.value = selectedDetail.value.media[0];
+}
+
+function addToBasket(detail: IProductDetail) {
+  emits("addToBasket", detail);
+  basketStore.addToBasket({ detail });
 }
 
 const addToCart = (product) => {

@@ -2,7 +2,6 @@
   <div>
     <HomeBanner />
     <TopCollection v-if="topProducts.length > 0" :products="topProducts" />
-    <ShopFashionProduct_slider :products="productStore.products" />
     <!-- @openQuickview="showQuickview"
       @openCompare="showCoampre"
       @openCart="showCart" -->
