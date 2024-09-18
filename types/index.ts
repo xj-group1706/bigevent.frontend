@@ -1,7 +1,9 @@
+import type { IMedia } from "./media";
+
 export type LanguageCode = "uz" | "ru" | "en";
 
 export interface IResponse<T> {
-  data: T[];
+  data: T | T[];
   meta: IMeta;
 }
 
@@ -20,4 +22,18 @@ export interface IReqFilter {
     page: number;
     pageSize: number;
   };
+}
+
+export interface IFashionBanner {
+  id: number;
+  title: {
+    [key in LanguageCode]: string;
+  };
+  subtitle: {
+    [key in LanguageCode]: string;
+  };
+  text: {
+    [key in LanguageCode]: string;
+  };
+  media: IMedia;
 }

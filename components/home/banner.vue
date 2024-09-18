@@ -11,7 +11,7 @@
         >
           <swiper-slide
             class="swiper-slide"
-            v-for="(item, index) in directoryStore.directions"
+            v-for="(item, index) in homeStore.directions"
             :key="index"
           >
             <div
@@ -57,9 +57,10 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import { useI18n } from "vue-i18n";
 import { useRuntimeConfig } from "nuxt/app";
-import { useDirectoryStore } from "./../../store/directory";
 
-const directoryStore = useDirectoryStore();
+import { useHomeStore } from "./../../store/home";
+const homeStore = useHomeStore();
+
 const { locale } = useI18n();
 
 const config = useRuntimeConfig();

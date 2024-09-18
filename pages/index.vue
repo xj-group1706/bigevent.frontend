@@ -2,11 +2,11 @@
   <div>
     <HomeBanner />
     <TopCollection v-if="topProducts.length > 0" :products="topProducts" />
+    <HomeFashionBanner v-if="homeStore.fashionBanner" />
     <!-- @openQuickview="showQuickview"
       @openCompare="showCoampre"
       @openCart="showCart" -->
-    <!-- <ShopFashionBanner />
-    <ShopFashionProductTab
+    <!-- <ShopFashionProductTab
       :products="products"
       :category="category"
       @openQuickview="showQuickview"
@@ -43,19 +43,18 @@ import { useAsyncData, useFetch } from "nuxt/app";
 
 import TopCollection from "../components/home/topCollection.vue";
 
-import { useDirectoryStore } from "./../store/directory";
 import { useProductsStore } from "./../store/newProducts";
-import { useProductStore } from "../store/products";
+import { useHomeStore } from "../store/home";
 
 import type { IProduct } from "../types/product";
 
-const directoryStore = useDirectoryStore();
 const newProductStore = useProductsStore();
-const productStore = useProductStore();
+const homeStore = useHomeStore();
 
 const topProducts = ref<IProduct[]>([]);
 
-useAsyncData("directions", () => directoryStore.getDirections());
+useAsyncData("directions", () => homeStore.getDirections());
+useAsyncData("fashionBanner", () => homeStore.getFashionBanner());
 
 onMounted(async () => {
   newProductStore
