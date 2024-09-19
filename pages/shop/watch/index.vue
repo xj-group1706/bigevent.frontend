@@ -20,7 +20,7 @@
       @openCompare="showCoampre"
       @openCart="showCart"
     />
-    <ShopWatchBlog :blog="blog"/>
+    <ShopWatchBlog :blog="blog" />
     <ShopWatchServices />
     <ShopWatchInstagram />
     <FooterFooter4 />
@@ -34,7 +34,10 @@
       :productData="comapreproduct"
       @closeCompare="closeCompareModal"
     />
-    <CartModalCartBottomModel :openCart="showcartmodal" @closeCart="closeCart" />
+    <CartModalCartBottomModel
+      :openCart="showcartmodal"
+      @closeCart="closeCart"
+    />
     <WidgetsNewsletterPopup />
   </div>
 </template>
@@ -42,13 +45,11 @@
 <script>
 import { mapState } from "pinia";
 import { useProductStore } from "~~/store/products";
-import {
-    useBlogStore
-} from '~~/store/blog'
+import { useBlogStore } from "~~/store/blog";
 export default {
   data() {
     return {
-      blog:[],
+      blog: [],
       products: [],
       category: [],
       showquickviewmodel: false,
@@ -60,26 +61,26 @@ export default {
     };
   },
   computed: {
-    ...mapState(useProductStore,{
-      productslist: 'productslist',
+    ...mapState(useProductStore, {
+      productslist: "productslist",
     }),
-    ...mapState(useBlogStore,{
-          bloglist: 'bloglist'
-        }),
+    ...mapState(useBlogStore, {
+      bloglist: "bloglist",
+    }),
   },
 
   beforeMount() {
     if (process.client) {
-      document.documentElement.style.setProperty("--theme-deafult", "#e4604a");
+      document.documentElement.style.setProperty("--theme-default", "#e4604a");
     }
   },
   beforeDestroy() {
     if (process.client) {
-      document.documentElement.style.removeProperty("--theme-deafult");
+      document.documentElement.style.removeProperty("--theme-default");
     }
   },
   methods: {
-    productsArray: function() {
+    productsArray: function () {
       this.productslist.map((item) => {
         if (item.type === "watch") {
           this.products.push(item);
@@ -92,11 +93,10 @@ export default {
     },
     blogArray: function () {
       this.bloglist.map((item) => {
-        if (item.type === 'watch') {
-          this.blog.push(item)
-          
+        if (item.type === "watch") {
+          this.blog.push(item);
         }
-      })
+      });
     },
     showQuickview(item, productData) {
       this.showquickviewmodel = item;
@@ -115,14 +115,13 @@ export default {
     closeCart(item) {
       this.showcartmodal = item;
     },
-    closeViewModal(item){
-        this.showquickviewmodel= item
-      }
+    closeViewModal(item) {
+      this.showquickviewmodel = item;
+    },
   },
-    mounted() {
+  mounted() {
     this.productsArray();
-    this.blogArray()
-
+    this.blogArray();
   },
 };
 </script>

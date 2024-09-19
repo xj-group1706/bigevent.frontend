@@ -118,7 +118,7 @@ body {
               color: white;
 
               &.active {
-                color: var(--theme-deafult);
+                color: var(--theme-default);
               }
             }
           }
@@ -138,7 +138,7 @@ body {
             color: white;
 
             &.active {
-              color: var(--theme-deafult);
+              color: var(--theme-default);
             }
           }
         }
@@ -181,7 +181,6 @@ body {
 
     &.header-5 {
       .pixelstrap {
-
         a,
         &:hover,
         &:active {
@@ -193,8 +192,8 @@ body {
         .nav-menu {
           background-color: transparent;
 
-          >li {
-            >a {
+          > li {
+            > a {
               color: #222222;
             }
           }
@@ -242,7 +241,7 @@ body {
       transition: all 0.3s ease;
 
       .logo-menu-part {
-        >.container {
+        > .container {
           background-color: $dark-body;
           transition: all 0.3s ease;
           border-color: $dark-border;
@@ -259,7 +258,7 @@ body {
       .main-menu {
         .menu-right {
           .header-dropdown {
-            >li {
+            > li {
               img {
                 filter: invert(100);
               }
@@ -269,7 +268,7 @@ body {
       }
 
       .onhover-div {
-        >div {
+        > div {
           img {
             filter: invert(100);
           }
@@ -288,8 +287,8 @@ body {
         }
 
         .pixelstrap {
-          >li {
-            >a {
+          > li {
+            > a {
               background-color: $dark-top;
               transition: all 0.3s ease;
             }
@@ -327,7 +326,6 @@ body {
 
   #modal-newsletter {
     .offer-content {
-
       h2,
       .h2 {
         color: #f1f3f5;
@@ -347,8 +345,8 @@ body {
         }
       }
 
-      >li {
-        >a {
+      > li {
+        > a {
           color: $white-1;
         }
 
@@ -463,7 +461,6 @@ body {
   }
 
   .pixelstrap {
-
     .home-menu,
     .feature-menu,
     .category-menu,
@@ -474,7 +471,7 @@ body {
   }
 
   .onhover-div {
-    >div {
+    > div {
       img {
         filter: brightness(100);
       }
@@ -497,7 +494,7 @@ body {
         color: $dark-link;
 
         &.active {
-          color: var(--theme-deafult);
+          color: var(--theme-default);
         }
       }
     }
@@ -585,7 +582,7 @@ body {
                     color: $dark-link;
 
                     &:hover {
-                      color: var(--theme-deafult);
+                      color: var(--theme-default);
                     }
                   }
                 }
@@ -785,7 +782,7 @@ body {
   }
 
   .service-block {
-    +.service-block {
+    + .service-block {
       border-color: $dark-border;
     }
   }
@@ -793,7 +790,7 @@ body {
   .pixelstrap {
     &.light-font-menu {
       li {
-        >a {
+        > a {
           color: $white-1;
         }
       }
@@ -801,7 +798,6 @@ body {
   }
 
   .theme-tab {
-
     .tab-title,
     .tab-title2 {
       a {
@@ -810,7 +806,7 @@ body {
 
       .current {
         a {
-          color: var(--theme-deafult);
+          color: var(--theme-default);
         }
       }
     }
@@ -834,7 +830,6 @@ body {
 
   .product-box,
   .product-wrap {
-
     .product-detail,
     .product-info {
       h4 {
@@ -905,7 +900,7 @@ body {
           color: $white-5;
 
           li {
-            +li {
+            + li {
               border-left-color: rgba(119, 119, 119, 0.522);
             }
           }
@@ -950,7 +945,7 @@ body {
       border-color: $dark-border;
 
       li {
-        +li {
+        + li {
           border-color: $dark-border;
         }
       }
@@ -1027,7 +1022,7 @@ body {
 
   .table {
     tbody {
-      +tbody {
+      + tbody {
         border-color: $dark-border;
       }
     }
@@ -1061,7 +1056,6 @@ body {
 
       .product-filter-content,
       .popup-filter {
-
         .search-count,
         .sidebar-popup {
           border-color: $dark-border;
@@ -1222,7 +1216,6 @@ body {
       }
 
       input {
-
         &[type="text"],
         &[type="email"],
         &[type="password"],
@@ -1314,7 +1307,6 @@ body {
   }
 
   .table {
-
     th,
     td {
       border-color: $dark-border;
@@ -1398,7 +1390,7 @@ body {
         border-color: $dark-border;
 
         &.btn-solid {
-          border-color: var(--theme-deafult);
+          border-color: var(--theme-default);
         }
       }
 
@@ -1550,7 +1542,7 @@ body {
     .theme-card {
       .offer-slider {
         .product-box2 {
-          +.product-box2 {
+          + .product-box2 {
             border-top: none;
           }
         }
@@ -1622,7 +1614,7 @@ body {
       color: $white-5;
 
       &.active {
-        background-color: var(--theme-deafult);
+        background-color: var(--theme-default);
         transition: all 0.3s ease;
         color: $white;
       }
@@ -1769,7 +1761,6 @@ body {
     }
 
     .authentication-right {
-
       h6,
       p {
         color: $white-5;
@@ -1874,7 +1865,7 @@ body {
       }
 
       .sub-footer {
-        >.container {
+        > .container {
           border-color: $dark-border;
         }
       }
@@ -2068,7 +2059,7 @@ body {
 
         .nav-link {
           &.active {
-            color: var(--theme-deafult);
+            color: var(--theme-default);
           }
         }
       }
@@ -2080,7 +2071,7 @@ body {
       &.nav-tabs {
         .nav-link {
           &.active {
-            color: var(--theme-deafult);
+            color: var(--theme-default);
           }
         }
       }
@@ -2090,7 +2081,6 @@ body {
   .tab-product,
   .product-full-tab {
     .theme-form {
-
       input,
       textarea {
         border-color: $dark-border;
@@ -2222,7 +2212,7 @@ body {
 
       &:hover {
         h4 {
-          color: var(--theme-deafult);
+          color: var(--theme-default);
         }
       }
     }
@@ -2353,7 +2343,6 @@ body {
 
     .typo-content {
       &.heading_content {
-
         h1,
         h2,
         h3,
@@ -2485,7 +2474,6 @@ body {
     tbody {
       tr {
         td {
-
           a,
           p {
             color: $dark-link;
@@ -2526,7 +2514,7 @@ body {
         transition: all 0.3s ease;
 
         &:nth-child(even) {
-          background-color: rgba($dark-top, 0.70);
+          background-color: rgba($dark-top, 0.7);
           transition: all 0.3s ease;
         }
 
@@ -2546,7 +2534,7 @@ body {
 
   .detail-cannabis {
     .detail_section {
-      >div {
+      > div {
         background-color: $dark-body;
         transition: all 0.3s ease;
         box-shadow: none;
@@ -2576,7 +2564,24 @@ body {
         }
 
         .modal-body {
-          background-image: linear-gradient(135deg, var(--theme-deafult) 5.77%, $dark-top 5.77%, $dark-top 25%, $white-1 25%, $white-1 30.77%, $dark-top 30.77%, $dark-top 50%, var(--theme-deafult) 50%, var(--theme-deafult) 55.77%, $dark-top 55.77%, $dark-top 75%, $white-1 75%, $white-1 80.77%, $dark-top 80.77%, $dark-top 100%);
+          background-image: linear-gradient(
+            135deg,
+            var(--theme-default) 5.77%,
+            $dark-top 5.77%,
+            $dark-top 25%,
+            $white-1 25%,
+            $white-1 30.77%,
+            $dark-top 30.77%,
+            $dark-top 50%,
+            var(--theme-default) 50%,
+            var(--theme-default) 55.77%,
+            $dark-top 55.77%,
+            $dark-top 75%,
+            $white-1 75%,
+            $white-1 80.77%,
+            $dark-top 80.77%,
+            $dark-top 100%
+          );
 
           .modal-bg {
             background-color: $dark-body;
@@ -2607,7 +2612,7 @@ body {
 
             .demo-section {
               .demo-effects {
-                >div {
+                > div {
                   .layout-container {
                     box-shadow: none;
                   }
@@ -2723,7 +2728,7 @@ body {
               color: #fff;
 
               &.active {
-                color: var(--theme-deafult);
+                color: var(--theme-default);
               }
             }
           }
@@ -2739,7 +2744,7 @@ body {
           color: $dark-link;
 
           &:hover {
-            color: var(--theme-deafult);
+            color: var(--theme-default);
           }
         }
       }
@@ -2754,7 +2759,7 @@ body {
     }
 
     .row {
-      >div {
+      > div {
         &:nth-child(odd) {
           background-color: $dark-top;
         }
@@ -2763,7 +2768,6 @@ body {
   }
 
   .effect-cls {
-
     &:before,
     &:after {
       filter: invert(100);
@@ -2835,6 +2839,6 @@ body {
   }
 
   .avalibility {
-    color: var(--theme-deafult);
+    color: var(--theme-default);
   }
 }

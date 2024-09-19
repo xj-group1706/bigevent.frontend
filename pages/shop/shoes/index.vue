@@ -12,8 +12,7 @@
       @openCart="showCart"
     />
     <ShopShoesCategory2 />
-    <ShopShoesCollectionslider
-     :products="products" :category="category" />
+    <ShopShoesCollectionslider :products="products" :category="category" />
     <ShopShoesCategory3 />
     <ShopShoesCollectiontab
       :products="products"
@@ -47,12 +46,10 @@ import { useProductStore } from "~~/store/products";
 import { useBlogStore } from "~~/store/blog";
 
 export default {
-  components: {
-
-  },
+  components: {},
   data() {
     return {
-      blog:[],
+      blog: [],
 
       products: [],
       category: [],
@@ -65,26 +62,26 @@ export default {
     };
   },
   computed: {
-    ...mapState(useProductStore,{
-      productslist: 'productslist',
+    ...mapState(useProductStore, {
+      productslist: "productslist",
     }),
-    ...mapState(useBlogStore,{
-          bloglist: 'bloglist'
-        }),
+    ...mapState(useBlogStore, {
+      bloglist: "bloglist",
+    }),
   },
-  
+
   beforeMount() {
     if (process.client) {
-      document.documentElement.style.setProperty("--theme-deafult", "#3fdda7");
+      document.documentElement.style.setProperty("--theme-default", "#3fdda7");
     }
   },
   beforeDestroy() {
     if (process.client) {
-      document.documentElement.style.removeProperty("--theme-deafult");
+      document.documentElement.style.removeProperty("--theme-default");
     }
   },
   methods: {
-    productsArray: function() {
+    productsArray: function () {
       this.productslist.map((item) => {
         if (item.type === "shoes") {
           this.products.push(item);
@@ -97,11 +94,10 @@ export default {
     },
     blogArray: function () {
       this.bloglist.map((item) => {
-        if (item.type === 'shoes') {
-          this.blog.push(item)
-          
+        if (item.type === "shoes") {
+          this.blog.push(item);
         }
-      })
+      });
     },
     showQuickview(item, productData) {
       this.showquickviewmodel = item;
@@ -120,14 +116,13 @@ export default {
     closeCart(item) {
       this.showcartmodal = item;
     },
-    closeViewModal(item){
-        this.showquickviewmodel= item
-      }
+    closeViewModal(item) {
+      this.showquickviewmodel = item;
+    },
   },
   mounted() {
     this.productsArray();
-    this.blogArray()
-
+    this.blogArray();
   },
 };
 </script>

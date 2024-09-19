@@ -2,7 +2,7 @@ import type { LanguageCode } from "./index";
 import type { IMedia } from "./media";
 
 export interface IDirection {
-  id: string;
+  id: number;
   name: {
     [key in LanguageCode]: string;
   };

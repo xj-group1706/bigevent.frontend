@@ -42,7 +42,7 @@ import { useBlogStore } from "~~/store/blog";
 export default {
   data() {
     return {
-      blog:[],
+      blog: [],
 
       products: [],
       category: [],
@@ -55,17 +55,17 @@ export default {
     };
   },
   computed: {
-    ...mapState(useProductStore,{
-      productslist: 'productslist',
+    ...mapState(useProductStore, {
+      productslist: "productslist",
     }),
-    ...mapState(useBlogStore,{
-          bloglist: 'bloglist'
-        }),
+    ...mapState(useBlogStore, {
+      bloglist: "bloglist",
+    }),
   },
- 
+
   beforeMount() {
     if (process.client) {
-      document.documentElement.style.setProperty("--theme-deafult", "#01effc");
+      document.documentElement.style.setProperty("--theme-default", "#01effc");
       document.documentElement.style.setProperty(
         "--theme-gradient1",
         "#01effc"
@@ -78,13 +78,13 @@ export default {
   },
   beforeDestroy() {
     if (process.client) {
-      document.documentElement.style.removeProperty("--theme-deafult");
+      document.documentElement.style.removeProperty("--theme-default");
       document.documentElement.style.removeProperty("--theme-gradient1");
       document.documentElement.style.removeProperty("--theme-gradient2");
     }
   },
   methods: {
-    productsArray: function() {
+    productsArray: function () {
       this.productslist.map((item) => {
         if (item.type === "gym") {
           this.products.push(item);
@@ -97,11 +97,10 @@ export default {
     },
     blogArray: function () {
       this.bloglist.map((item) => {
-        if (item.type === 'gym') {
-          this.blog.push(item)
-          
+        if (item.type === "gym") {
+          this.blog.push(item);
         }
-      })
+      });
     },
     showQuickview(item, productData) {
       this.showquickviewmodel = item;
@@ -120,14 +119,13 @@ export default {
     closeCart(item) {
       this.showcartmodal = item;
     },
-    closeViewModal(item){
-        this.showquickviewmodel= item
-      }
+    closeViewModal(item) {
+      this.showquickviewmodel = item;
+    },
   },
-   mounted() {
+  mounted() {
     this.productsArray();
-    this.blogArray()
-
+    this.blogArray();
   },
 };
 </script>

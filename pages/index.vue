@@ -3,17 +3,11 @@
     <HomeBanner />
     <TopCollection v-if="topProducts.length > 0" :products="topProducts" />
     <HomeFashionBanner v-if="homeStore.fashionBanner" />
+    <HomeProductTab v-if="topProducts.length > 0" :products="topProducts" />
     <!-- @openQuickview="showQuickview"
       @openCompare="showCoampre"
       @openCart="showCart" -->
-    <!-- <ShopFashionProductTab
-      :products="products"
-      :category="category"
-      @openQuickview="showQuickview"
-      @openCompare="showCoampre"
-      @openCart="showCart"
-    />
-    <ShopFashionServices />
+    <!-- <ShopFashionServices />
     <ShopFashionBlog :blog="blog" />
     <ShopFashionInstagram />
     <ShopFashionLogo_slider />
@@ -45,11 +39,13 @@ import TopCollection from "../components/home/topCollection.vue";
 
 import { useProductsStore } from "./../store/newProducts";
 import { useHomeStore } from "../store/home";
+import { useProductStore } from "../store/products";
 
 import type { IProduct } from "../types/product";
 
 const newProductStore = useProductsStore();
 const homeStore = useHomeStore();
+const productStore = useProductStore();
 
 const topProducts = ref<IProduct[]>([]);
 

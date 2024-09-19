@@ -40,10 +40,9 @@ import { useProductStore } from "~~/store/products";
 import { useBlogStore } from "~~/store/blog";
 
 export default {
-
   data() {
     return {
-      blog:[],
+      blog: [],
 
       products: [],
       category: [],
@@ -55,26 +54,26 @@ export default {
     };
   },
   computed: {
-    ...mapState(useProductStore,{
-      productslist: 'productslist',
+    ...mapState(useProductStore, {
+      productslist: "productslist",
     }),
-    ...mapState(useBlogStore,{
-          bloglist: 'bloglist'
-        }),
+    ...mapState(useBlogStore, {
+      bloglist: "bloglist",
+    }),
   },
 
   beforeMount() {
     if (process.client) {
-      document.documentElement.style.setProperty("--theme-deafult", "#ff9944");
+      document.documentElement.style.setProperty("--theme-default", "#ff9944");
     }
   },
   beforeDestroy() {
     if (process.client) {
-      document.documentElement.style.removeProperty("--theme-deafult");
+      document.documentElement.style.removeProperty("--theme-default");
     }
   },
   methods: {
-    productsArray: function() {
+    productsArray: function () {
       this.productslist.map((item) => {
         if (item.type === "pets") {
           this.products.push(item);
@@ -87,11 +86,10 @@ export default {
     },
     blogArray: function () {
       this.bloglist.map((item) => {
-        if (item.type === 'pets') {
-          this.blog.push(item)
-          
+        if (item.type === "pets") {
+          this.blog.push(item);
         }
-      })
+      });
     },
     showQuickview(item, productData) {
       this.showquickviewmodel = item;
@@ -110,14 +108,13 @@ export default {
     closeCart(item) {
       this.showcartmodal = item;
     },
-    closeViewModal(item){
-        this.showquickviewmodel= item
-      }
+    closeViewModal(item) {
+      this.showquickviewmodel = item;
+    },
   },
-    mounted() {
+  mounted() {
     this.productsArray();
-    this.blogArray()
-
+    this.blogArray();
   },
 };
 </script>
