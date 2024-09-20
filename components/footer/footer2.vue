@@ -13,7 +13,7 @@
                     </div>
                     <div class="footer-contant">
                       <div class="footer-logo">
-                        <img src="/images/icon/layout2/logo.png" alt="logo">
+                        <img src="/images/icon/layout2/logo.png" alt="logo" />
                       </div>
                       <div class="social-white">
                         <ul>
@@ -24,7 +24,10 @@
                           </li>
                           <li>
                             <a href="#">
-                              <i class="fa fa-google-plus" aria-hidden="true"></i>
+                              <i
+                                class="fa fa-google-plus"
+                                aria-hidden="true"
+                              ></i>
                             </a>
                           </li>
                           <li>
@@ -54,9 +57,15 @@
                     <h2>newsletter</h2>
                     <form>
                       <div class="form-group">
-                        <input type="text" class="form-control" id="exampleFormControlInput"
-                          placeholder="Enter your email">
-                        <button type="submit" class="btn btn-solid black-btn">subscribe</button>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="exampleFormControlInput"
+                          placeholder="Enter your email"
+                        />
+                        <button type="submit" class="btn btn-solid black-btn">
+                          subscribe
+                        </button>
                       </div>
                     </form>
                   </div>
@@ -144,7 +153,8 @@
             <div class="col-xl-6 col-md-6 col-sm-12">
               <div class="footer-end">
                 <p>
-                  <i class="fa fa-copyright" aria-hidden="true"></i> 2017-18 themeforest powered by pixelstrap
+                  <i class="fa fa-copyright" aria-hidden="true"></i> 2017-18
+                  themeforest powered by pixelstrap
                 </p>
               </div>
             </div>
@@ -153,27 +163,27 @@
                 <ul>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/visa.png' alt />
+                      <img src="/images/icon/visa.png" alt />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/mastercard.png' alt />
+                      <img src="/images/icon/mastercard.png" alt />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/paypal.png' alt />
+                      <img src="/images/icon/paypal.png" alt />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/american-express.png' alt />
+                      <img src="/images/icon/american-express.png" alt />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/discover.png' alt />
+                      <img src="/images/icon/discover.png" alt />
                     </a>
                   </li>
                 </ul>

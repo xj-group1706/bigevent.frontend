@@ -10,7 +10,11 @@
               <div class="menu-left category-nav-right">
                 <div class="brand-logo">
                   <a href="#">
-                    <img src="/images/icon/layout4/logo.png" class="img-fluid" alt />
+                    <img
+                      src="/images/icon/layout4/logo.png"
+                      class="img-fluid"
+                      alt
+                    />
                   </a>
                 </div>
                 <div class="navbar">
@@ -19,7 +23,10 @@
                       <i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
                     </div>
                   </a>
-                  <WidgetsLeftSidebar :leftSidebarVal="leftSidebarVal" @closeVal="closeBarValFromChild" />
+                  <WidgetsLeftSidebar
+                    :leftSidebarVal="leftSidebarVal"
+                    @closeVal="closeBarValFromChild"
+                  />
                 </div>
               </div>
               <div class="menu-right pull-right">
@@ -34,21 +41,20 @@
   </div>
 </template>
 <script>
-
 export default {
   data() {
     return {
-      leftSidebarVal: false
-    }
+      leftSidebarVal: false,
+    };
   },
 
   methods: {
     left_sidebar() {
-      this.leftSidebarVal = true
+      this.leftSidebarVal = true;
     },
     closeBarValFromChild(val) {
-      this.leftSidebarVal = val
-    }
-  }
-}
+      this.leftSidebarVal = val;
+    },
+  },
+};
 </script>

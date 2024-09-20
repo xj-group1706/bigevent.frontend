@@ -13,8 +13,11 @@
                   <div class="footer-logo">
                     <img src="/images/icon/layout3/footerlogo.png" alt="logo" />
                   </div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et.Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et.Lorem ipsum dolor
+                    sit amet, consectetur adipiscing
+                  </p>
                 </div>
               </div>
               <div class="col-lg-6 subscribe-wrapper">
@@ -22,9 +25,15 @@
                   <h2>newsletter</h2>
                   <form>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="exampleFormControlInput3"
-                        placeholder="Enter your email" />
-                      <button type="submit" class="btn btn-solid">subscribe</button>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="exampleFormControlInput3"
+                        placeholder="Enter your email"
+                      />
+                      <button type="submit" class="btn btn-solid">
+                        subscribe
+                      </button>
                     </div>
                   </form>
                 </div>
@@ -113,7 +122,8 @@
             <div class="col-xl-6 col-md-6 col-sm-12">
               <div class="footer-end">
                 <p>
-                  <i class="fa fa-copyright" aria-hidden="true"></i> 2017-18 themeforest powered by pixelstrap
+                  <i class="fa fa-copyright" aria-hidden="true"></i> 2017-18
+                  themeforest powered by pixelstrap
                 </p>
               </div>
             </div>
@@ -122,27 +132,27 @@
                 <ul>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/visa.png' alt />
+                      <img src="/images/icon/visa.png" alt />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/mastercard.png' alt />
+                      <img src="/images/icon/mastercard.png" alt />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/paypal.png' alt />
+                      <img src="/images/icon/paypal.png" alt />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/american-express.png' alt />
+                      <img src="/images/icon/american-express.png" alt />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/discover.png' alt />
+                      <img src="/images/icon/discover.png" alt />
                     </a>
                   </li>
                 </ul>

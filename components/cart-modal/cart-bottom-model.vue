@@ -1,7 +1,15 @@
 <template>
   <div>
-    <div id="cart_side" class="add_to_cart bottom" :class="{ openSide: openCart }">
-      <a href="javascript:void(0)" class="overlay" v-on:click="closeCart(openCart)"></a>
+    <div
+      id="cart_side"
+      class="add_to_cart bottom"
+      :class="{ openSide: openCart }"
+    >
+      <a
+        href="javascript:void(0)"
+        class="overlay"
+        v-on:click="closeCart(openCart)"
+      ></a>
       <div class="cart-inner">
         <div class="cart_top">
           <h3>my cart</h3>
@@ -16,19 +24,22 @@
             <li v-for="(item, index) in cart" :key="index">
               <div class="media">
                 <nuxt-link :to="{ path: '/product/sidebar/' + item.id }">
-                  <img alt class="mr-3" :src='getImgUrl(item.images[0].src)'>
+                  <img alt class="mr-3" :src="getImgUrl(item.images[0].src)" />
                 </nuxt-link>
                 <div class="media-body">
                   <nuxt-link :to="{ path: '/product/sidebar/' + item.id }">
                     <h4>{{ item.title }}</h4>
                   </nuxt-link>
                   <h4>
-                    <span>{{ curr.symbol }}{{ item.quantity }} x {{ item.price * curr.curr }}</span>
+                    <span
+                      >{{ curr.symbol }}{{ item.quantity }} x
+                      {{ item.price * curr.curr }}</span
+                    >
                   </h4>
                 </div>
               </div>
               <div class="close-circle">
-                <a href="javascript:void(0)" @click='removeCartItem(item)'>
+                <a href="javascript:void(0)" @click="removeCartItem(item)">
                   <i class="ti-trash" aria-hidden="true"></i>
                 </a>
               </div>
@@ -45,10 +56,16 @@
             </li>
             <li>
               <div class="buttons">
-                <nuxt-link :to="{ path: '/page/account/cart' }" :class="'btn btn-solid btn-xs view-cart'">
+                <nuxt-link
+                  :to="{ path: '/page/account/cart' }"
+                  :class="'btn btn-solid btn-xs view-cart'"
+                >
                   view cart
                 </nuxt-link>
-                <nuxt-link :to="{ path: '/page/account/checkout' }" :class="'btn btn-solid btn-xs checkout'">
+                <nuxt-link
+                  :to="{ path: '/page/account/checkout' }"
+                  :class="'btn btn-solid btn-xs checkout'"
+                >
                   checkout
                 </nuxt-link>
               </div>
@@ -59,52 +76,54 @@
           <h4 class="mt-3">
             <strong>Your Cart is Empty</strong>
           </h4>
-          <nuxt-link :to="{ path: '/' }" class="btn btn-solid">continue shopping</nuxt-link>
+          <nuxt-link :to="{ path: '/' }" class="btn btn-solid"
+            >continue shopping</nuxt-link
+          >
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import { useCartStore } from '~~/store/cart'
-import { useProductStore } from '~~/store/products'
-import { mapState } from 'pinia'
+import { useCartStore } from "~~/store/cart";
+import { useProductStore } from "~~/store/products";
+import { mapState } from "pinia";
 export default {
-  props: ['openCart'],
+  props: ["openCart"],
   computed: {
     ...mapState(useProductStore, {
-      currency: 'currency'
+      currency: "currency",
     }),
 
     cart() {
-      return useCartStore().cartItems
+      return useCartStore().cartItems;
     },
     cartTotal() {
-      return useCartStore().cartTotalAmount
+      return useCartStore().cartTotalAmount;
     },
     curr() {
-      return useProductStore().changeCurrency
-    }
+      return useProductStore().changeCurrency;
+    },
   },
   methods: {
     // Get Image Url
     getImgUrl(path) {
-      return ('/images/' + path)
+      return "/images/" + path;
     },
     // Close cart model
     closeCart(val) {
-      val = false
-      this.$emit('closeCart', val)
+      val = false;
+      this.$emit("closeCart", val);
     },
     // Remove cart item
     removeCartItem: function (product) {
-      useCartStore().removeCartItem(product)
+      useCartStore().removeCartItem(product);
     },
     // Update currency
     updateCurrency: function (currency, currSymbol) {
-      this.currencyChange = { value: currency, symbol: currSymbol }
-      useProductStore().changeCurrency2(this.currencyChange)
-    }
-  }
-}
+      this.currencyChange = { value: currency, symbol: currSymbol };
+      useProductStore().changeCurrency2(this.currencyChange);
+    },
+  },
+};
 </script>

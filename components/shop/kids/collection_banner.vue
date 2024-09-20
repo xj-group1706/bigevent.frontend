@@ -11,8 +11,8 @@
                 </div>
                 <div class="contain-banner">
                   <div>
-                    <h4>{{item.subtitle}}</h4>
-                    <h2>{{item.title}}</h2>
+                    <h4>{{ item.subtitle }}</h4>
+                    <h2>{{ item.title }}</h2>
                   </div>
                 </div>
               </div>
@@ -30,17 +30,17 @@ export default {
     return {
       items: [
         {
-          imagepath: '/images/kids/1.jpg',
-          title: 'men',
-          subtitle: 'save 30%'
+          imagepath: "/images/kids/1.jpg",
+          title: "men",
+          subtitle: "save 30%",
         },
         {
-          imagepath: '/images/kids/2.jpg',
-          title: 'women',
-          subtitle: 'save 60%'
-        }
-      ]
-    }
-  }
-}
+          imagepath: "/images/kids/2.jpg",
+          title: "women",
+          subtitle: "save 60%",
+        },
+      ],
+    };
+  },
+};
 </script>

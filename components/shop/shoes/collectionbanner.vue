@@ -7,16 +7,12 @@
           <a href="#">
             <div class="collection-banner p-right text-center">
               <div class="img-part">
-                <img
-                  :src="item.imagepath"
-                  class="img-fluid bg-img"
-                  alt
-                >
+                <img :src="item.imagepath" class="img-fluid bg-img" alt />
               </div>
               <div class="contain-banner">
                 <div>
-                  <h4 class="text-white">{{item.subtitle}}</h4>
-                  <h2>{{item.title}}</h2>
+                  <h4 class="text-white">{{ item.subtitle }}</h4>
+                  <h2>{{ item.title }}</h2>
                 </div>
               </div>
             </div>
@@ -34,17 +30,17 @@ export default {
     return {
       items: [
         {
-          imagepath: '/images/sub-banner.png',
-          title: 'men',
-          subtitle: '50% off'
+          imagepath: "/images/sub-banner.png",
+          title: "men",
+          subtitle: "50% off",
         },
         {
-          imagepath: '/images/sub-banner1.png',
-          title: 'women',
-          subtitle: '20% save'
-        }
-      ]
-    }
-  }
-}
+          imagepath: "/images/sub-banner1.png",
+          title: "women",
+          subtitle: "20% save",
+        },
+      ],
+    };
+  },
+};
 </script>

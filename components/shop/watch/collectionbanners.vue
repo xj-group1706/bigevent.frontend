@@ -7,9 +7,12 @@
             <a href="#">
               <div class="collection-banner p-left">
                 <div class="img-part">
-                  <img :src="item.imagepath" class="img-fluid bg-img" alt="">
+                  <img :src="item.imagepath" class="img-fluid bg-img" alt="" />
                 </div>
-                <div class="contain-banner banner-3" v-if="item.title && item.subtitle">
+                <div
+                  class="contain-banner banner-3"
+                  v-if="item.title && item.subtitle"
+                >
                   <div>
                     <h4>{{ item.title }}</h4>
                     <h2>{{ item.subtitle }}</h2>
@@ -30,20 +33,20 @@ export default {
     return {
       items: [
         {
-          imagepath: '/images/banner1.jpg',
-          title: 'Mininum 30% off',
-          subtitle: 'New watch'
+          imagepath: "/images/banner1.jpg",
+          title: "Mininum 30% off",
+          subtitle: "New watch",
         },
         {
-          imagepath: '/images/banner2.jpg'
+          imagepath: "/images/banner2.jpg",
         },
         {
-          imagepath: '/images/banner1.jpg',
-          title: 'save 60% on',
-          subtitle: 'Gold watch'
-        }
-      ]
-    }
-  }
-}
+          imagepath: "/images/banner1.jpg",
+          title: "save 60% on",
+          subtitle: "Gold watch",
+        },
+      ],
+    };
+  },
+};
 </script>

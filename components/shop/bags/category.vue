@@ -16,14 +16,14 @@ export default {
   data() {
     return {
       category: [
-        { title: 'airbag' },
-        { title: 'burn bag' },
-        { title: 'briefcase' },
-        { title: 'carpet bag' },
-        { title: 'money bag' },
-        { title: 'tucker bag' }
-      ]
-    }
-  }
-}
+        { title: "airbag" },
+        { title: "burn bag" },
+        { title: "briefcase" },
+        { title: "carpet bag" },
+        { title: "money bag" },
+        { title: "tucker bag" },
+      ],
+    };
+  },
+};
 </script>

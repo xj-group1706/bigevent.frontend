@@ -8,7 +8,7 @@
             <a href="#">
               <div class="collection-banner p-left text-left">
                 <div class="img-part">
-                  <img :src="item.img" alt class="img-fluid">
+                  <img :src="item.img" alt class="img-fluid" />
                 </div>
                 <div class="contain-banner">
                   <div>
@@ -32,27 +32,27 @@ export default {
     return {
       items: [
         {
-          img: '/images/fashion/1.jpg',
-          sale: 'save 30%',
-          category: 'Women'
+          img: "/images/fashion/1.jpg",
+          sale: "save 30%",
+          category: "Women",
         },
         {
-          img: '/images/fashion/2.jpg',
-          sale: 'save 60%',
-          category: 'Watch'
+          img: "/images/fashion/2.jpg",
+          sale: "save 60%",
+          category: "Watch",
         },
         {
-          img: '/images/fashion/3.jpg',
-          sale: 'save 30%',
-          category: 'Sandle'
+          img: "/images/fashion/3.jpg",
+          sale: "save 30%",
+          category: "Sandle",
         },
         {
-          img: '/images/fashion/4.jpg',
-          sale: 'save 30%',
-          category: 'Kids'
-        }
-      ]
-    }
-  }
-}
+          img: "/images/fashion/4.jpg",
+          sale: "save 30%",
+          category: "Kids",
+        },
+      ],
+    };
+  },
+};
 </script>

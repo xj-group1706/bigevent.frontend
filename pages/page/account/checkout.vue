@@ -1,13 +1,11 @@
 <template>
-<Header/>
+  <Header />
   <div>
     <WidgetsBreadcrumbs title="Checkout" />
-   <PaymentPage/>
+    <PaymentPage />
   </div>
   <Footer />
 </template>
 <script>
-export default{
-
-}
+export default {};
 </script>

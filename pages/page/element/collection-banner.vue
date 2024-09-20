@@ -1,5 +1,5 @@
 <template>
-<Header/> 
+  <Header />
   <div>
     <WidgetsBreadcrumbs title="Collection Element" />
     <section class="pb-0 ratio2_1">
@@ -64,40 +64,39 @@
   <Footer />
 </template>
 <script type="text/javascript">
-
 export default {
   data() {
     return {
       items: [
         {
-          imagepath: '/images/sub-banner1.jpg',
-          title: 'men',
-          subtitle: 'save 30%'
+          imagepath: "/images/sub-banner1.jpg",
+          title: "men",
+          subtitle: "save 30%",
         },
         {
-          imagepath: '/images/sub-banner2.jpg',
-          title: 'women',
-          subtitle: 'save 60%'
-        }
+          imagepath: "/images/sub-banner2.jpg",
+          title: "women",
+          subtitle: "save 60%",
+        },
       ],
       items2: [
         {
-          imagepath: '/images/electronics/5.jpg',
-          title: 'speaker',
-          subtitle: '30% off'
+          imagepath: "/images/electronics/5.jpg",
+          title: "speaker",
+          subtitle: "30% off",
         },
         {
-          imagepath: '/images/electronics/6.jpg',
-          title: 'earplug',
-          subtitle: 'save 60%'
+          imagepath: "/images/electronics/6.jpg",
+          title: "earplug",
+          subtitle: "save 60%",
         },
         {
-          imagepath: '/images/electronics/7.jpg',
-          title: 'best deal',
-          subtitle: 'save 55%'
-        }
-      ]
-    }
-  }
-}
+          imagepath: "/images/electronics/7.jpg",
+          title: "best deal",
+          subtitle: "save 55%",
+        },
+      ],
+    };
+  },
+};
 </script>

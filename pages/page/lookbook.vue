@@ -1,5 +1,5 @@
 <template>
- <Header/>
+  <Header />
   <div>
     <WidgetsBreadcrumbs title="lookbook" />
     <section class="lookbook section-b-space ratio_square">
@@ -40,7 +40,7 @@
       </div>
     </section>
   </div>
-  <Footer /> 
+  <Footer />
 </template>
 <script>
 export default {
@@ -48,29 +48,29 @@ export default {
     return {
       items: [
         {
-          imagepath: '/images/lookbook.jpg',
-          pro1image: '/images/1.jpg',
-          pro1title: 'Trim dress',
-          pro1price: '$220.00',
-          pro1link: '/home',
-          pro2image: '/images/1.jpg',
-          pro2title: 'crop top',
-          pro2price: '$695.00',
-          pro2link: '/home'
+          imagepath: "/images/lookbook.jpg",
+          pro1image: "/images/1.jpg",
+          pro1title: "Trim dress",
+          pro1price: "$220.00",
+          pro1link: "/home",
+          pro2image: "/images/1.jpg",
+          pro2title: "crop top",
+          pro2price: "$695.00",
+          pro2link: "/home",
         },
         {
-          imagepath: '/images/lookbook2.jpg',
-          pro1image: '/images/1.jpg',
-          pro1title: 'boho tops',
-          pro1price: '$446.00',
-          pro1link: '/home',
-          pro2image: '/images/1.jpg',
-          pro2title: 'fitted dress',
-          pro2price: '$235.00',
-          pro2link: '/home'
-        }
-      ]
-    }
-  }
-}
+          imagepath: "/images/lookbook2.jpg",
+          pro1image: "/images/1.jpg",
+          pro1title: "boho tops",
+          pro1price: "$446.00",
+          pro1link: "/home",
+          pro2image: "/images/1.jpg",
+          pro2title: "fitted dress",
+          pro2price: "$235.00",
+          pro2link: "/home",
+        },
+      ],
+    };
+  },
+};
 </script>

@@ -10,9 +10,9 @@
           <div class="row">
             <div class="col">
               <div class="banner-contain">
-                <h2>{{title}}</h2>
-                <h3>{{subtitle}}</h3>
-                <h4>{{text}}</h4>
+                <h2>{{ title }}</h2>
+                <h3>{{ subtitle }}</h3>
+                <h4>{{ text }}</h4>
               </div>
             </div>
           </div>
@@ -26,11 +26,11 @@
 export default {
   data() {
     return {
-      imagepath: '/images/parallax/11.jpg',
-      title: '2019',
-      subtitle: 'fashion trends',
-      text: 'special offer'
-    }
-  }
-}
+      imagepath: "/images/parallax/11.jpg",
+      title: "2019",
+      subtitle: "fashion trends",
+      text: "special offer",
+    };
+  },
+};
 </script>

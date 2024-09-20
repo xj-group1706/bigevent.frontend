@@ -1,5 +1,6 @@
 {
-  "data": [{
+  "data": [
+    {
       "title": "Lorem ipsum dolor consectetur adipiscing",
       "images": ["blog/1.jpg"],
       "author": "John Dio",

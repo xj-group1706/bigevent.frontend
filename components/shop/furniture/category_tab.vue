@@ -13,16 +13,23 @@
                 <div class>
                   <ul class="nav nav-tabs" id="top-tab" role="tablist">
                     <li class="nav-items">
-                      <a class="nav-link active" data-bs-toggle="tab" href="#best">
-                        BEST SELLERS</a>
+                      <a
+                        class="nav-link active"
+                        data-bs-toggle="tab"
+                        href="#best"
+                      >
+                        BEST SELLERS</a
+                      >
                     </li>
                     <li class="nav-items">
                       <a class="nav-link" href="#feature" data-bs-toggle="tab">
-                        FEATURED PRODUCT</a>
+                        FEATURED PRODUCT</a
+                      >
                     </li>
                     <li class="nav-items">
                       <a class="nav-link" href="#new" data-bs-toggle="tab">
-                        ON SALE</a>
+                        ON SALE</a
+                      >
                     </li>
                   </ul>
                 </div>
@@ -31,12 +38,22 @@
                   <div id="new" class="tab-pane fade show active">
                     <div class="no-slider">
                       <div class="row g-sm-4 g-3">
-                        <div class="col-xxl-3 col-md-4 col-6"
-                          v-for="(product, index) in getCategoryProduct(category[0])" :key="index">
+                        <div
+                          class="col-xxl-3 col-md-4 col-6"
+                          v-for="(product, index) in getCategoryProduct(
+                            category[0]
+                          )"
+                          :key="index"
+                        >
                           <div class="product-box">
-                            <ProductBoxProductBox1 @opencartmodel="showCartModal" @showCompareModal="showCoampre"
-                              @openquickview="showQuickview"   @alertseconds="alert" :product="product"
-                              :index="index" />
+                            <ProductBoxProductBox1
+                              @opencartmodel="showCartModal"
+                              @showCompareModal="showCoampre"
+                              @openquickview="showQuickview"
+                              @alertseconds="alert"
+                              :product="product"
+                              :index="index"
+                            />
                           </div>
                         </div>
                       </div>
@@ -45,12 +62,22 @@
                   <div id="best" class="tab-pane fade">
                     <div class="no-slider">
                       <div class="row g-sm-4 g-3">
-                        <div class="col-xxl-3 col-md-4 col-6"
-                          v-for="(product, index) in getCategoryProduct(category[1])" :key="index">
+                        <div
+                          class="col-xxl-3 col-md-4 col-6"
+                          v-for="(product, index) in getCategoryProduct(
+                            category[1]
+                          )"
+                          :key="index"
+                        >
                           <div class="product-box">
-                            <ProductBoxProductBox1 @opencartmodel="showCartModal" @showCompareModal="showcomparemodal"
-                              @openquickview="showQuickview"   @alertseconds="alert" :product="product"
-                              :index="index" />
+                            <ProductBoxProductBox1
+                              @opencartmodel="showCartModal"
+                              @showCompareModal="showcomparemodal"
+                              @openquickview="showQuickview"
+                              @alertseconds="alert"
+                              :product="product"
+                              :index="index"
+                            />
                           </div>
                         </div>
                       </div>
@@ -59,12 +86,22 @@
                   <div id="feature" class="tab-pane fade">
                     <div class="no-slider">
                       <div class="row g-sm-4 g-3">
-                        <div class="col-xxl-3 col-md-4 col-6"
-                          v-for="(product, index) in getCategoryProduct(category[2])" :key="index">
+                        <div
+                          class="col-xxl-3 col-md-4 col-6"
+                          v-for="(product, index) in getCategoryProduct(
+                            category[2]
+                          )"
+                          :key="index"
+                        >
                           <div class="product-box">
-                            <ProductBoxProductBox1 @opencartmodel="showCartModal" @showCompareModal="showcomparemodal"
-                              @openquickview="showQuickview"   @alertseconds="alert" :product="product"
-                              :index="index" />
+                            <ProductBoxProductBox1
+                              @opencartmodel="showCartModal"
+                              @showCompareModal="showcomparemodal"
+                              @openquickview="showQuickview"
+                              @alertseconds="alert"
+                              :product="product"
+                              :index="index"
+                            />
                           </div>
                         </div>
                       </div>
@@ -82,14 +119,12 @@
 
 <script type="text/javascript">
 export default {
-  props: ['products', 'category'],
-  components: {
-
-  },
+  props: ["products", "category"],
+  components: {},
   data() {
     return {
-      title: 'special products',
-      subtitle: 'exclusive products',
+      title: "special products",
+      subtitle: "exclusive products",
       showCart: false,
       showquickviewmodel: false,
       showcomapreModal: false,
@@ -97,38 +132,40 @@ export default {
       comapreproduct: {},
       cartproduct: {},
       dismissSecs: 5,
-      dismissCountDown: 0
-    }
+      dismissCountDown: 0,
+    };
   },
   methods: {
     getCategoryProduct(collection) {
       return this.products.filter((item) => {
-        if (item.collection.find(i => i === collection)) {
-          return item
+        if (item.collection.find((i) => i === collection)) {
+          return item;
         }
-      })
+      });
     },
     alert(item) {
-      this.dismissCountDown = item
+      this.dismissCountDown = item;
     },
     showCartModal(item, productData) {
-      this.showCart = item
-      this.cartproduct = productData
-      this.$emit('openCart', this.showCart, this.cartproduct)
+      this.showCart = item;
+      this.cartproduct = productData;
+      this.$emit("openCart", this.showCart, this.cartproduct);
     },
     showQuickview(item, productData) {
-      this.showquickviewmodel = item
-      this.quickviewproduct = productData
-      this.$emit('openQuickview', this.showquickviewmodel, this.quickviewproduct)
+      this.showquickviewmodel = item;
+      this.quickviewproduct = productData;
+      this.$emit(
+        "openQuickview",
+        this.showquickviewmodel,
+        this.quickviewproduct
+      );
     },
-    showCoampre(){
-
-    },
+    showCoampre() {},
     showcomparemodal(item, productData) {
-      this.showcomapreModal = item
-      this.comapreproduct = productData
-      this.$emit('openCompare', this.showcomapreModal, this.comapreproduct)
-    }
-  }
-}
+      this.showcomapreModal = item;
+      this.comapreproduct = productData;
+      this.$emit("openCompare", this.showcomapreModal, this.comapreproduct);
+    },
+  },
+};
 </script>

@@ -12,8 +12,11 @@
                 <div class="footer-logo">
                   <img src="/images/icon/layout4/footerlogo.png" alt="logo" />
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                  et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam,
+                </p>
                 <div class="footer-social">
                   <ul>
                     <li>
@@ -105,19 +108,15 @@
                 <div class="footer-contant">
                   <ul class="contact-list">
                     <li>
-                      <i class="fa fa-map-marker"></i>Multikart Demo Store, Demo store
-                      India 345-659
+                      <i class="fa fa-map-marker"></i>Multikart Demo Store, Demo
+                      store India 345-659
                     </li>
-                    <li>
-                      <i class="fa fa-phone"></i>Call Us: 123-456-7898
-                    </li>
+                    <li><i class="fa fa-phone"></i>Call Us: 123-456-7898</li>
                     <li>
                       <i class="fa fa-envelope-o"></i>Email Us:
                       <a href="#">Support@Fiot.com</a>
                     </li>
-                    <li>
-                      <i class="fa fa-fax"></i>Fax: 123456
-                    </li>
+                    <li><i class="fa fa-fax"></i>Fax: 123456</li>
                   </ul>
                 </div>
               </div>
@@ -131,7 +130,8 @@
             <div class="col-xl-6 col-md-6 col-sm-12">
               <div class="footer-end">
                 <p>
-                  <i class="fa fa-copyright" aria-hidden="true"></i> 2017-18 themeforest powered by pixelstrap
+                  <i class="fa fa-copyright" aria-hidden="true"></i> 2017-18
+                  themeforest powered by pixelstrap
                 </p>
               </div>
             </div>
@@ -140,27 +140,27 @@
                 <ul>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/visa.png' alt />
+                      <img src="/images/icon/visa.png" alt />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/mastercard.png' alt />
+                      <img src="/images/icon/mastercard.png" alt />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/paypal.png' alt />
+                      <img src="/images/icon/paypal.png" alt />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/american-express.png' alt />
+                      <img src="/images/icon/american-express.png" alt />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/discover.png' alt />
+                      <img src="/images/icon/discover.png" alt />
                     </a>
                   </li>
                 </ul>

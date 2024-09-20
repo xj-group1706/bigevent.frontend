@@ -8,7 +8,11 @@
               <div>
                 <div class="logo mb-4">
                   <nuxt-link :to="{ path: '/shop/fashion' }">
-                    <img :src="logoimage" alt="Multikart_fashion" class="img-fluid" />
+                    <img
+                      :src="logoimage"
+                      alt="Multikart_fashion"
+                      class="img-fluid"
+                    />
                   </nuxt-link>
                 </div>
                 <h2 class="mb-3">{{ title }}</h2>
@@ -21,11 +25,19 @@
                     </div>
                     <div class="form-row">
                       <div class="col-md-12">
-                        <input type="password" name="password" id="password" class="form-control" autofocus />
+                        <input
+                          type="password"
+                          name="password"
+                          id="password"
+                          class="form-control"
+                          autofocus
+                        />
                       </div>
                       <div class="col-md-12">
                         <div class="actions">
-                          <button type="submit" class="btn btn-solid">notify me</button>
+                          <button type="submit" class="btn btn-solid">
+                            notify me
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -50,15 +62,13 @@
   </div>
 </template>
 <script>
-
 export default {
-  
   data() {
     return {
-      logoimage: '/images/icon/logo.png',
-      title: 'Will be Opening Soon!',
-      copyright: '© 2018, Powered by Multikart.'
-    }
-  }
-}
+      logoimage: "/images/icon/logo.png",
+      title: "Will be Opening Soon!",
+      copyright: "© 2018, Powered by Multikart.",
+    };
+  },
+};
 </script>

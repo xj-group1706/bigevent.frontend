@@ -1,9 +1,12 @@
 <template>
   <div>
-  <Header/>
+    <Header />
     <WidgetsBreadcrumbs title="Banner Element" />
     <section class="pt-0">
-      <div class="full-banner parallax text-center p-left" v-bind:style="{ 'background-image': `url(${imagepath})` }">
+      <div
+        class="full-banner parallax text-center p-left"
+        v-bind:style="{ 'background-image': `url(${imagepath})` }"
+      >
         <img :src="imagepath" alt class="bg-img d-none" />
         <div class="container">
           <div class="row">
@@ -20,7 +23,10 @@
     </section>
     <section class="section-b-space">
       <div class="container">
-        <div class="row banner-timer" v-bind:style="{ 'background-image': 'url(' + imagepath2 + ')' }">
+        <div
+          class="row banner-timer"
+          v-bind:style="{ 'background-image': 'url(' + imagepath2 + ')' }"
+        >
           <div class="col-md-6">
             <div class="banner-text">
               <h2 v-html="offer_text"></h2>
@@ -39,17 +45,16 @@
 </template>
 <script type="text/javascript">
 export default {
-  components: {
-  },
+  components: {},
   data() {
     return {
-      imagepath: '/images/parallax/1.jpg',
-      title: '2019',
-      subtitle: 'fashion trends',
-      text: 'special offer',
-      imagepath2: '/images/offer-banner.jpg',
-      offer_text: 'Save <span>30% off</span> Digital Watch'
-    }
-  }
-}
+      imagepath: "/images/parallax/1.jpg",
+      title: "2019",
+      subtitle: "fashion trends",
+      text: "special offer",
+      imagepath2: "/images/offer-banner.jpg",
+      offer_text: "Save <span>30% off</span> Digital Watch",
+    };
+  },
+};
 </script>

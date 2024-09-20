@@ -1,5 +1,5 @@
 <template>
-<Header/>
+  <Header />
   <div>
     <WidgetsBreadcrumbs title="Category Element" />
     <div class="container">
@@ -7,14 +7,23 @@
         <div class="row">
           <div class="col">
             <div class="slide-6 no-arrow">
-              <swiper :breakpoints="swiperOption.breakpoints" :slidesPerView="7" :slideSpeed="300" :loop="true"
-                :dots="'false'" class="swiper-wrapper">
-
-                <swiper-slide class="swiper-slide" v-for="(item, index) in items" :key="index">
+              <swiper
+                :breakpoints="swiperOption.breakpoints"
+                :slidesPerView="7"
+                :slideSpeed="300"
+                :loop="true"
+                :dots="'false'"
+                class="swiper-wrapper"
+              >
+                <swiper-slide
+                  class="swiper-slide"
+                  v-for="(item, index) in items"
+                  :key="index"
+                >
                   <div class="category-block">
                     <a href="#">
                       <div class="category-image">
-                        <img :src="item.img" alt>
+                        <img :src="item.img" alt />
                       </div>
                     </a>
                     <div class="category-details">
@@ -24,7 +33,6 @@
                     </div>
                   </div>
                 </swiper-slide>
-
               </swiper>
             </div>
           </div>
@@ -34,10 +42,14 @@
     <section class="p-0 ratio2_1">
       <div class="container-fluid">
         <div class="row category-border">
-          <div class="col-sm-4 border-padding" v-for="(item, index) in items2" :key="index">
+          <div
+            class="col-sm-4 border-padding"
+            v-for="(item, index) in items2"
+            :key="index"
+          >
             <div class="category-banner">
               <div>
-                <img :src="item.imagepath" class="img-fluid bg-img" alt="">
+                <img :src="item.imagepath" class="img-fluid bg-img" alt="" />
               </div>
               <div class="category-box">
                 <a href="#">
@@ -133,23 +145,28 @@
       <div class="container">
         <div class="row">
           <div class="col">
-            <swiper :slidesPerView="4" :freeMode="true" :breakpoints="swiperOption1.breakpoints"
-              class="swiper-wrapper category-m">
-
-              <swiper-slide class="swiper-slide" v-for="(item, index) in itemsCat" :key="index">
+            <swiper
+              :slidesPerView="4"
+              :freeMode="true"
+              :breakpoints="swiperOption1.breakpoints"
+              class="swiper-wrapper category-m"
+            >
+              <swiper-slide
+                class="swiper-slide"
+                v-for="(item, index) in itemsCat"
+                :key="index"
+              >
                 <div class="category-wrapper">
                   <div>
                     <div>
                       <img :src="item.imagepath" class="img-fluid bg-img" alt />
                     </div>
                     <h4>{{ item.title }}</h4>
-                    <div v-html="item.description">
-                    </div>
+                    <div v-html="item.description"></div>
                     <a href="#" class="btn btn-outline">{{ item.button }}</a>
                   </div>
                 </div>
               </swiper-slide>
-
             </swiper>
           </div>
         </div>
@@ -174,23 +191,21 @@
   <Footer />
 </template>
 <script>
-import {
-  Swiper,
-  SwiperSlide
-} from "swiper/vue";
-import 'swiper/css';
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
 export default {
   components: {
-    Swiper, SwiperSlide,
+    Swiper,
+    SwiperSlide,
   },
   data() {
     return {
       itemsizes: [
-        { title: 'size 06' },
-        { title: 'size 07' },
-        { title: 'size 08' },
-        { title: 'size 09' },
-        { title: 'size 10' }
+        { title: "size 06" },
+        { title: "size 07" },
+        { title: "size 08" },
+        { title: "size 09" },
+        { title: "size 10" },
       ],
       swiperOption1: {
         slidesPerView: 4,
@@ -198,117 +213,122 @@ export default {
         breakpoints: {
           1200: {
             slidesPerView: 3,
-            spaceBetween: 20
+            spaceBetween: 20,
           },
           991: {
             slidesPerView: 2,
-            spaceBetween: 20
+            spaceBetween: 20,
           },
           586: {
             slidesPerView: 1,
-            spaceBetween: 20
-          }
-        }
+            spaceBetween: 20,
+          },
+        },
       },
       itemsCat: [
         {
-          imagepath: '/images/watch/cat1.png',
-          title: 'calculator watch',
-          description: '<ul class="category-link"><li><a href="#">Watchmaking conglomerates</a></li><li><a href="#">Breitling SA</a></li><li><a href="#">Casio watches</a></li><li><a href="#">Citizen Watch</a></li></ul>',
-          button: 'view more'
+          imagepath: "/images/watch/cat1.png",
+          title: "calculator watch",
+          description:
+            '<ul class="category-link"><li><a href="#">Watchmaking conglomerates</a></li><li><a href="#">Breitling SA</a></li><li><a href="#">Casio watches</a></li><li><a href="#">Citizen Watch</a></li></ul>',
+          button: "view more",
         },
         {
-          imagepath: '/images/watch/cat2.png',
-          title: 'Antimagnetic watch',
-          description: '<ul class="category-link"><li><a href="#">Watchmaking conglomerates</a></li><li><a href="#">Breitling SA</a></li><li><a href="#">Casio watches</a></li><li><a href="#">Citizen Watch</a></li></ul>',
-          button: 'view more'
+          imagepath: "/images/watch/cat2.png",
+          title: "Antimagnetic watch",
+          description:
+            '<ul class="category-link"><li><a href="#">Watchmaking conglomerates</a></li><li><a href="#">Breitling SA</a></li><li><a href="#">Casio watches</a></li><li><a href="#">Citizen Watch</a></li></ul>',
+          button: "view more",
         },
         {
-          imagepath: '/images/watch/cat3.png',
-          title: 'History of watches',
-          description: '<ul class="category-link"><li><a href="#">Watchmaking conglomerates</a></li><li><a href="#">Breitling SA</a></li><li><a href="#">Casio watches</a></li><li><a href="#">Citizen Watch</a></li></ul>',
-          button: 'view more'
+          imagepath: "/images/watch/cat3.png",
+          title: "History of watches",
+          description:
+            '<ul class="category-link"><li><a href="#">Watchmaking conglomerates</a></li><li><a href="#">Breitling SA</a></li><li><a href="#">Casio watches</a></li><li><a href="#">Citizen Watch</a></li></ul>',
+          button: "view more",
         },
         {
-          imagepath: '/images/watch/cat4.png',
-          title: 'watch models',
-          description: '<ul class="category-link"><li><a href="#">Watchmaking conglomerates</a></li><li><a href="#">Breitling SA</a></li><li><a href="#">Casio watches</a></li><li><a href="#">Citizen Watch</a></li></ul>',
-          button: 'view more'
+          imagepath: "/images/watch/cat4.png",
+          title: "watch models",
+          description:
+            '<ul class="category-link"><li><a href="#">Watchmaking conglomerates</a></li><li><a href="#">Breitling SA</a></li><li><a href="#">Casio watches</a></li><li><a href="#">Citizen Watch</a></li></ul>',
+          button: "view more",
         },
         {
-          imagepath: '/images/watch/cat1.png',
-          title: 'women watch',
-          description: '<ul class="category-link"><li><a href="#">Watchmaking conglomerates</a></li><li><a href="#">Breitling SA</a></li><li><a href="#">Casio watches</a></li><li><a href="#">Citizen Watch</a></li></ul>',
-          button: 'view more'
-        }
+          imagepath: "/images/watch/cat1.png",
+          title: "women watch",
+          description:
+            '<ul class="category-link"><li><a href="#">Watchmaking conglomerates</a></li><li><a href="#">Breitling SA</a></li><li><a href="#">Casio watches</a></li><li><a href="#">Citizen Watch</a></li></ul>',
+          button: "view more",
+        },
       ],
-      imagepath_1: '/images/cat1.jpg',
-      title_1: 'Tacker bag',
-      subtitle_1: 'on sale',
-      offer_1: 'save 30% off',
-      imagepath_2: '/images/cat2.jpg',
-      title_2: 'Zipper storage bag',
-      subtitle_2: 'new products',
-      offer_2: '-80% off',
-      imagepath_3: '/images/cat3.jpg',
-      title_3: 'gate check bag',
-      subtitle_3: 'summer sale',
-      offer_3: 'minimum 50% off',
+      imagepath_1: "/images/cat1.jpg",
+      title_1: "Tacker bag",
+      subtitle_1: "on sale",
+      offer_1: "save 30% off",
+      imagepath_2: "/images/cat2.jpg",
+      title_2: "Zipper storage bag",
+      subtitle_2: "new products",
+      offer_2: "-80% off",
+      imagepath_3: "/images/cat3.jpg",
+      title_3: "gate check bag",
+      subtitle_3: "summer sale",
+      offer_3: "minimum 50% off",
       category: [
-        { title: 'airbag' },
-        { title: 'burn bag' },
-        { title: 'briefcase' },
-        { title: 'carpet bag' },
-        { title: 'money bag' },
-        { title: 'tucker bag' }
+        { title: "airbag" },
+        { title: "burn bag" },
+        { title: "briefcase" },
+        { title: "carpet bag" },
+        { title: "money bag" },
+        { title: "tucker bag" },
       ],
       items: [
         {
-          img: '/images/icon/cat1.png',
-          title: 'sport shoes'
+          img: "/images/icon/cat1.png",
+          title: "sport shoes",
         },
         {
-          img: '/images/icon/cat2.png',
-          title: 'casual shoes'
+          img: "/images/icon/cat2.png",
+          title: "casual shoes",
         },
         {
-          img: '/images/icon/cat3.png',
-          title: 'formal shoes'
+          img: "/images/icon/cat3.png",
+          title: "formal shoes",
         },
         {
-          img: '/images/icon/cat4.png',
-          title: 'flat'
+          img: "/images/icon/cat4.png",
+          title: "flat",
         },
         {
-          img: '/images/icon/cat5.png',
-          title: 'heels'
+          img: "/images/icon/cat5.png",
+          title: "heels",
         },
         {
-          img: '/images/icon/cat6.png',
-          title: 'boots'
+          img: "/images/icon/cat6.png",
+          title: "boots",
         },
         {
-          img: '/images/icon/cat2.png',
-          title: 'casual shoes'
+          img: "/images/icon/cat2.png",
+          title: "casual shoes",
         },
         {
-          img: '/images/icon/cat3.png',
-          title: 'casual shoes'
-        }
+          img: "/images/icon/cat3.png",
+          title: "casual shoes",
+        },
       ],
       items2: [
         {
-          imagepath: '/images/cat1.png',
-          title: 'men'
+          imagepath: "/images/cat1.png",
+          title: "men",
         },
         {
-          imagepath: '/images/cat2.png',
-          title: 'women'
+          imagepath: "/images/cat2.png",
+          title: "women",
         },
         {
-          imagepath: '/images/cat3.png',
-          title: 'kids'
-        }
+          imagepath: "/images/cat3.png",
+          title: "kids",
+        },
       ],
       swiperOption: {
         dots: false,
@@ -318,22 +338,22 @@ export default {
         breakpoints: {
           1367: {
             slidesPerView: 5,
-            loop: true
+            loop: true,
           },
           1024: {
             slidesPerView: 4,
-            loop: true
+            loop: true,
           },
           767: {
             slidesPerView: 3,
-            loop: true
+            loop: true,
           },
           480: {
-            slidesPerView: 2
-          }
-        }
-      }
-    }
-  }
-}
+            slidesPerView: 2,
+          },
+        },
+      },
+    };
+  },
+};
 </script>

@@ -11,7 +11,11 @@
               <div class="menu-left">
                 <div class="brand-logo">
                   <nuxt-link :to="{ path: '/shop/fashion' }">
-                    <img src="/images/gym/logo.png" class="img-fluid" alt="logo" />
+                    <img
+                      src="/images/gym/logo.png"
+                      class="img-fluid"
+                      alt="logo"
+                    />
                   </nuxt-link>
                 </div>
               </div>
@@ -27,8 +31,5 @@
   </div>
 </template>
 <script>
-export default {
-
-
-}
+export default {};
 </script>

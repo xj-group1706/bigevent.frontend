@@ -37,11 +37,11 @@
 export default {
   data() {
     return {
-      imagepath_1: '/images/flower/sub-banner2.jpg',
-      imagepath_2: '/images/flower/sub-banner1.jpg',
-      title: 'Fresh flower',
-      subtitle: 'save 60%'
-    }
-  }
-}
+      imagepath_1: "/images/flower/sub-banner2.jpg",
+      imagepath_2: "/images/flower/sub-banner1.jpg",
+      title: "Fresh flower",
+      subtitle: "save 60%",
+    };
+  },
+};
 </script>

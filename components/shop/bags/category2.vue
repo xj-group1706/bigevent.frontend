@@ -75,19 +75,19 @@
 export default {
   data() {
     return {
-      imagepath_1: '/images/cat1.jpg',
-      title_1: 'Tacker bag',
-      subtitle_1: 'on sale',
-      offer_1: 'save 30% off',
-      imagepath_2: '/images/cat2.jpg',
-      title_2: 'Zipper storage bag',
-      subtitle_2: 'new products',
-      offer_2: '-80% off',
-      imagepath_3: '/images/cat3.jpg',
-      title_3: 'gate check bag',
-      subtitle_3: 'summer sale',
-      offer_3: 'minimum 50% off'
-    }
-  }
-}
+      imagepath_1: "/images/cat1.jpg",
+      title_1: "Tacker bag",
+      subtitle_1: "on sale",
+      offer_1: "save 30% off",
+      imagepath_2: "/images/cat2.jpg",
+      title_2: "Zipper storage bag",
+      subtitle_2: "new products",
+      offer_2: "-80% off",
+      imagepath_3: "/images/cat3.jpg",
+      title_3: "gate check bag",
+      subtitle_3: "summer sale",
+      offer_3: "minimum 50% off",
+    };
+  },
+};
 </script>

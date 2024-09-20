@@ -42,13 +42,13 @@
 export default {
   data() {
     return {
-      imagepath1: '/images/gym/banner/1.jpg',
-      title1: 'men',
-      subtitle1: 'save 30%',
-      imagepath2: '/images/gym/banner/2.jpg',
-      title2: 'women',
-      subtitle2: 'save 60%'
-    }
-  }
-}
+      imagepath1: "/images/gym/banner/1.jpg",
+      title1: "men",
+      subtitle1: "save 30%",
+      imagepath2: "/images/gym/banner/2.jpg",
+      title2: "women",
+      subtitle2: "save 60%",
+    };
+  },
+};
 </script>

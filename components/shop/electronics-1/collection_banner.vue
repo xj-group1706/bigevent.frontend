@@ -30,22 +30,22 @@ export default {
     return {
       items: [
         {
-          imagepath: '/images/electronics/sub1.jpg',
-          title: 'speaker',
-          subtitle: '30% off'
+          imagepath: "/images/electronics/sub1.jpg",
+          title: "speaker",
+          subtitle: "30% off",
         },
         {
-          imagepath: '/images/electronics/sub2.jpg',
-          title: 'earplug',
-          subtitle: 'save 60%'
+          imagepath: "/images/electronics/sub2.jpg",
+          title: "earplug",
+          subtitle: "save 60%",
         },
         {
-          imagepath: '/images/electronics/sub3.jpg',
-          title: 'best deal',
-          subtitle: 'save 55%'
-        }
-      ]
-    }
-  }
-}
+          imagepath: "/images/electronics/sub3.jpg",
+          title: "best deal",
+          subtitle: "save 55%",
+        },
+      ],
+    };
+  },
+};
 </script>

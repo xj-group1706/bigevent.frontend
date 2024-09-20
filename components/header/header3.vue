@@ -12,7 +12,10 @@
                 <a @click="left_sidebar">
                   <i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
                 </a>
-                <WidgetsLeftSidebar :leftSidebarVal="leftSidebarVal" @closeVal="closeBarValFromChild" />
+                <WidgetsLeftSidebar
+                  :leftSidebarVal="leftSidebarVal"
+                  @closeVal="closeBarValFromChild"
+                />
               </div>
               <div class="main-menu-right">
                 <WidgetsNavbar />
@@ -20,7 +23,7 @@
             </div>
             <div class="absolute-logo">
               <div class="brand-logo">
-                <a href="#"><img alt="" src="/images/icon/logo/12.png"></a>
+                <a href="#"><img alt="" src="/images/icon/logo/12.png" /></a>
               </div>
             </div>
             <div class="">
@@ -40,17 +43,17 @@
 export default {
   data() {
     return {
-      leftSidebarVal: false
-    }
+      leftSidebarVal: false,
+    };
   },
 
   methods: {
     left_sidebar() {
-      this.leftSidebarVal = true
+      this.leftSidebarVal = true;
     },
     closeBarValFromChild(val) {
-      this.leftSidebarVal = val
-    }
-  }
-}
+      this.leftSidebarVal = val;
+    },
+  },
+};
 </script>

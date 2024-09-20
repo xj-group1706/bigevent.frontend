@@ -1,24 +1,27 @@
 <template>
   <client-only>
-    <Lightbox :imgs="image" :visible="visible" :index="index" @hide="handleHide">
+    <Lightbox
+      :imgs="image"
+      :visible="visible"
+      :index="index"
+      @hide="handleHide"
+    >
     </Lightbox>
   </client-only>
-
-
 </template>
 <script>
-import Lightbox from 'vue-easy-lightbox'
+import Lightbox from "vue-easy-lightbox";
 
 export default {
-  props: ['index', 'image', 'visible'],
+  props: ["index", "image", "visible"],
   components: {
-    Lightbox
+    Lightbox,
   },
 
   methods: {
     handleHide() {
-      this.$emit('close')
+      this.$emit("close");
     },
-  }
-}
-</script> 
+  },
+};
+</script>

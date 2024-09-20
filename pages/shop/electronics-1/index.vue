@@ -1,22 +1,40 @@
 <template>
-  <Header/>
+  <Header />
   <div class="container-fluid layout-8">
     <div class="layout-8-bg">
       <ShopElectronics-1Slider />
       <ShopElectronics-1Collection_banner />
-      <ShopElectronics-1Product_tab :products="products" :category="category" @openQuickview="showQuickview" @openCompare="showCoampre"
-        @openCart="showCart" />
+      <ShopElectronics-1Product_tab
+        :products="products"
+        :category="category"
+        @openQuickview="showQuickview"
+        @openCompare="showCoampre"
+        @openCart="showCart"
+      />
     </div>
-    <WidgetsQuickview :openModal="showquickviewmodel" :productData="quickviewproduct" @closeView="closeViewModal" />
-    <WidgetsComparePopup :openCompare="showcomparemodal" :productData="comapreproduct" @closeCompare="closeCompareModal" />
-    <cart-modal-popup :openCart="showcartmodal" :productData="cartproduct" @closeCart="closeCartModal" :products="products" />
+    <WidgetsQuickview
+      :openModal="showquickviewmodel"
+      :productData="quickviewproduct"
+      @closeView="closeViewModal"
+    />
+    <WidgetsComparePopup
+      :openCompare="showcomparemodal"
+      :productData="comapreproduct"
+      @closeCompare="closeCompareModal"
+    />
+    <cart-modal-popup
+      :openCart="showcartmodal"
+      :productData="cartproduct"
+      @closeCart="closeCartModal"
+      :products="products"
+    />
     <WidgetsNewsletterPopup />
-     <Footer />
+    <Footer />
   </div>
 </template>
 <script>
 import { mapState } from "pinia";
-import { useProductStore } from "~~/store/products"
+import { useProductStore } from "~~/store/products";
 export default {
   data() {
     return {
@@ -32,7 +50,7 @@ export default {
   },
   computed: {
     ...mapState(useProductStore, {
-      productslist: 'productslist',
+      productslist: "productslist",
     }),
   },
 
@@ -67,10 +85,10 @@ export default {
       this.showcartmodal = item;
     },
     closeViewModal(item) {
-      this.showquickviewmodel = item
-    }
+      this.showquickviewmodel = item;
+    },
   },
-    mounted() {
+  mounted() {
     this.productsArray();
   },
 };

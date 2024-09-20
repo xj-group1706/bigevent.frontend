@@ -30,22 +30,22 @@ export default {
     return {
       items: [
         {
-          imagepath: '/images/furniture/2banner1.jpg',
-          title: 'sofa',
-          subtitle: 'save 30%'
+          imagepath: "/images/furniture/2banner1.jpg",
+          title: "sofa",
+          subtitle: "save 30%",
         },
         {
-          imagepath: '/images/furniture/2banner2.jpg',
-          title: 'new arrival',
-          subtitle: 'save 60%'
+          imagepath: "/images/furniture/2banner2.jpg",
+          title: "new arrival",
+          subtitle: "save 60%",
         },
         {
-          imagepath: '/images/furniture/2banner3.jpg',
-          title: 'chair',
-          subtitle: 'save 55%'
-        }
-      ]
-    }
-  }
-}
+          imagepath: "/images/furniture/2banner3.jpg",
+          title: "chair",
+          subtitle: "save 55%",
+        },
+      ],
+    };
+  },
+};
 </script>

@@ -9,7 +9,11 @@
                 <div class="footer-link link-white">
                   <div class="footer-brand-logo">
                     <a href="#">
-                      <img src="/images/icon/logo/14.png" class="img-fluid" alt="logo" />
+                      <img
+                        src="/images/icon/logo/14.png"
+                        class="img-fluid"
+                        alt="logo"
+                      />
                     </a>
                   </div>
                   <div class="social-white">
@@ -93,7 +97,8 @@
             <div class="col-xl-6 col-md-6 col-sm-12">
               <div class="footer-end">
                 <p>
-                  <i class="fa fa-copyright" aria-hidden="true"></i> 2017-18 themeforest powered by pixelstrap
+                  <i class="fa fa-copyright" aria-hidden="true"></i> 2017-18
+                  themeforest powered by pixelstrap
                 </p>
               </div>
             </div>
@@ -102,27 +107,27 @@
                 <ul>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/visa.png' alt />
+                      <img src="/images/icon/visa.png" alt />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/mastercard.png' alt />
+                      <img src="/images/icon/mastercard.png" alt />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/paypal.png' alt />
+                      <img src="/images/icon/paypal.png" alt />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/american-express.png' alt />
+                      <img src="/images/icon/american-express.png" alt />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src='/images/icon/discover.png' alt />
+                      <img src="/images/icon/discover.png" alt />
                     </a>
                   </li>
                 </ul>

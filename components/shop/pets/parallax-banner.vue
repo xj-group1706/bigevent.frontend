@@ -9,10 +9,12 @@
           <div class="row">
             <div class="col">
               <div class="banner-contain">
-                <h4>{{subtitle}}</h4>
-                <h3>{{title}}</h3>
-                <p>{{description}}</p>
-                <a href="#" class="btn btn-solid black-btn" tabindex="0">shop now</a>
+                <h4>{{ subtitle }}</h4>
+                <h3>{{ title }}</h3>
+                <p>{{ description }}</p>
+                <a href="#" class="btn btn-solid black-btn" tabindex="0"
+                  >shop now</a
+                >
               </div>
             </div>
           </div>
@@ -28,13 +30,13 @@
 export default {
   data() {
     return {
-      bgimagepath: '/images/parallax/19.jpg',
-      imagepath: '/images/dog.png',
-      title: 'get upto 70% off',
-      subtitle: 'choose what you love',
+      bgimagepath: "/images/parallax/19.jpg",
+      imagepath: "/images/dog.png",
+      title: "get upto 70% off",
+      subtitle: "choose what you love",
       description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-    }
-  }
-}
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    };
+  },
+};
 </script>

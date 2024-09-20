@@ -30,9 +30,8 @@
 <script setup>
 import { storeToRefs } from "pinia";
 import { useBlogStore } from "~~/store/blog";
-let { bloglist, getblogTag } = storeToRefs(useBlogStore())
+let { bloglist, getblogTag } = storeToRefs(useBlogStore());
 function getImgUrl(path) {
-  return (path)
+  return path;
 }
-
 </script>

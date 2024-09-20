@@ -1,7 +1,10 @@
 <template>
   <div>
     <section class="p-0">
-      <div class="full-banner parallax p-left text-center" v-bind:style="{ 'background-image': `url(${imagepath})` }">
+      <div
+        class="full-banner parallax p-left text-center"
+        v-bind:style="{ 'background-image': `url(${imagepath})` }"
+      >
         <img :src="imagepath" alt class="bg-img d-none" />
         <div class="container">
           <div class="row">
@@ -23,11 +26,11 @@
 export default {
   data() {
     return {
-      imagepath: '/images/parallax/16.jpg',
-      title: '2019',
-      subtitle: 'fashion trends',
-      text: 'special offer'
-    }
-  }
-}
+      imagepath: "/images/parallax/16.jpg",
+      title: "2019",
+      subtitle: "fashion trends",
+      text: "special offer",
+    };
+  },
+};
 </script>

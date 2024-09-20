@@ -2,7 +2,10 @@
   <div>
     <section>
       <div class="container">
-        <div class="row banner-timer" v-bind:style="{ 'background-image': 'url(' + imagepath + ')' }">
+        <div
+          class="row banner-timer"
+          v-bind:style="{ 'background-image': 'url(' + imagepath + ')' }"
+        >
           <div class="col-md-6">
             <div class="banner-text">
               <h2 v-html="offer_text"></h2>
@@ -23,12 +26,10 @@
 export default {
   data() {
     return {
-      imagepath: '/images/offer-banner.jpg',
-      offer_text: 'Save <span>30% off</span> Digital Watch'
-    }
+      imagepath: "/images/offer-banner.jpg",
+      offer_text: "Save <span>30% off</span> Digital Watch",
+    };
   },
-  components: {
-    
-  }
-}
+  components: {},
+};
 </script>

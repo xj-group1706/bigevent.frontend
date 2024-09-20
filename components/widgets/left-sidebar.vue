@@ -1,5 +1,4 @@
 <template>
-
   <div id="mySidenav" class="sidenav" :class="leftSidebarVal ? 'openSide' : ''">
     <a class="sidebar-overlay" @click="closeLeftBar(leftSidebarVal)"></a>
     <nav>
@@ -11,10 +10,14 @@
       <!-- Sample menu definition -->
       <ul id="sub-menu" class="sidebar-menu">
         <li>
-          <a href="javascript:void(0)" @click="setActive('clothing')">clothing
+          <a href="javascript:void(0)" @click="setActive('clothing')"
+            >clothing
             <span class="sub-arrow"></span>
           </a>
-          <ul class="mega-menu clothing-menu" :class="{ opensidesubmenu: isActive('clothing') }">
+          <ul
+            class="mega-menu clothing-menu"
+            :class="{ opensidesubmenu: isActive('clothing') }"
+          >
             <li>
               <div class="row g-sm-4 g-3">
                 <div class="col-xl-4">
@@ -91,7 +94,11 @@
                 </div>
                 <div class="col-xl-4">
                   <a href="#" class="mega-menu-banner">
-                    <img src="/images/mega-menu/fashion.jpg" alt class="img-fluid">
+                    <img
+                      src="/images/mega-menu/fashion.jpg"
+                      alt
+                      class="img-fluid"
+                    />
                   </a>
                 </div>
               </div>
@@ -99,7 +106,8 @@
           </ul>
         </li>
         <li>
-          <a href="javascript:void(0)" @click="setActive('bags')">bags
+          <a href="javascript:void(0)" @click="setActive('bags')"
+            >bags
             <span class="sub-arrow"></span>
           </a>
           <ul :class="{ opensub1: isActive('bags') }">
@@ -115,7 +123,8 @@
           </ul>
         </li>
         <li>
-          <a href="javascript:void(0)" @click="setActive('footwear')">footwear
+          <a href="javascript:void(0)" @click="setActive('footwear')"
+            >footwear
             <span class="sub-arrow"></span>
           </a>
           <ul :class="{ opensub1: isActive('footwear') }">
@@ -134,7 +143,8 @@
           <a href="#">watches</a>
         </li>
         <li>
-          <a href="javascript:void(0)" @click="setActive('accessories')">Accessories
+          <a href="javascript:void(0)" @click="setActive('accessories')"
+            >Accessories
             <span class="sub-arrow"></span>
           </a>
           <ul :class="{ opensub1: isActive('accessories') }">
@@ -153,7 +163,8 @@
           <a href="javascript:void(0)">house of design</a>
         </li>
         <li>
-          <a href="javascript:void(0)" @click="setActive('beauty')">beauty & personal care
+          <a href="javascript:void(0)" @click="setActive('beauty')"
+            >beauty & personal care
             <span class="sub-arrow"></span>
           </a>
           <ul :class="{ opensub1: isActive('beauty') }">
@@ -180,40 +191,36 @@
 </template>
 
 <script>
-import { handleError } from 'vue'
+import { handleError } from "vue";
 
 export default {
-  props: ['leftSidebarVal'],
+  props: ["leftSidebarVal"],
   data() {
     return {
-      activeItem: 'clothing'
-    }
+      activeItem: "clothing",
+    };
   },
-   watch: {
+  watch: {
     leftSidebarVal: {
-      handler(newValue, oldValue) {
-      },
-      deep: true
-    }
+      handler(newValue, oldValue) {},
+      deep: true,
+    },
   },
   methods: {
     closeLeftBar(val) {
-      val = false
-      this.$emit('closeVal', val)
+      val = false;
+      this.$emit("closeVal", val);
     },
     isActive: function (menuItem) {
-      return this.activeItem === menuItem
+      return this.activeItem === menuItem;
     },
     setActive: function (menuItem) {
       if (this.activeItem === menuItem) {
-        this.activeItem = ''
+        this.activeItem = "";
       } else {
-        this.activeItem = menuItem
+        this.activeItem = menuItem;
       }
-    }
+    },
   },
-
- 
-
-}
+};
 </script>

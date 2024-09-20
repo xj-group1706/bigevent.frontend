@@ -11,7 +11,7 @@
                 </div>
                 <div class="contain-banner banner-3">
                   <div>
-                    <h2>{{item.title}}</h2>
+                    <h2>{{ item.title }}</h2>
                   </div>
                 </div>
               </div>
@@ -28,37 +28,37 @@ export default {
     return {
       items: [
         {
-          imagepath: '/images/pets/banner/1.jpg',
-          title: 'cloths',
-          alignclass: 'p-left'
+          imagepath: "/images/pets/banner/1.jpg",
+          title: "cloths",
+          alignclass: "p-left",
         },
         {
-          imagepath: '/images/pets/banner/2.jpg',
-          title: 'groom',
-          alignclass: 'p-right'
+          imagepath: "/images/pets/banner/2.jpg",
+          title: "groom",
+          alignclass: "p-right",
         },
         {
-          imagepath: '/images/pets/banner/3.jpg',
-          title: 'food',
-          alignclass: 'p-left'
+          imagepath: "/images/pets/banner/3.jpg",
+          title: "food",
+          alignclass: "p-left",
         },
         {
-          imagepath: '/images/pets/banner/4.jpg',
-          title: 'home',
-          alignclass: 'p-right'
+          imagepath: "/images/pets/banner/4.jpg",
+          title: "home",
+          alignclass: "p-right",
         },
         {
-          imagepath: '/images/pets/banner/5.jpg',
-          title: 'cats',
-          alignclass: 'p-right'
+          imagepath: "/images/pets/banner/5.jpg",
+          title: "cats",
+          alignclass: "p-right",
         },
         {
-          imagepath: '/images/pets/banner/6.jpg',
-          title: 'bowls',
-          alignclass: 'p-right'
-        }
-      ]
-    }
-  }
-}
+          imagepath: "/images/pets/banner/6.jpg",
+          title: "bowls",
+          alignclass: "p-right",
+        },
+      ],
+    };
+  },
+};
 </script>

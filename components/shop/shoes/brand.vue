@@ -6,28 +6,28 @@
         <div class="col-md-12">
           <div class="slide-6 no-arrow">
             <clientOnly>
-               <swiper
-              :loop="true"
-              :breakpoints="swiperOption.breakpoints"
-              :slidesPerView="6"
-              :spaceBetween="0"
-              :slideSpeed="300"
-              class="swiper-wrapper"
-            >
-              <swiper-slide
-                class="swiper-slide"
-                v-for="(item, index) in items"
-                :key="index"
+              <swiper
+                :loop="true"
+                :breakpoints="swiperOption.breakpoints"
+                :slidesPerView="6"
+                :spaceBetween="0"
+                :slideSpeed="300"
+                class="swiper-wrapper"
               >
-                <div>
-                  <div class="logo-block">
-                    <a href="#">
-                      <img :src="item.img" alt />
-                    </a>
+                <swiper-slide
+                  class="swiper-slide"
+                  v-for="(item, index) in items"
+                  :key="index"
+                >
+                  <div>
+                    <div class="logo-block">
+                      <a href="#">
+                        <img :src="item.img" alt />
+                      </a>
+                    </div>
                   </div>
-                </div>
-              </swiper-slide>
-            </swiper>
+                </swiper-slide>
+              </swiper>
             </clientOnly>
           </div>
         </div>

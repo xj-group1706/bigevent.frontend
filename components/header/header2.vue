@@ -12,13 +12,19 @@
                 <a @click="left_sidebar">
                   <i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
                 </a>
-                <WidgetsLeftSidebar :leftSidebarVal="leftSidebarVal" @closeVal="closeBarValFromChild" />
+                <WidgetsLeftSidebar
+                  :leftSidebarVal="leftSidebarVal"
+                  @closeVal="closeBarValFromChild"
+                />
               </div>
             </div>
             <div class="brand-logo layout2-logo">
               <a href="#">
-
-                <img src="/images/icon/layout2/logo.png" class="img-fluid" alt>
+                <img
+                  src="/images/icon/layout2/logo.png"
+                  class="img-fluid"
+                  alt
+                />
               </a>
             </div>
             <div class="menu-right pull-right">
@@ -45,16 +51,16 @@
 export default {
   data() {
     return {
-      leftSidebarVal: false
-    }
+      leftSidebarVal: false,
+    };
   },
   methods: {
     left_sidebar() {
-      this.leftSidebarVal = true
+      this.leftSidebarVal = true;
     },
     closeBarValFromChild(val) {
-      this.leftSidebarVal = val
-    }
-  }
-}
+      this.leftSidebarVal = val;
+    },
+  },
+};
 </script>

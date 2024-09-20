@@ -1,5 +1,5 @@
 <template>
-<Header/> 
+  <Header />
   <div>
     <WidgetsBreadcrumbs title="Typography" />
     <section class="section-b-space typography_section">
@@ -11,8 +11,8 @@
                 <h3>headings</h3>
                 <span>
                   All HTML headings,
-                  <code>&lt;h1&gt;</code> through
-                  <code>&lt;h6&gt;</code>, are available.
+                  <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code>, are
+                  available.
                 </span>
               </div>
               <div class="typo-content heading_content">
@@ -109,16 +109,32 @@
                   <div class="form-row">
                     <div class="col-12 mb-3">
                       <label for="name">First Name</label>
-                      <input type="text" class="form-control" id="name" placeholder="Enter Your name" required />
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="name"
+                        placeholder="Enter Your name"
+                        required
+                      />
                     </div>
                     <div class="col-12 mb-3">
                       <label for="email">Email</label>
-                      <input type="text" class="form-control" id="email" placeholder="Email" required />
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="email"
+                        placeholder="Email"
+                        required
+                      />
                     </div>
                     <div class="col-12 mb-3">
                       <label>Write Your Message</label>
-                      <textarea class="form-control" placeholder="Write Your Message" id="exampleFormControlTextarea1"
-                        rows="5"></textarea>
+                      <textarea
+                        class="form-control"
+                        placeholder="Write Your Message"
+                        id="exampleFormControlTextarea1"
+                        rows="5"
+                      ></textarea>
                     </div>
                   </div>
                   <div class="row"></div>
@@ -128,11 +144,16 @@
             <div class="typography-box">
               <div class="headings">
                 <h3>Alignment</h3>
-                <span>Use text utilities as needed to change the alignment of your blockquote.</span>
+                <span
+                  >Use text utilities as needed to change the alignment of your
+                  blockquote.</span
+                >
               </div>
               <div class="typo-content">
                 <p class="text-left">This is a left aligned text .text-left</p>
-                <p class="text-center">This is a center aligned text .text-center</p>
+                <p class="text-center">
+                  This is a center aligned text .text-center
+                </p>
                 <p class="text-end">This is a right aligned text .text-end</p>
               </div>
             </div>
@@ -169,19 +190,31 @@
                   <mark>highlight</mark> text.
                 </p>
                 <p>
-                  <del>This line of text is meant to be treated as deleted text.</del>
+                  <del
+                    >This line of text is meant to be treated as deleted
+                    text.</del
+                  >
                 </p>
                 <p>
-                  <s>This line of text is meant to be treated as no longer accurate.</s>
+                  <s
+                    >This line of text is meant to be treated as no longer
+                    accurate.</s
+                  >
                 </p>
                 <p>
-                  <ins>This line of text is meant to be treated as an addition to the document.</ins>
+                  <ins
+                    >This line of text is meant to be treated as an addition to
+                    the document.</ins
+                  >
                 </p>
                 <p>
                   <u>This line of text will render as underlined</u>
                 </p>
                 <p>
-                  <small>This line of text is meant to be treated as fine print.</small>
+                  <small
+                    >This line of text is meant to be treated as fine
+                    print.</small
+                  >
                 </p>
                 <p>
                   <strong>This line rendered as bold text.</strong>
@@ -237,25 +270,32 @@
                     <h6 class="sub-title">order list</h6>
                     <ul>
                       <li>
-                        <i class="fa fa-angle-double-right mr-2"></i>Lorem ipsum dolor sit amet
+                        <i class="fa fa-angle-double-right mr-2"></i>Lorem ipsum
+                        dolor sit amet
                       </li>
                       <li>
-                        <i class="fa fa-angle-double-right mr-2"></i>Lorem ipsum dolor sit amet
+                        <i class="fa fa-angle-double-right mr-2"></i>Lorem ipsum
+                        dolor sit amet
                       </li>
                       <li>
-                        <i class="fa fa-angle-double-right mr-2"></i>Lorem ipsum dolor sit amet
+                        <i class="fa fa-angle-double-right mr-2"></i>Lorem ipsum
+                        dolor sit amet
                       </li>
                       <li>
-                        <i class="fa fa-angle-double-right mr-2"></i>Lorem ipsum dolor sit amet
+                        <i class="fa fa-angle-double-right mr-2"></i>Lorem ipsum
+                        dolor sit amet
                       </li>
                       <li>
-                        <i class="fa fa-angle-double-right mr-2"></i>Lorem ipsum dolor sit amet
+                        <i class="fa fa-angle-double-right mr-2"></i>Lorem ipsum
+                        dolor sit amet
                       </li>
                       <li>
-                        <i class="fa fa-angle-double-right mr-2"></i>Lorem ipsum dolor sit amet
+                        <i class="fa fa-angle-double-right mr-2"></i>Lorem ipsum
+                        dolor sit amet
                       </li>
                       <li>
-                        <i class="fa fa-angle-double-right mr-2"></i>Lorem ipsum dolor sit amet
+                        <i class="fa fa-angle-double-right mr-2"></i>Lorem ipsum
+                        dolor sit amet
                       </li>
                     </ul>
                   </div>
@@ -272,23 +312,48 @@
                   <div class="col-sm-6">
                     <form>
                       <div>
-                        <input type="radio" name="gender" id="one" value="male" />
+                        <input
+                          type="radio"
+                          name="gender"
+                          id="one"
+                          value="male"
+                        />
                         <label for="one">radio button1</label>
                       </div>
                       <div>
-                        <input type="radio" name="gender" id="two" value="male" />
+                        <input
+                          type="radio"
+                          name="gender"
+                          id="two"
+                          value="male"
+                        />
                         <label for="two">radio button2</label>
                       </div>
                       <div>
-                        <input type="radio" name="gender" id="three" value="male" />
+                        <input
+                          type="radio"
+                          name="gender"
+                          id="three"
+                          value="male"
+                        />
                         <label for="three">radio button3</label>
                       </div>
                       <div>
-                        <input type="radio" name="gender" id="four" value="male" />
+                        <input
+                          type="radio"
+                          name="gender"
+                          id="four"
+                          value="male"
+                        />
                         <label for="four">radio button4</label>
                       </div>
                       <div>
-                        <input type="radio" name="gender" id="five" value="male" />
+                        <input
+                          type="radio"
+                          name="gender"
+                          id="five"
+                          value="male"
+                        />
                         <label for="five">radio button5</label>
                       </div>
                     </form>
@@ -296,23 +361,48 @@
                   <div class="col-sm-6">
                     <form>
                       <div>
-                        <input type="checkbox" name="gender" id="six" value="male" />
+                        <input
+                          type="checkbox"
+                          name="gender"
+                          id="six"
+                          value="male"
+                        />
                         <label for="six">checkbox button1</label>
                       </div>
                       <div>
-                        <input type="checkbox" name="gender" id="seven" value="male" />
+                        <input
+                          type="checkbox"
+                          name="gender"
+                          id="seven"
+                          value="male"
+                        />
                         <label for="seven">checkbox button2</label>
                       </div>
                       <div>
-                        <input type="checkbox" name="gender" id="eight" value="male" />
+                        <input
+                          type="checkbox"
+                          name="gender"
+                          id="eight"
+                          value="male"
+                        />
                         <label for="eight">checkbox button3</label>
                       </div>
                       <div>
-                        <input type="checkbox" name="gender" id="nine" value="male" />
+                        <input
+                          type="checkbox"
+                          name="gender"
+                          id="nine"
+                          value="male"
+                        />
                         <label for="nine">checkbox button4</label>
                       </div>
                       <div>
-                        <input type="checkbox" name="gender" id="ten" value="male" />
+                        <input
+                          type="checkbox"
+                          name="gender"
+                          id="ten"
+                          value="male"
+                        />
                         <label for="ten">checkbox button5</label>
                       </div>
                     </form>
@@ -325,14 +415,18 @@
                 <h3>Naming a source</h3>
                 <span>
                   Add a
-                  <code class="highlighter-rouge">&lt;footer class="blockquote-footer"&gt;</code> for identifying the
-                  source. Wrap the name of the source work in
-                  <code class="highlighter-rouge">&lt;cite&gt;</code>.
+                  <code class="highlighter-rouge"
+                    >&lt;footer class="blockquote-footer"&gt;</code
+                  >
+                  for identifying the source. Wrap the name of the source work
+                  in <code class="highlighter-rouge">&lt;cite&gt;</code>.
                 </span>
               </div>
               <div class="typo-content">
                 <blockquote class="blockquote">
-                  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                  <p class="mb-0">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Integer posuere erat a ante.
                   </p>
                   <footer class="blockquote-footer">
                     Someone famous in
@@ -382,10 +476,8 @@
       </div>
     </section>
   </div>
-  <Footer /> 
+  <Footer />
 </template>
 <script>
-
-export default {
-}
+export default {};
 </script>
