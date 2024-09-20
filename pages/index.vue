@@ -4,11 +4,12 @@
     <TopCollection v-if="topProducts.length > 0" :products="topProducts" />
     <HomeFashionBanner v-if="homeStore.fashionBanner" />
     <HomeProductTab v-if="topProducts.length > 0" :products="topProducts" />
+    <HomeBlog />
+    <ShopFashionBlog />
     <!-- @openQuickview="showQuickview"
       @openCompare="showCoampre"
       @openCart="showCart" -->
     <!-- <ShopFashionServices />
-    <ShopFashionBlog :blog="blog" />
     <ShopFashionInstagram />
     <ShopFashionLogo_slider />
     <WidgetsQuickview
@@ -40,11 +41,13 @@ import TopCollection from "../components/home/topCollection.vue";
 import { useProductsStore } from "./../store/newProducts";
 import { useHomeStore } from "../store/home";
 import { useProductStore } from "../store/products";
+import { useBlogStore } from "../store/blog.ts";
 
 import type { IProduct } from "../types/product";
 
 const newProductStore = useProductsStore();
 const homeStore = useHomeStore();
+const blogStore = useBlogStore();
 const productStore = useProductStore();
 
 const topProducts = ref<IProduct[]>([]);
@@ -61,6 +64,7 @@ onMounted(async () => {
     .then((res) => {
       topProducts.value = res;
     });
+  blogStore.getBlogs({ populate: "*" });
 });
 
 // export default {

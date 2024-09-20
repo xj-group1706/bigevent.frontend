@@ -22,7 +22,7 @@
             >
               <swiper-slide
                 class="swiper-slide"
-                v-for="(blog, index) in blog"
+                v-for="(blog, index) in bloglist"
                 :key="index"
               >
                 <a href="#">

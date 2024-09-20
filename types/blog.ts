@@ -13,4 +13,5 @@ export interface IBlog {
     [key in LanguageCode]: string;
   };
   media: IMedia;
+  createdAt: string;
 }
