@@ -1,5 +1,25 @@
 import type { IMedia } from "./media";
 
+export interface IMenu {
+  title: string;
+  type: string;
+  badgeValue?: string;
+  active: boolean;
+  megaMenu?: boolean;
+  children?: Array<{
+    path: string;
+    title: string;
+    type: string;
+    active?: boolean;
+    children?: Array<{
+      path: string;
+      title: string;
+      type: string;
+      active?: boolean;
+    }>;
+  }>;
+}
+
 export type LanguageCode = "uz" | "ru" | "en";
 
 export interface IResponse<T> {

@@ -6,32 +6,32 @@
         <div
           class="toggle-nav"
           :class="leftSidebarVal ? 'toggle-button' : ''"
-          @click="openmobilenav = true"
+          @click="openMobileNav = true"
         >
           <i class="fa fa-bars sidebar-bar"></i>
         </div>
-        <ul class="nav-menu" :class="{ opennav: openmobilenav }">
+        <ul class="nav-menu" :class="{ openNav: openMobileNav }">
           <li class="back-btn">
             <div class="mobile-back text-end">
-              <span @click="openmobilenav = false">Back</span>
+              <span @click="openMobileNav = false">Back</span>
               <i class="fa fa-angle-right ps-2" aria-hidden="true"></i>
             </div>
           </li>
           <li
-            v-for="(menuItem, index) in menulist"
+            v-for="(menuItem, index) in menu"
             :key="index"
-            :class="menuItem.megamenu ? 'mega-menu' : 'dropdown'"
+            :class="menuItem.megaMenu ? 'mega-menu' : 'dropdown'"
           >
             <a href="#" class="nav-link" @click="setActive(menuItem.title)">
               {{ $t(menuItem.title) }}
               <span
                 class="sub-arrow"
-                v-if="menuItem.children || menuItem.megamenu"
+                v-if="menuItem.children || menuItem.megaMenu"
               ></span>
             </a>
             <ul
               class="nav-submenu"
-              :class="{ opensubmenu: isActive(menuItem.title) }"
+              :class="{ openSubMenu: isActive(menuItem.title) }"
               v-if="menuItem.children"
             >
               <li
@@ -54,8 +54,8 @@
                   {{ childrenItem.title }}
                 </nuxt-link>
                 <ul
-                  class="nav-sub-childmenu"
-                  :class="{ opensubchild: isActiveChild(childrenItem.title) }"
+                  class="nav-sub-childMenu"
+                  :class="{ openSubChild: isActiveChild(childrenItem.title) }"
                   v-if="childrenItem.children"
                 >
                   <li
@@ -71,8 +71,8 @@
             </ul>
             <div
               class="mega-menu-container"
-              :class="{ opensubmenu: isActive('portfolio') }"
-              v-if="menuItem.megamenu"
+              :class="{ openSubMenu: isActive('portfolio') }"
+              v-if="menuItem.megaMenu"
             >
               <div class="container">
                 <div class="row">
@@ -94,7 +94,7 @@
                       <div
                         class="menu-content"
                         :class="{
-                          opensubmegamenu: isActivesubmega('portfolio'),
+                          openSubMegaMenu: isActiveSubMega('portfolio'),
                         }"
                       >
                         <ul>
@@ -121,62 +121,79 @@
     </div>
   </div>
 </template>
-<script>
-import { mapState } from "pinia";
-import { useMenuStore } from "~/store/menu";
-export default {
-  props: ["leftSidebarVal"],
-  data() {
-    return {
-      openmobilenav: false,
-      subnav: false,
-      activeItem: "home",
-      activeChildItem: "fashion 1",
-      activemegaChild: "portfolio",
-    };
-  },
-  computed: {
-    ...mapState(useMenuStore, {
-      menulist: "data",
-    }),
-  },
+<script lang="ts" setup>
+import { ref } from "vue";
 
-  methods: {
-    mobilenav: function () {
-      this.openmobilenav = !this.openmobilenav;
-    },
-    isActive: function (menuItem) {
-      return this.activeItem === menuItem;
-    },
-    setActive: function (menuItem) {
-      if (this.activeItem === menuItem) {
-        this.activeItem = "";
-      } else {
-        this.activeItem = menuItem;
-      }
-    },
-    isActiveChild: function (menuChildItem) {
-      return this.activeChildItem === menuChildItem;
-    },
-    setActiveChild: function (menuChildItem) {
-      if (this.activeChildItem === menuChildItem) {
-        this.activeChildItem = "";
-      } else {
-        this.activeChildItem = menuChildItem;
-      }
-    },
-    isActivesubmega: function (megaChildItem) {
-      return this.activemegaChild === megaChildItem;
-    },
-    setActivesubmega: function (megaChildItem) {
-      if (this.activemegaChild === megaChildItem) {
-        this.activemegaChild = "";
-      } else {
-        this.activemegaChild = megaChildItem;
-      }
-    },
+import type { IMenu } from "../../types/index";
+
+const props = defineProps<{
+  leftSidebarVal: boolean;
+}>();
+
+const menu = ref<IMenu[]>([
+  {
+    title: "home",
+    type: "sub",
+    active: false,
   },
-};
+  {
+    title: "products",
+    type: "sub",
+    badgeValue: "new",
+    active: false,
+  },
+  {
+    title: "companies",
+    type: "sub",
+    badgeValue: "new",
+    active: false,
+  },
+  {
+    title: "blogs",
+    type: "sub",
+    badgeValue: "new",
+    active: false,
+  },
+]);
+const openMobileNav = ref(false);
+const subnav = ref(false);
+const activeItem = ref("home");
+const activeChildItem = ref("fashion 1");
+const activeMegaChild = ref("portfolio");
+
+function mobileNav() {
+  openMobileNav.value = !openMobileNav.value;
+}
+function isActive(menuItem: string) {
+  return activeItem.value === menuItem;
+}
+function setActive(menuItem: string) {
+  if (activeItem.value === menuItem) {
+    activeItem.value = "";
+  } else {
+    activeItem.value = menuItem;
+  }
+}
+function isActiveChild(menuChildItem: string) {
+  return activeChildItem.value === menuChildItem;
+}
+function setActiveChild(menuChildItem: string) {
+  if (activeChildItem.value === menuChildItem) {
+    activeChildItem.value = "";
+    return;
+  }
+  activeChildItem.value = menuChildItem;
+}
+function isActiveSubMega(megaChildItem: string) {
+  return (activeMegaChild.value = megaChildItem);
+}
+function setActivesubmega(megaChildItem) {
+  if (activeMegaChild.value === megaChildItem) {
+    activeMegaChild.value = "";
+    return;
+  }
+  this.activemegaChild = megaChildItem;
+}
 </script>
 
 <style lang="scss" scoped>

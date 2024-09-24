@@ -30,7 +30,7 @@
                 </div>
               </div>
               <div class="menu-right pull-right">
-                <WidgetsNavbar />
+                <HeaderNavbar />
                 <WidgetsHeaderWidgets />
               </div>
             </div>
@@ -41,6 +41,8 @@
   </div>
 </template>
 <script setup lang="ts">
+import { ref } from "vue";
+
 const localePath = useLocalePath();
 const leftSidebarVal = ref(false);
 

@@ -116,7 +116,7 @@ header {
               }
             }
 
-            .nav-sub-childmenu {
+            .nav-sub-childMenu {
               position: absolute;
               width: 200px;
               right: -200px;
@@ -584,12 +584,12 @@ header {
                 }
               }
 
-              .nav-sub-childmenu {
+              .nav-sub-childMenu {
                 display: none;
               }
 
               &:hover {
-                .nav-sub-childmenu {
+                .nav-sub-childMenu {
                   display: block;
                 }
               }
@@ -1071,7 +1071,7 @@ header {
                 }
               }
 
-              .nav-sub-childmenu {
+              .nav-sub-childMenu {
                 display: none;
                 position: relative;
                 right: 0;
