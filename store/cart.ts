@@ -18,7 +18,6 @@ export const useCartStore = defineStore("cart", () => {
   const cart = ref<CartItem[]>([]);
 
   const addToCart = (payload: { id: number; quantity?: number }) => {
-    console.log("jemin");
     const product = productsData.value.find((item) => item.id === payload.id);
     if (!product) return;
 

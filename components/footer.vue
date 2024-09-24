@@ -50,7 +50,7 @@
               <div class="footer-title footer-mobile-title">
                 <h4>about</h4>
               </div>
-              <div class="footer-contant">
+              <div class="footer-content">
                 <div class="footer-logo">
                   <img src="/images/logos/logo_line.png" alt="logo" />
                 </div>
@@ -61,30 +61,13 @@
                 </p>
                 <div class="footer-social">
                   <ul>
-                    <li>
-                      <a href="#">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="fa fa-google-plus" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="fa fa-rss" aria-hidden="true"></i>
-                      </a>
+                    <li v-for="(social, index) in socials" :key="index">
+                      <div
+                        class="cursor-pointer"
+                        @click="openInNewTab(social.url)"
+                      >
+                        <i :class="social.icon" aria-hidden="true"></i>
+                      </div>
                     </li>
                   </ul>
                 </div>
@@ -93,18 +76,24 @@
             <div class="col offset-xl-1">
               <div class="sub-title">
                 <div class="footer-title">
-                  <h4>my account</h4>
+                  <h4>{{ t("myAccount") }}</h4>
                 </div>
-                <div class="footer-contant">
+                <div class="footer-content">
                   <ul>
                     <li>
-                      <a href="#">womens</a>
+                      <nuxt-link :to="localePath('/products')">
+                        {{ t("products") }}
+                      </nuxt-link>
                     </li>
                     <li>
-                      <a href="#">clothing</a>
+                      <nuxt-link :to="localePath('/companies')">
+                        {{ t("companies") }}
+                      </nuxt-link>
                     </li>
                     <li>
-                      <a href="#">featured</a>
+                      <nuxt-link :to="localePath('/blogs')">
+                        {{ t("blogs") }}
+                      </nuxt-link>
                     </li>
                   </ul>
                 </div>
@@ -113,9 +102,9 @@
             <div class="col">
               <div class="sub-title">
                 <div class="footer-title">
-                  <h4>why we choose</h4>
+                  <h4>{{ $t("whyWeChoose") }}</h4>
                 </div>
-                <div class="footer-contant">
+                <div class="footer-content">
                   <ul>
                     <li>
                       <a href="#">shipping & return</a>
@@ -139,9 +128,9 @@
             <div class="col">
               <div class="sub-title">
                 <div class="footer-title">
-                  <h4>store information</h4>
+                  <h4>{{ t("storeInformation") }}</h4>
                 </div>
-                <div class="footer-contant">
+                <div class="footer-content">
                   <ul class="contact-list">
                     <li>
                       <i class="fa fa-map-marker"></i>Tashkent, Uzbekistan
@@ -208,3 +197,39 @@
     </footer>
   </div>
 </template>
+<script setup lang="ts">
+import { ref } from "vue";
+import { useI18n } from "vue-i18n";
+
+import { openInNewTab } from "../utils/tools";
+
+const { t } = useI18n();
+const localePath = useLocalePath();
+const socials = ref([
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/bigeventuz",
+    icon: "fa fa-instagram",
+  },
+  {
+    name: "YouTube",
+    url: "https://www.youtube.com/@bigeventuz",
+    icon: "fa fa-youtube",
+  },
+  {
+    name: "Telegram",
+    url: "https://t.me/bigevent_uz",
+    icon: "fa fa-telegram",
+  },
+  {
+    name: "Facebook",
+    url: "https://www.facebook.com/bigeventuz",
+    icon: "fa fa-facebook",
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/company/86417995",
+    icon: "fa fa-linkedin",
+  },
+]);
+</script>

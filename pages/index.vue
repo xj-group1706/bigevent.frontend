@@ -6,7 +6,6 @@
     <HomeProductTab v-if="topProducts.length > 0" :products="topProducts" />
     <HomeBlog />
     <HomeCompany />
-    <!-- <ShopFashionInstagram /> -->
     <!-- @openQuickview="showQuickview"
       @openCompare="showCoampre"
       @openCart="showCart" -->
@@ -28,7 +27,6 @@
       :products="products"
     />
     <WidgetsNewsletterPopup /> -->
-    <Footer />
   </div>
 </template>
 <script setup lang="ts">

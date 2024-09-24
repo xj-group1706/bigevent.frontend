@@ -5,6 +5,10 @@ export const getImageUrl = (url: string | undefined) => {
   return `${baseImageUrl}${url}`;
 };
 
+export function openInNewTab(url: string) {
+  window.open(url, "_blank")?.focus();
+}
+
 function addZeroBeforeMonth(e: string) {
   return e.length > 1 ? e : "0" + e;
 }

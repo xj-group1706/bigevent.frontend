@@ -158,7 +158,6 @@ const dismissCountDown = ref(0);
 
 const isNew = computed(() => {
   return true;
-  //   console.log("isNew", props.product.createdAt);
   //   return (
   //     props.product.createdAt.getTime() >
   //     new Date().getTime() - 1000 * 60 * 60 * 24 * 30
