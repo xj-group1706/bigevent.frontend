@@ -22,13 +22,17 @@
             :key="index"
             :class="menuItem.megaMenu ? 'mega-menu' : 'dropdown'"
           >
-            <a href="#" class="nav-link" @click="setActive(menuItem.title)">
+            <nuxt-link
+              :to="localePath(menuItem.path)"
+              class="nav-link"
+              @click="setActive(menuItem.title)"
+            >
               {{ $t(menuItem.title) }}
               <span
                 class="sub-arrow"
                 v-if="menuItem.children || menuItem.megaMenu"
               ></span>
-            </a>
+            </nuxt-link>
             <ul
               class="nav-submenu"
               :class="{ openSubMenu: isActive(menuItem.title) }"
@@ -130,29 +134,32 @@ const props = defineProps<{
   leftSidebarVal: boolean;
 }>();
 
+const localePath = useLocalePath();
+
 const menu = ref<IMenu[]>([
   {
     title: "home",
     type: "sub",
     active: false,
+    path: "",
   },
   {
     title: "products",
     type: "sub",
-    badgeValue: "new",
     active: false,
+    path: "/products",
   },
   {
     title: "companies",
     type: "sub",
-    badgeValue: "new",
     active: false,
+    path: "/companies",
   },
   {
     title: "blogs",
     type: "sub",
-    badgeValue: "new",
     active: false,
+    path: "/blogs",
   },
 ]);
 const openMobileNav = ref(false);
