@@ -5,13 +5,12 @@
     <HomeFashionBanner v-if="homeStore.fashionBanner" />
     <HomeProductTab v-if="topProducts.length > 0" :products="topProducts" />
     <HomeBlog />
-    <ShopFashionBlog />
+    <HomeCompany />
+    <!-- <ShopFashionInstagram /> -->
     <!-- @openQuickview="showQuickview"
       @openCompare="showCoampre"
       @openCart="showCart" -->
     <!-- <ShopFashionServices />
-    <ShopFashionInstagram />
-    <ShopFashionLogo_slider />
     <WidgetsQuickview
       :openModal="showquickviewmodel"
       :productData="quickviewproduct"
@@ -56,6 +55,7 @@ useAsyncData("directions", () => homeStore.getDirections());
 useAsyncData("fashionBanner", () => homeStore.getFashionBanner());
 
 onMounted(async () => {
+  homeStore.getCompanies();
   newProductStore
     .getProducts({
       populate:
