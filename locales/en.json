@@ -104,6 +104,7 @@
   "megaMenu": "Mega menu",
   "modals": "Modals",
   "multiStepSignUp": "Multi-steps sign up",
+  "myAccount": "My account",
   "myProfile": "My profile",
   "n": "N",
   "name.base": "Name",
@@ -166,6 +167,7 @@
   "sizes": "Sizes",
   "specialOffer": "Special offer",
   "specialProducts": "Special products",
+  "storeInformation": "Store information",
   "subscriptionList": "Subscription list",
   "subscriptions": "Subscriptions",
   "successfullyCreated": "Successfully created",
@@ -188,6 +190,7 @@
   "viewSubscription": "View subscription",
   "viewUsers": "View users",
   "w": "W",
+  "whyWeChoose": "Why we choose?",
   "widget": "Widget",
   "widgets": "Widgets"
 }

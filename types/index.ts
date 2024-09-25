@@ -6,6 +6,7 @@ export interface IMenu {
   badgeValue?: string;
   active: boolean;
   megaMenu?: boolean;
+  path: string;
   children?: Array<{
     path: string;
     title: string;
