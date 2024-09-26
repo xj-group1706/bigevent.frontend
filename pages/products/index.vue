@@ -6,22 +6,21 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-3">
-              <WidgetsSidebar />
-              <WidgetsCollectionSidebar />
+              <WidgetsSidebar v-model="filterParams" />
               <!-- @allFilters="allfilter"
               @priceVal="pricefilterArray"
               @categoryfilter="getCategoryFilter" -->
             </div>
-            <!-- <div class="collection-content col">
+            <div class="collection-content col">
               <div class="page-main-content">
                 <div class="row">
                   <div class="col-12">
                     <div class="top-banner-wrapper">
                       <a href="#">
                         <img
-                          src="/images/mega-menu/2.jpg"
+                          src="/images/main/2.jpg"
                           class="img-fluid"
-                          alt
+                          alt="product-banner"
                         />
                       </a>
                       <div class="top-banner-content small-section">
@@ -43,26 +42,78 @@
                       </div>
                     </div>
                     <ul class="product-filter-tags">
+                      <li class="me-1" v-if="filterParams.category">
+                        <a href="javascript:void(0)" class="filter_tag">
+                          {{
+                            homeStore.directions.find(
+                              (e) => e.id === filterParams.category
+                            )?.name[locale]
+                          }}
+                          <i
+                            class="ti-close"
+                            @click="filterParams.category = 0"
+                          ></i>
+                        </a>
+                      </li>
                       <li
                         class="me-1"
-                        v-for="(tag, index) in allfilters"
+                        v-for="(brandId, index) in filterParams.brands"
                         :key="index"
                       >
-                        <a href="javascript:void(0)" class="filter_tag"
-                          >{{ tag
-                          }}<i class="ti-close" @click="removeTags(tag)"></i
-                        ></a>
+                        <a href="javascript:void(0)" class="filter_tag">
+                          {{
+                            productsStore.brands.find((e) => e.id === brandId)
+                              ?.name
+                          }}
+                          <i
+                            class="ti-close"
+                            @click="filterParams.brands.splice(index, 1)"
+                          ></i>
+                        </a>
                       </li>
-                      <li class="clear_filter" v-if="allfilters.length > 0">
+                      <li
+                        class="me-1"
+                        v-for="(colorId, index) in filterParams.colors"
+                        :key="index"
+                      >
+                        <a href="javascript:void(0)" class="filter_tag">
+                          {{
+                            productsStore.colors.find((e) => e.id === colorId)
+                              ?.name[locale]
+                          }}
+                          <i
+                            class="ti-close"
+                            @click="filterParams.colors.splice(index, 1)"
+                          ></i>
+                        </a>
+                      </li>
+                      <li
+                        class="me-1"
+                        v-for="(sizeId, index) in filterParams.sizes"
+                        :key="index"
+                      >
+                        <a href="javascript:void(0)" class="filter_tag">
+                          {{
+                            productsStore.sizes.find((e) => e.id === sizeId)
+                              ?.name
+                          }}
+                          <i
+                            class="ti-close"
+                            @click="filterParams.sizes.splice(index, 1)"
+                          ></i>
+                        </a>
+                      </li>
+                      <li class="clear_filter" v-if="totalFilterTags > 0">
                         <a
                           href="javascript:void(0)"
                           class="clear_filter"
-                          @click="removeAllTags()"
-                          >Clear all</a
+                          @click="removeFilter()"
                         >
+                          {{ t("clearAll") }}
+                        </a>
                       </li>
                     </ul>
-                    <div class="collection-product-wrapper">
+                    <!-- <div class="collection-product-wrapper">
                       <div class="product-top-filter">
                         <div class="row">
                           <div class="col-12">
@@ -266,11 +317,11 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
-            </div> -->
+            </div>
           </div>
         </div>
       </div>
@@ -278,7 +329,51 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { ref, onMounted, computed } from "vue";
 import { useI18n } from "vue-i18n";
 
+import { useProductsStore } from "../../store/newProducts";
+import { useHomeStore } from "../../store/home";
+
+import type { IProductFilter } from "../../types/index";
+
 const { t } = useI18n();
+const productsStore = useProductsStore();
+const homeStore = useHomeStore();
+
+const { locale } = useI18n();
+
+const filterParams = ref<IProductFilter>({
+  brands: [],
+  colors: [],
+  sizes: [],
+  price: 0,
+  category: 0,
+});
+
+onMounted(() => {
+  productsStore.getBrands();
+  productsStore.getColors();
+  productsStore.getSizes();
+});
+
+const totalFilterTags = computed(() => {
+  let count = 0;
+  if (filterParams.value.category) count++;
+  count += filterParams.value.brands.length;
+  count += filterParams.value.sizes.length;
+  count += filterParams.value.colors.length;
+  return count;
+});
+
+function onFilterChange(e: IProductFilter) {
+  filterParams.value = e;
+}
+
+function removeFilter() {
+  filterParams.value.category = 0;
+  filterParams.value.brands = [];
+  filterParams.value.colors = [];
+  filterParams.value.sizes = [];
+}
 </script>

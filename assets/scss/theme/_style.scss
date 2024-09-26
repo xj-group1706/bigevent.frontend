@@ -9683,13 +9683,13 @@ footer {
           text-transform: capitalize;
           line-height: 18px;
 
-          a {
+          div {
             color: $grey;
             padding-bottom: 10px;
           }
 
           &:last-child {
-            a {
+            div {
               padding-bottom: 0;
             }
           }

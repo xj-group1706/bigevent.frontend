@@ -8,7 +8,24 @@ export const useProduct = () => {
     return res;
   };
 
+  const getBrands = async (payload: IReqFilter) => {
+    const res = await $api("/brands", { params: payload });
+    return res;
+  };
+
+  const getColors = async (payload: IReqFilter) => {
+    const res = await $api("/colors", { params: payload });
+    return res;
+  };
+
+  const getSizes = async (payload: IReqFilter) => {
+    const res = await $api("/sizes", { params: payload });
+    return res;
+  };
   return {
     getProducts,
+    getBrands,
+    getColors,
+    getSizes,
   };
 };

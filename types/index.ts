@@ -1,5 +1,18 @@
 import type { IMedia } from "./media";
 
+export interface IProductFilter {
+  brands: Number[];
+  colors: Number[];
+  sizes: Number[];
+  price: Number;
+  category: Number;
+}
+
+export interface IPersistStrategy {
+  key?: string;
+  storage?: Storage;
+  pick?: string[];
+}
 export interface IMenu {
   title: string;
   type: string;

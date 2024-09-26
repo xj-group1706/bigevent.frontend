@@ -43,6 +43,7 @@
     "nuxt-icon": "^0.1.7",
     "patch-package": "^8.0.0",
     "pinia": "^2.0.27",
+    "pinia-plugin-persistedstate": "^4.0.2",
     "postinstall-postinstall": "^2.1.0",
     "swiper": "^9.3.1",
     "ts-node": "^10.9.2",
