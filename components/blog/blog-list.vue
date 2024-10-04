@@ -34,7 +34,7 @@
       class="product-pagination border-cls-blog mb-0"
       v-if="bloglist.length > paginate"
     >
-      <div class="theme-paggination-block">
+      <div class="theme-pagination-block">
         <div class="row">
           <div class="col-12">
             <nav aria-label="Page navigation">

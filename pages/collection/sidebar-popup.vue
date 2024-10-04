@@ -205,7 +205,7 @@
                         class="product-pagination mb-0"
                         v-if="filterProduct.length > paginate"
                       >
-                        <div class="theme-paggination-block">
+                        <div class="theme-pagination-block">
                           <div class="row">
                             <div class="col-xl-6 col-md-6 col-sm-12">
                               <nav aria-label="Page navigation">

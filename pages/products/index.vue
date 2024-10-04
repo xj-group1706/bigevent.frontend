@@ -150,105 +150,15 @@
                         >
                           <product :product="product" />
                         </div>
-                        <!-- <div
-                            class="col-grid-box"
-                            :class="{
-                              'col-xl-3 col-md-4 col-6': col4 == true,
-                              'col-md-4 col-6': col3 == true,
-                              'col-6': col2 == true,
-                              'col-xxl-2 col-xl-3 col-md-4 col-6': col6 == true,
-                              'col-12': listview == true,
-                            }"
-                            v-for="(product, index) in filterProduct"
-                            :key="index"
-                            v-show="setPaginate(index)"
-                          >
-                            <div class="product-box">
-                              <ProductBoxProductBox1
-                                @opencartmodel="showCart"
-                                @showCompareModal="showCoampre"
-                                @openquickview="showQuickview"
-                                @alertseconds="alert"
-                                :product="product"
-                                :index="index"
-                              />
-                            </div>
-                          </div> -->
                       </div>
-                      <!-- <div
-                        class="product-pagination mb-0"
-                        v-if="filterProduct.length > paginate"
-                      >
-                        <div class="theme-paggination-block">
-                          <div class="row">
-                            <div class="col-xl-6 col-md-6 col-sm-12">
-                              <nav aria-label="Page navigation">
-                                <ul class="pagination">
-                                  <li
-                                    class="page-item"
-                                    :class="{ disable: current == 1 }"
-                                  >
-                                    <a
-                                      class="page-link"
-                                      href="javascript:void(0)"
-                                      @click="updatePaginate(current - 1)"
-                                    >
-                                      <span aria-hidden="true">
-                                        <i
-                                          class="fa fa-chevron-left"
-                                          aria-hidden="true"
-                                        ></i>
-                                      </span>
-                                    </a>
-                                  </li>
-                                  <li
-                                    class="page-item"
-                                    v-for="(page_index, index) in this.pages"
-                                    :key="index"
-                                    :class="{ active: page_index == current }"
-                                  >
-                                    <a
-                                      class="page-link"
-                                      href="javascrip:void(0)"
-                                      @click.prevent="
-                                        updatePaginate(page_index)
-                                      "
-                                      >{{ page_index }}</a
-                                    >
-                                  </li>
-                                  <li
-                                    class="page-item"
-                                    :class="{
-                                      disable: current == this.paginates,
-                                    }"
-                                  >
-                                    <a
-                                      class="page-link"
-                                      href="javascript:void(0)"
-                                      @click="updatePaginate(current + 1)"
-                                    >
-                                      <span aria-hidden="true">
-                                        <i
-                                          class="fa fa-chevron-right"
-                                          aria-hidden="true"
-                                        ></i>
-                                      </span>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </nav>
-                            </div>
-                            <div class="col-xl-6 col-md-6 col-sm-12">
-                              <div class="product-search-count-bottom">
-                                <h5>
-                                  Showing Products 1-12 of
-                                  {{ filterProduct.length }} Result
-                                </h5>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div> -->
+                      <pagination
+                        :data="{
+                          page: 2,
+                          pageSize: 12,
+                          pageCount: 4,
+                          total: 40,
+                        }"
+                      />
                     </div>
                   </div>
                 </div>
@@ -268,6 +178,7 @@ import { useProductsStore } from "../../store/newProducts";
 import { useHomeStore } from "../../store/home";
 
 import Product from "../../components/card/product.vue";
+import Pagination from "../../components/ui/pagination.vue";
 
 import type { IProductFilter } from "../../types/index";
 

@@ -5178,7 +5178,7 @@
         }
       }
 
-      .theme-paggination-block {
+      .theme-pagination-block {
         nav {
           border-right: 1px solid #ddd;
           border-bottom: 1px solid #ddd;
@@ -5340,7 +5340,7 @@
 
     .collection-product-wrapper {
       .product-pagination {
-        .theme-paggination-block {
+        .theme-pagination-block {
           nav {
             border-right: none;
             border-left: 1px solid $round-border;
@@ -5500,7 +5500,7 @@
   .dark {
     .collection-product-wrapper {
       .product-pagination {
-        .theme-paggination-block {
+        .theme-pagination-block {
           nav {
             border-color: $dark-border;
           }
