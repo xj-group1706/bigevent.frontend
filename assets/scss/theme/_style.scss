@@ -980,7 +980,7 @@ header {
       }
 
       li {
-        .lable-nav {
+        .label-nav {
           top: 0;
         }
       }
@@ -1128,7 +1128,7 @@ header {
       }
 
       li {
-        .lable-nav {
+        .label-nav {
           top: 0;
         }
       }
@@ -1428,7 +1428,7 @@ header {
         }
 
         li {
-          .lable-nav {
+          .label-nav {
             top: 5px;
           }
         }
@@ -1480,7 +1480,7 @@ header {
 
     .pixelstrap {
       li {
-        .lable-nav {
+        .label-nav {
           background: var(--theme-default);
           background-image: linear-gradient(
             to right,
@@ -1570,7 +1570,7 @@ header {
             }
           }
 
-          .lable-nav {
+          .label-nav {
             top: -12px;
             background-color: $white-dark;
 
@@ -1578,7 +1578,7 @@ header {
               border-top: 5px solid $color-red;
             }
 
-            &.grey-lable {
+            &.grey-label {
               background-color: #4d6171;
 
               &:before {
@@ -3977,7 +3977,7 @@ header {
       }
     }
 
-    .lable-wrapper {
+    .label-wrapper {
       margin: 0 auto;
       top: 40px;
       position: absolute;
@@ -4093,8 +4093,8 @@ header {
       }
     }
 
-    .lable-block {
-      .lable3 {
+    .label-block {
+      .label3 {
         border-radius: 100%;
         background-color: var(--theme-default);
         text-align: center;
@@ -7290,7 +7290,7 @@ footer {
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.05);
 
     .img-wrapper {
-      .lable-block {
+      .label-block {
         transition: all 0.5s ease;
       }
     }
@@ -7412,7 +7412,7 @@ footer {
           }
         }
 
-        .lable-block {
+        .label-block {
           display: none;
           transition: all 0.5s ease;
         }
@@ -8540,7 +8540,7 @@ footer {
 footer {
   position: relative;
 
-  .footer-lable {
+  .footer-label {
     position: absolute;
     width: 50px;
     height: 50px;
@@ -10155,8 +10155,8 @@ footer {
         }
 
         .img-wrapper {
-          .lable-block {
-            .lable3 {
+          .label-block {
+            .label3 {
               padding: 8px 4px;
               font-size: 12px;
             }
@@ -12641,7 +12641,7 @@ footer {
   }
 }
 
-.compare-lable {
+.compare-label {
   position: absolute;
   font-size: 13px;
   font-weight: 700;
@@ -14211,7 +14211,7 @@ body.rtl {
     }
 
     .img-block {
-      .lable-wrapper {
+      .label-wrapper {
         .lable1 {
           border-bottom-right-radius: 25px;
           border-top-right-radius: 25px;
@@ -14229,8 +14229,8 @@ body.rtl {
     }
 
     .img-wrapper {
-      .lable-block {
-        .lable3 {
+      .label-block {
+        .label3 {
           left: unset;
           right: 7px;
         }

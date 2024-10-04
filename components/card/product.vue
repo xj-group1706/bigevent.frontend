@@ -1,7 +1,7 @@
 <template>
-  <div class="img-wrapper">
-    <div class="lable-block">
-      <span class="lable3" v-if="isNew">
+  <div class="img-wrapper w-[296.5px]">
+    <div class="label-block">
+      <span class="label3" v-if="isNew">
         {{ $t("new") }}
       </span>
       <span class="lable4" v-if="isSale">{{ $t("onSale") }}</span>

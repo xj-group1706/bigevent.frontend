@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="img-block">
-      <div class="lable-wrapper">
+      <div class="label-wrapper">
         <span class="lable1" v-if="product.new">new</span>
         <span class="lable2" v-if="product.sale">on sale</span>
       </div>

@@ -113,111 +113,44 @@
                         </a>
                       </li>
                     </ul>
-                    <!-- <div class="collection-product-wrapper">
-                      <div class="product-top-filter">
-                        <div class="row">
-                          <div class="col-12">
-                            <div class="product-filter-content">
-                              <div class="search-count">
-                                <h5>
-                                  Showing Products 1-12 of
-                                  {{ filterProduct.length }} Result
-                                </h5>
-                              </div>
-                              <div class="collection-view">
-                                <ul>
-                                  <li @click="gridView()">
-                                    <i class="fa fa-th grid-layout-view"></i>
-                                  </li>
-                                  <li @click="listView()">
-                                    <i
-                                      class="fa fa-list-ul list-layout-view"
-                                    ></i>
-                                  </li>
-                                </ul>
-                              </div>
-                              <div class="collection-grid-view">
-                                <ul>
-                                  <li>
-                                    <img
-                                      src="/images/icon/2.png"
-                                      @click="grid2()"
-                                      class="product-2-layout-view"
-                                    />
-                                  </li>
-                                  <li>
-                                    <img
-                                      src="/images/icon/3.png"
-                                      @click="grid3()"
-                                      class="product-3-layout-view"
-                                    />
-                                  </li>
-                                  <li>
-                                    <img
-                                      src="/images/icon/4.png"
-                                      @click="grid4()"
-                                      class="product-4-layout-view"
-                                    />
-                                  </li>
-                                  <li>
-                                    <img
-                                      src="/images/icon/6.png"
-                                      @click="grid6()"
-                                      class="product-6-layout-view"
-                                    />
-                                  </li>
-                                </ul>
-                              </div>
-                              <div class="product-page-filter">
-                                <select @change="onChangeSort($event)">
-                                  <option value="all">Sorting Items</option>
-                                  <option value="a-z">
-                                    Alphabetically, A-Z
-                                  </option>
-                                  <option value="z-a">
-                                    Alphabetically, Z-A
-                                  </option>
-                                  <option value="low">
-                                    price, low to high
-                                  </option>
-                                  <option value="high">
-                                    price, high to low
-                                  </option>
-                                </select>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                    <div class="collection-product-wrapper">
                       <div
                         class="product-wrapper-grid"
-                        :class="{ 'list-view': listview == true }"
+                        :class="{ 'list-view': listView === true }"
                       >
-                        <div class="row">
-                          <div class="col-12">
-                            <div
-                              class="text-center section-t-space section-b-space"
-                              v-if="filterProduct.length == 0"
-                            >
-                              <img
-                                src="/images/empty-search.jpg"
-                                class="img-fluid"
-                                alt
-                              />
-                              <h3 class="mt-3">
-                                Sorry! Couldn't find the product you were
-                                looking For!!!
-                              </h3>
-                              <div class="col-12 mt-3">
-                                <nuxt-link
-                                  :to="{ path: '/' }"
-                                  class="btn btn-solid"
-                                  >continue shopping</nuxt-link
-                                >
-                              </div>
-                            </div>
+                        <WidgetsTopFilter />
+                        <div
+                          class="text-center section-t-space section-b-space"
+                          v-if="productsStore.products.length == 0"
+                        >
+                          <div class="flex justify-center items-center">
+                            <img
+                              src="/images/empty-search.jpg"
+                              class="img-fluid"
+                            />
                           </div>
-                          <div
+                          <h3 class="mt-3">
+                            {{
+                              t("sorryCouldNotFindTheProductYouWereLookingFor")
+                            }}
+                          </h3>
+                          <div class="col-12 mt-3">
+                            <nuxt-link
+                              :to="{ path: '/' }"
+                              class="btn btn-solid"
+                            >
+                              {{ t("continueShopping") }}
+                            </nuxt-link>
+                          </div>
+                        </div>
+                        <div
+                          v-for="(product, index) in productsStore.products"
+                          :key="index"
+                          class="product-box"
+                        >
+                          <product :product="product" />
+                        </div>
+                        <!-- <div
                             class="col-grid-box"
                             :class="{
                               'col-xl-3 col-md-4 col-6': col4 == true,
@@ -240,10 +173,9 @@
                                 :index="index"
                               />
                             </div>
-                          </div>
-                        </div>
+                          </div> -->
                       </div>
-                      <div
+                      <!-- <div
                         class="product-pagination mb-0"
                         v-if="filterProduct.length > paginate"
                       >
@@ -316,8 +248,8 @@
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </div> -->
+                      </div> -->
+                    </div>
                   </div>
                 </div>
               </div>
@@ -335,6 +267,8 @@ import { useI18n } from "vue-i18n";
 import { useProductsStore } from "../../store/newProducts";
 import { useHomeStore } from "../../store/home";
 
+import Product from "../../components/card/product.vue";
+
 import type { IProductFilter } from "../../types/index";
 
 const { t } = useI18n();
@@ -350,8 +284,13 @@ const filterParams = ref<IProductFilter>({
   price: 0,
   category: 0,
 });
+const listView = ref(false);
 
 onMounted(() => {
+  productsStore.getProducts({
+    populate:
+      "country.flag, direction, company, colors, product_details, product_details.color, product_details.media",
+  });
   productsStore.getBrands();
   productsStore.getColors();
   productsStore.getSizes();

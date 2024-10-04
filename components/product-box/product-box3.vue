@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="img-wrapper">
-      <div class="lable-block">
-        <span class="lable3" v-if="product.new">new</span>
+      <div class="label-block">
+        <span class="label3" v-if="product.new">new</span>
       </div>
       <div class="front">
         <nuxt-link :to="{ path: '/product/sidebar/' + product.id }">
