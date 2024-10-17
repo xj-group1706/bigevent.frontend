@@ -4,7 +4,7 @@
     <WidgetsBreadcrumbs :title="getDetail.title" />
     <!-- section start -->
     <section>
-      <div class="collection-wrapper productdetail">
+      <div class="collection-wrapper productDetail">
         <div class="container">
           <div class="row">
             <div class="col-lg-6">
@@ -105,10 +105,13 @@
                           </li>
                         </ul>
                       </div>
-                      <h5 class="avalibility" v-if="counter <= getDetail.stock">
+                      <h5
+                        class="availability"
+                        v-if="counter <= getDetail.stock"
+                      >
                         <span>In Stock</span>
                       </h5>
-                      <h5 class="avalibility" v-if="counter > getDetail.stock">
+                      <h5 class="availability" v-if="counter > getDetail.stock">
                         <span>Out of Stock</span>
                       </h5>
                       <h6 class="product-title">quantity</h6>
@@ -314,7 +317,7 @@
                   role="tabpanel"
                   aria-labelledby="top-home-tab"
                 >
-                  <div class="product-tab-discription">
+                  <div class="product-tab-description">
                     <div class="part">
                       <p>
                         The Model is wearing a white blouse from our stylist's

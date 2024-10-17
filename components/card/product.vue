@@ -1,13 +1,13 @@
 <template>
   <div class="img-wrapper w-[296.5px]">
     <div class="label-block">
-      <span class="label3" v-if="isNew">
+      <span class="label3">
         {{ $t("new") }}
       </span>
       <span class="lable4" v-if="isSale">{{ $t("onSale") }}</span>
     </div>
     <div class="front">
-      <nuxt-link :to="localePath({ path: '/product/' + product.id })">
+      <nuxt-link :to="localePath({ path: '/products/' + product.id })">
         <img
           :src="
             imageSrc
@@ -20,7 +20,7 @@
       </nuxt-link>
     </div>
     <div class="back" v-if="selectedDetail.media.length > 1">
-      <nuxt-link :to="{ path: '/product/' + product.id }">
+      <nuxt-link :to="{ path: '/products/' + product.id }">
         <img
           :src="
             imageSrc
@@ -95,7 +95,7 @@
       :active-color="'#ffa200'"
       :inactive-color="'#eaeaea'"
     />
-    <nuxt-link :to="{ path: '/product/sidebar/' + product.id }">
+    <nuxt-link :to="{ path: '/products/' + product.id }">
       <h6>{{ product.name[$i18n.locale] }}</h6>
     </nuxt-link>
     <p>{{ product.description[$i18n.locale] }}</p>
@@ -142,6 +142,8 @@ const emits = defineEmits([
   "alertseconds",
   "showCompareModal",
 ]);
+
+const localePath = useLocalePath();
 
 const basketStore = useBasketStore();
 

@@ -6,7 +6,7 @@
       <div class="collection-wrapper">
         <div class="container">
           <div class="row">
-            <div class="col-lg-9 col-sm-12 productdetail">
+            <div class="col-lg-9 col-sm-12 productDetail">
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-lg-6">
@@ -132,13 +132,13 @@
                           </ul>
                         </div>
                         <h5
-                          class="avalibility"
+                          class="availability"
                           v-if="counter <= getDetail.stock"
                         >
                           <span>In Stock</span>
                         </h5>
                         <h5
-                          class="avalibility"
+                          class="availability"
                           v-if="counter > getDetail.stock"
                         >
                           <span>Out of Stock</span>
@@ -319,7 +319,7 @@
                         role="tabpanel"
                         aria-labelledby="top-home-tab"
                       >
-                        <div class="product-tab-discription">
+                        <div class="product-tab-description">
                           <div class="part">
                             <p>
                               The Model is wearing a white blouse from our

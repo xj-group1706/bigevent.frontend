@@ -17,11 +17,32 @@ export const useProductsStore = defineStore(
   PRODUCT_STORE,
   () => {
     const products = ref<IProduct[]>([]);
+    const product = ref<IProduct>({} as IProduct);
     const brands = ref<IBrand[]>([]);
     const colors = ref<IColor[]>([]);
     const sizes = ref<ISize[]>([]);
     const sizesForMen = ref<ISize[]>([]);
     const sizesForWomen = ref<ISize[]>([]);
+
+    function getProductById(id: string): Promise<IProduct> {
+      return new Promise((resolve, reject) => {
+        useProduct()
+          .getProductById({
+            id: id,
+            payload: {
+              populate:
+                "country.flag, direction, company, colors, product_details, product_details.color, product_details.media",
+            },
+          })
+          .then((res) => {
+            product.value = res.data;
+            resolve(res.data);
+          })
+          .catch((err) => {
+            reject(err);
+          });
+      });
+    }
 
     function getProducts(payload: IReqFilter): Promise<IProduct[]> {
       return new Promise((resolve, reject) => {
@@ -87,7 +108,9 @@ export const useProductsStore = defineStore(
 
     return {
       products,
+      product,
       getProducts,
+      getProductById,
       brands,
       getBrands,
       colors,
@@ -102,7 +125,15 @@ export const useProductsStore = defineStore(
     persist: {
       key: PRODUCT_STORE,
       storage: piniaPluginPersistedstate.sessionStorage(),
-      pick: ["brands", "colors", "sizes", "sizesForMen", "sizesForWomen"],
+      pick: [
+        "products",
+        "product",
+        "brands",
+        "colors",
+        "sizes",
+        "sizesForMen",
+        "sizesForWomen",
+      ],
     } as IPersistStrategy,
   }
 );

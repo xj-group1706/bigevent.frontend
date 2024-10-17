@@ -41,7 +41,7 @@
                   </div>
                   <div class="detail-part">
                     <div class="title-detail">
-                      <h5>discription</h5>
+                      <h5>description</h5>
                     </div>
                     <div class="inner-detail">
                       <p>{{ item.description }}</p>
