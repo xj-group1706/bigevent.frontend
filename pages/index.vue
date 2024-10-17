@@ -38,7 +38,7 @@ import TopCollection from "../components/home/topCollection.vue";
 import { useProductsStore } from "./../store/newProducts";
 import { useHomeStore } from "../store/home";
 import { useProductStore } from "../store/products";
-import { useBlogStore } from "../store/blog.ts";
+import { useBlogStore } from "../store/blog";
 
 import type { IProduct } from "../types/product";
 

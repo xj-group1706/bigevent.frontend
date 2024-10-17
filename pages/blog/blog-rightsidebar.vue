@@ -9,10 +9,6 @@
           <div class="col-xl-9 col-lg-8 col-md-7 order-sec">
             <BlogList />
           </div>
-          <!--Blog List start-->
-          <!--Blog sidebar start-->
-          <BlogSidebar />
-          <!--Blog sidebar start-->
         </div>
       </div>
     </section>
