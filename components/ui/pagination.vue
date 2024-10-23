@@ -47,11 +47,122 @@
                 </a>
               </li>
             </ul>
+            <ul v-else class="pagination">
+              <li
+                class="page-item"
+                :class="{ disable: currentPage === 1 }"
+                @click="previousPage"
+              >
+                <a class="page-link" href="javascript:void(0)">
+                  <span aria-hidden="true">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </li>
+              <li
+                v-if="beginningPages.first > 1"
+                class="page-item"
+                :class="{ active: 1 === currentPage }"
+              >
+                <a
+                  class="page-link"
+                  href="javascript:void(0)"
+                  @click="emits('pageChange', 1)"
+                >
+                  {{ 1 }}
+                </a>
+              </li>
+              <li v-if="beginningPages.first > 2" class="page-item">
+                <a class="page-link" href="javascript:void(0)"> ... </a>
+              </li>
+              <li
+                class="page-item"
+                :class="{ active: beginningPages.first === currentPage }"
+              >
+                <a
+                  class="page-link"
+                  href="javascript:void(0)"
+                  @click="emits('pageChange', beginningPages.first)"
+                >
+                  {{ beginningPages.first }}
+                </a>
+              </li>
+              <li
+                class="page-item"
+                :class="{ active: beginningPages.second === currentPage }"
+              >
+                <a
+                  class="page-link"
+                  href="javascript:void(0)"
+                  @click="emits('pageChange', beginningPages.second)"
+                >
+                  {{ beginningPages.second }}
+                </a>
+              </li>
+              <li
+                class="page-item"
+                :class="{ active: beginningPages.third === currentPage }"
+              >
+                <a
+                  class="page-link"
+                  href="javascript:void(0)"
+                  @click="emits('pageChange', beginningPages.third)"
+                >
+                  {{ beginningPages.third }}
+                </a>
+              </li>
+              <li
+                v-if="beginningPages.third < data.pageCount"
+                class="page-item"
+              >
+                <a class="page-link" href="javascript:void(0)"> ... </a>
+              </li>
+              <li
+                v-if="beginningPages.third < data.pageCount"
+                class="page-item"
+                :class="{ active: data.pageCount === currentPage }"
+              >
+                <a
+                  class="page-link"
+                  href="javascript:void(0)"
+                  @click="emits('pageChange', data.pageCount)"
+                >
+                  {{ data.pageCount }}
+                </a>
+              </li>
+              <li
+                class="page-item"
+                :class="{
+                  disable: currentPage === data.pageCount,
+                }"
+              >
+                <a
+                  class="page-link"
+                  href="javascript:void(0)"
+                  @click="nextPage"
+                >
+                  <span aria-hidden="true">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
           </nav>
         </div>
         <div class="col-xl-6 col-md-6 col-sm-12">
           <div class="product-search-count-bottom">
-            <h5>Showing Products 1-12 of 24 Result</h5>
+            <h5>
+              {{
+                $t("showingProductsResult", {
+                  start: (data.page - 1) * data.pageSize + 1,
+                  finish:
+                    data.page * data.pageSize > data.total
+                      ? data.total
+                      : data.page * data.pageSize,
+                  total: data.total,
+                })
+              }}
+            </h5>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
-import type { IReqFilter } from "../../types/index";
+import { IBlog } from "../../types/blog";
+import type { IReqFilter, IResponse } from "../../types/index";
 
 export const useBlog = () => {
   const { $api } = useNuxtApp();
@@ -11,8 +12,8 @@ export const useBlog = () => {
     return res;
   };
 
-  const getBlogs = async (payload: IReqFilter) => {
-    const res = await $api("/blogs", { params: payload });
+  const getBlogs = async (payload: IReqFilter): Promise<IResponse<IBlog[]>> => {
+    const res = await $api("/blogs", { params: payload, method: "GET" });
     return res;
   };
 

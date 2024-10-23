@@ -4,12 +4,18 @@ import { defineStore } from "pinia";
 import { useBlog } from "./../composables/api/blog";
 
 import type { IBlog } from "./../types/blog";
-import type { IReqFilter } from "../types/index";
+import type { IPagination, IReqFilter } from "../types/index";
 
 const BLOG_STORE = "blogStore";
 
 export const useBlogStore = defineStore(BLOG_STORE, () => {
   const blogs = ref<IBlog[]>([]);
+  const pagination = ref<IPagination>({
+    page: 1,
+    pageSize: 2,
+    pageCount: 0,
+    total: 0,
+  });
   const blog = ref<IBlog>();
 
   function getBlogById(id: string | number) {
@@ -31,6 +37,7 @@ export const useBlogStore = defineStore(BLOG_STORE, () => {
       getBlogs(payload)
         .then((res) => {
           blogs.value = res.data;
+          pagination.value = res.meta.pagination;
           resolve(res);
         })
         .catch((err) => {
@@ -39,5 +46,5 @@ export const useBlogStore = defineStore(BLOG_STORE, () => {
     });
   }
 
-  return { blog, blogs, getBlogById, getBlogs };
+  return { blog, blogs, pagination, getBlogById, getBlogs };
 });

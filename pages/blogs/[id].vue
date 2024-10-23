@@ -13,6 +13,10 @@
             <h3>
               {{ blogStore.blog?.name[locale] }}
             </h3>
+            <div>
+              {{ blogStore.blog?.description[locale] }}
+            </div>
+            <div class="border-t-[0.5px] border-gray-300 my-4"></div>
             <div v-html="blogStore.blog?.content[locale]"></div>
           </div>
         </div>

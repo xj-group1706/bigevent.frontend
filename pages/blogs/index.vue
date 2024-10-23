@@ -35,12 +35,19 @@
             </div>
           </div>
         </div>
+        <pagination
+          v-if="blogStore.pagination.pageCount > 1"
+          :data="blogStore.pagination"
+          @pageChange="onPageChange"
+        />
       </div>
     </section>
   </div>
 </template>
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
+
+import pagination from "../../components/ui/pagination.vue";
 
 import { useBlogStore } from "../../store/blog";
 
@@ -54,6 +61,13 @@ const blogStore = useBlogStore();
 onMounted(() => {
   blogStore.getBlogs({
     populate: "*",
+    sort: ["createdAt:desc"],
+    "pagination[page]": 1,
+    "pagination[pageSize]": 1,
   });
 });
+
+function onPageChange(page: number) {
+  console.log("ChangedPage", page);
+}
 </script>

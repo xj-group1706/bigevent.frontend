@@ -44,7 +44,7 @@ export interface IMenu {
 export type LanguageCode = "uz" | "ru" | "en";
 
 export interface IResponse<T> {
-  data: T | T[];
+  data: T;
   meta: IMeta;
 }
 
@@ -59,10 +59,9 @@ export interface IMeta {
 
 export interface IReqFilter {
   populate: string;
-  pagination?: {
-    page: number;
-    pageSize: number;
-  };
+  sort?: Array<string>;
+  "pagination[page]"?: number;
+  "pagination[pageSize]"?: number;
 }
 
 export interface IFashionBanner {
