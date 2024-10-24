@@ -114,41 +114,58 @@
                       </li>
                     </ul>
                     <div class="collection-product-wrapper">
+                      <WidgetsTopFilter />
                       <div
                         class="product-wrapper-grid"
-                        :class="{ 'list-view': listView === true }"
+                        :class="{ 'list-view': typeView.listView === true }"
                       >
-                        <WidgetsTopFilter />
-                        <div
-                          class="text-center section-t-space section-b-space"
-                          v-if="productsStore.products.length == 0"
-                        >
-                          <div class="flex justify-center items-center">
-                            <img
-                              src="/images/empty-search.jpg"
-                              class="img-fluid"
-                            />
-                          </div>
-                          <h3 class="mt-3">
-                            {{
-                              t("sorryCouldNotFindTheProductYouWereLookingFor")
-                            }}
-                          </h3>
-                          <div class="col-12 mt-3">
-                            <nuxt-link
-                              :to="{ path: '/' }"
-                              class="btn btn-solid"
+                        <div class="grid grid-cols-12 gap-4">
+                          <div class="col-span-12">
+                            <div
+                              class="text-center section-t-space section-b-space"
+                              v-if="productsStore.products.length == 0"
                             >
-                              {{ t("continueShopping") }}
-                            </nuxt-link>
+                              <div class="flex justify-center items-center">
+                                <img
+                                  src="/images/empty-search.jpg"
+                                  class="img-fluid"
+                                />
+                              </div>
+                              <h3 class="mt-3">
+                                {{
+                                  t(
+                                    "sorryCouldNotFindTheProductYouWereLookingFor"
+                                  )
+                                }}
+                              </h3>
+                              <div class="col-12 mt-3">
+                                <nuxt-link
+                                  :to="{ path: '/' }"
+                                  class="btn btn-solid"
+                                >
+                                  {{ t("continueShopping") }}
+                                </nuxt-link>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                        <div
-                          v-for="(product, index) in productsStore.products"
-                          :key="index"
-                          class="product-box"
-                        >
-                          <product :product="product" />
+                          <div
+                            v-for="(product, index) in productsStore.products"
+                            :key="index"
+                            :class="{
+                              'xl:col-span-3 md:col-span-4 col-span-6':
+                                typeView.col4 === true,
+                              'md:col-span-4 col-span-6':
+                                typeView.col3 === true,
+                              'col-span-6': typeView.col2 === true,
+                              '2xl:col-span-2 xl:col-span-3 md:col-span-4 col-span-6':
+                                typeView.col6 === true,
+                              'col-span-12': typeView.listView === true,
+                            }"
+                          >
+                            <div class="product-box">
+                              <product :product="product" />
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <pagination
@@ -194,6 +211,13 @@ const filterParams = ref<IProductFilter>({
   sizes: [],
   price: 0,
   category: 0,
+});
+const typeView = ref({
+  col2: false,
+  col3: false,
+  col4: false,
+  col6: true,
+  listView: false,
 });
 const listView = ref(false);
 

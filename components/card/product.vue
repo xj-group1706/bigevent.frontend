@@ -1,5 +1,5 @@
 <template>
-  <div class="img-wrapper w-[296.5px]">
+  <div class="img-wrapper">
     <div class="label-block">
       <span class="label3">
         {{ $t("new") }}
