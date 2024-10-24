@@ -12,7 +12,7 @@ export const useBlogStore = defineStore(BLOG_STORE, () => {
   const blogs = ref<IBlog[]>([]);
   const pagination = ref<IPagination>({
     page: 1,
-    pageSize: 2,
+    pageSize: 10,
     pageCount: 0,
     total: 0,
   });

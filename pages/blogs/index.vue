@@ -52,6 +52,14 @@ import pagination from "../../components/ui/pagination.vue";
 import { useBlogStore } from "../../store/blog";
 
 import { getImageUrl, getDateTime } from "../../utils/tools";
+import { useRouter, useRoute } from "vue-router";
+
+interface IPayload {
+  page: number;
+}
+
+const router = useRouter();
+const route = useRoute();
 
 const localePath = useLocalePath();
 const { locale } = useI18n();
@@ -59,15 +67,33 @@ const { locale } = useI18n();
 const blogStore = useBlogStore();
 
 onMounted(() => {
+  const payload: IPayload = {
+    page: blogStore.pagination.page,
+  };
+
+  if (route.query.page && route.query.pageSize) {
+    payload.page = Number(route.query.page);
+  }
+  fetchBlogs(payload);
+});
+
+async function fetchBlogs(payload: IPayload) {
+  await router.replace({
+    query: {
+      page: payload.page,
+    },
+  });
   blogStore.getBlogs({
     populate: "*",
     sort: ["createdAt:desc"],
-    "pagination[page]": 1,
-    "pagination[pageSize]": 1,
+    "pagination[page]": payload.page,
+    "pagination[pageSize]": blogStore.pagination.pageSize,
   });
-});
+}
 
 function onPageChange(page: number) {
-  console.log("ChangedPage", page);
+  fetchBlogs({
+    page: page,
+  });
 }
 </script>

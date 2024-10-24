@@ -7,7 +7,7 @@
             <ul v-if="data.pageCount <= 5" class="pagination">
               <li
                 class="page-item"
-                :class="{ disable: currentPage === 1 }"
+                :class="{ disable: data.page === 1 }"
                 @click="previousPage"
               >
                 <a class="page-link" href="javascript:void(0)">
@@ -20,7 +20,7 @@
                 class="page-item"
                 v-for="(p, index) in data.pageCount"
                 :key="index"
-                :class="{ active: p == currentPage }"
+                :class="{ active: p == data.page }"
               >
                 <a
                   class="page-link"
@@ -33,7 +33,7 @@
               <li
                 class="page-item"
                 :class="{
-                  disable: currentPage === data.pageCount,
+                  disable: data.page === data.pageCount,
                 }"
               >
                 <a
@@ -50,7 +50,7 @@
             <ul v-else class="pagination">
               <li
                 class="page-item"
-                :class="{ disable: currentPage === 1 }"
+                :class="{ disable: data.page === 1 }"
                 @click="previousPage"
               >
                 <a class="page-link" href="javascript:void(0)">
@@ -62,7 +62,7 @@
               <li
                 v-if="beginningPages.first > 1"
                 class="page-item"
-                :class="{ active: 1 === currentPage }"
+                :class="{ active: 1 === data.page }"
               >
                 <a
                   class="page-link"
@@ -77,7 +77,7 @@
               </li>
               <li
                 class="page-item"
-                :class="{ active: beginningPages.first === currentPage }"
+                :class="{ active: beginningPages.first === data.page }"
               >
                 <a
                   class="page-link"
@@ -89,7 +89,7 @@
               </li>
               <li
                 class="page-item"
-                :class="{ active: beginningPages.second === currentPage }"
+                :class="{ active: beginningPages.second === data.page }"
               >
                 <a
                   class="page-link"
@@ -101,7 +101,7 @@
               </li>
               <li
                 class="page-item"
-                :class="{ active: beginningPages.third === currentPage }"
+                :class="{ active: beginningPages.third === data.page }"
               >
                 <a
                   class="page-link"
@@ -120,7 +120,7 @@
               <li
                 v-if="beginningPages.third < data.pageCount"
                 class="page-item"
-                :class="{ active: data.pageCount === currentPage }"
+                :class="{ active: data.pageCount === data.page }"
               >
                 <a
                   class="page-link"
@@ -133,7 +133,7 @@
               <li
                 class="page-item"
                 :class="{
-                  disable: currentPage === data.pageCount,
+                  disable: data.page === data.pageCount,
                 }"
               >
                 <a
@@ -180,7 +180,6 @@ const props = defineProps<{
 
 const emits = defineEmits(["sizeChange", "pageChange"]);
 
-const currentPage = ref(props.data.page);
 const beginningPages = ref({
   first: 2,
   second: 3,
