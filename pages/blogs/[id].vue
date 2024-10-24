@@ -2,7 +2,7 @@
   <div v-if="blogStore.blog">
     <Breadcrumb title="Blog" />
     <section class="blog-detail-page section-b-space ratio2_3">
-      <div class="container">
+      <div class="container mx-auto px-10">
         <div class="row">
           <div class="col-sm-12 blog-detail">
             <img
