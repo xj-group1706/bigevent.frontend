@@ -71,7 +71,7 @@ onMounted(() => {
     page: blogStore.pagination.page,
   };
 
-  if (route.query.page && route.query.pageSize) {
+  if (route.query.page) {
     payload.page = Number(route.query.page);
   }
   fetchBlogs(payload);

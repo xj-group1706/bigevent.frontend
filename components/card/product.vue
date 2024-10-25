@@ -1,126 +1,130 @@
 <template>
-  <div class="img-wrapper">
-    <div class="label-block">
-      <span class="label3">
-        {{ $t("new") }}
-      </span>
-      <span class="lable4" v-if="isSale">{{ $t("onSale") }}</span>
-    </div>
-    <div class="front">
-      <nuxt-link :to="localePath({ path: '/products/' + product.id })">
-        <img
-          :src="
-            imageSrc
-              ? getImageUrl(imageSrc.url)
-              : getImageUrl(selectedDetail.media[0].url)
-          "
-          class="img-fluid bg-img media"
-          :alt="imageSrc ? imageSrc.name : selectedDetail.media[0].name"
-        />
-      </nuxt-link>
-    </div>
-    <div class="back" v-if="selectedDetail.media.length > 1">
-      <nuxt-link :to="{ path: '/products/' + product.id }">
-        <img
-          :src="
-            imageSrc
-              ? getImageUrl(imageSrc.url)
-              : getImageUrl(selectedDetail.media[1].url)
-          "
-          :alt="imageSrc ? imageSrc.name : selectedDetail.media[1].name"
-          class="img-fluid m-auto media"
-        />
-      </nuxt-link>
-    </div>
-    <ul class="product-thumb-list">
-      <li
-        class="grid_thumb_img"
-        :class="{ active: imageSrc && imageSrc.id === image.id }"
-        v-for="(image, index) in selectedDetail.media"
-        :key="index"
-        @click="productVariantChange(image)"
-      >
-        <a href="javascript:void(0);">
-          <img :src="getImageUrl(image.formats.small.url)" />
+  <div ref="outerDivRef" class="product-box">
+    <div v-if="selectedDetail.id" class="img-wrapper">
+      <div class="label-block">
+        <span class="label3">
+          {{ $t("new") }}
+        </span>
+        <span class="lable4" v-if="isSale">{{ $t("onSale") }}</span>
+      </div>
+      <div class="front">
+        <nuxt-link :to="localePath({ path: '/products/' + product.id })">
+          <img
+            :src="
+              imageSrc
+                ? getImageUrl(imageSrc.url)
+                : getImageUrl(selectedDetail.media[0].url)
+            "
+            class="img-fluid bg-img media"
+            :alt="imageSrc ? imageSrc.name : selectedDetail.media[0].name"
+          />
+        </nuxt-link>
+      </div>
+      <div class="back" v-if="selectedDetail.media.length > 1">
+        <nuxt-link :to="{ path: '/products/' + product.id }">
+          <img
+            :src="
+              imageSrc
+                ? getImageUrl(imageSrc.url)
+                : getImageUrl(selectedDetail.media[1].url)
+            "
+            :alt="imageSrc ? imageSrc.name : selectedDetail.media[1].name"
+            class="img-fluid m-auto media"
+          />
+        </nuxt-link>
+      </div>
+      <ul class="product-thumb-list">
+        <li
+          class="grid_thumb_img"
+          :class="{ active: imageSrc && imageSrc.id === image.id }"
+          v-for="(image, index) in selectedDetail.media"
+          :key="index"
+          @click="productVariantChange(image)"
+        >
+          <a href="javascript:void(0);">
+            <img :src="getImageUrl(image.formats.small.url)" />
+          </a>
+        </li>
+      </ul>
+      <div class="cart-info cart-wrap">
+        <button
+          data-toggle="modal"
+          data-target="#modal-cart"
+          title="Add to cart"
+          @click="addToBasket(selectedDetail)"
+          variant="primary"
+        >
+          <i class="ti-shopping-cart"></i>
+        </button>
+        <a href="javascript:void(0)" title="Wishlist">
+          <i
+            class="ti-heart"
+            aria-hidden="true"
+            @click="addToWishlist(product)"
+          ></i>
         </a>
-      </li>
-    </ul>
-    <div class="cart-info cart-wrap">
-      <button
-        data-toggle="modal"
-        data-target="#modal-cart"
-        title="Add to cart"
-        @click="addToBasket(selectedDetail)"
-        variant="primary"
-      >
-        <i class="ti-shopping-cart"></i>
-      </button>
-      <a href="javascript:void(0)" title="Wishlist">
-        <i
-          class="ti-heart"
-          aria-hidden="true"
-          @click="addToWishlist(product)"
-        ></i>
-      </a>
-      <a
-        href="javascript:void(0)"
-        title="Quick View"
-        @click="showQuickview(product)"
-        variant="primary"
-      >
-        <i class="ti-search" aria-hidden="true"></i>
-      </a>
-      <a
-        href="javascript:void(0)"
-        title="Comapre"
-        @click.prevent="addToCompare(product)"
-        variant="primary"
-      >
-        <i class="ti-reload" aria-hidden="true"></i>
-      </a>
-    </div>
-  </div>
-  <div class="product-detail">
-    <StarRating
-      :rating="product.rate"
-      :increment="0.01"
-      :read-only="true"
-      :star-size="15"
-      :rounded-corners="true"
-      :show-rating="false"
-      :star-points="[
-        23, 2, 14, 17, 0, 19, 10, 34, 7, 50, 23, 43, 38, 50, 36, 34, 46, 19, 31,
-        17,
-      ]"
-      :active-color="'#ffa200'"
-      :inactive-color="'#eaeaea'"
-    />
-    <nuxt-link :to="{ path: '/products/' + product.id }">
-      <h6>{{ product.name[$i18n.locale] }}</h6>
-    </nuxt-link>
-    <p>{{ product.description[$i18n.locale] }}</p>
-    <h4 v-if="selectedDetail.sale">
-      {{ selectedDetail.price }}
-
-      <del>{{ selectedDetail.price }}</del>
-    </h4>
-    <h4 v-else>
-      {{ selectedDetail.price }}
-    </h4>
-    <ul class="color-variant" v-if="product.product_details.length > 0">
-      <li v-for="(detail, ind) in product.product_details" :key="ind">
         <a
-          class="border border-gray-700"
-          @click="getProductDetailByColor(detail.color)"
-          v-bind:style="{ 'background-color': `#${detail.color.code}` }"
-        ></a>
-      </li>
-    </ul>
+          href="javascript:void(0)"
+          title="Quick View"
+          @click="showQuickview(product)"
+          variant="primary"
+        >
+          <i class="ti-search" aria-hidden="true"></i>
+        </a>
+        <a
+          href="javascript:void(0)"
+          title="Comapre"
+          @click.prevent="addToCompare(product)"
+          variant="primary"
+        >
+          <i class="ti-reload" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+    <div class="product-detail">
+      <StarRating
+        :rating="product.rate"
+        :increment="0.01"
+        :read-only="true"
+        :star-size="15"
+        :rounded-corners="true"
+        :show-rating="false"
+        :star-points="[
+          23, 2, 14, 17, 0, 19, 10, 34, 7, 50, 23, 43, 38, 50, 36, 34, 46, 19,
+          31, 17,
+        ]"
+        :active-color="'#ffa200'"
+        :inactive-color="'#eaeaea'"
+      />
+      <nuxt-link :to="{ path: '/products/' + product.id }">
+        <h6 :class="`w-[${divWidth - 10}px] truncate`">
+          {{ product.name[$i18n.locale] }}
+        </h6>
+      </nuxt-link>
+      <p>{{ product.description[$i18n.locale] }}</p>
+      <h4 v-if="selectedDetail.sale">
+        {{ selectedDetail.price }}
+
+        <del>{{ selectedDetail.price }}</del>
+      </h4>
+      <h4 v-else>
+        {{ selectedDetail.price }}
+      </h4>
+      <ul class="color-variant" v-if="product.product_details.length > 0">
+        <li v-for="(detail, ind) in product.product_details" :key="ind">
+          <a
+            class="border border-gray-700"
+            @click="getProductDetailByColor(detail.color)"
+            v-bind:style="{ 'background-color': `#${detail.color.code}` }"
+          ></a>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import { getImageUrl } from "../../utils/tools";
 
 import { useBasketStore } from "../../store/basket";
@@ -147,7 +151,8 @@ const localePath = useLocalePath();
 
 const basketStore = useBasketStore();
 
-const selectedDetail = ref<IProductDetail>(props.product.product_details[0]);
+// const selectedDetail = ref<IProductDetail>(props.product.product_details[0]);
+const selectedDetail = ref<IProductDetail>({} as IProductDetail);
 const imageSrc = ref<IMedia>();
 const quickviewProduct = ref({});
 const compareProduct = ref({});
@@ -157,17 +162,29 @@ const showCompareModal = ref(false);
 const cartval = ref(false);
 const dismissSecs = ref(5);
 const dismissCountDown = ref(0);
+const divWidth = ref(0);
+const outerDivRef = ref<HTMLDivElement | null>(null);
 
-const isNew = computed(() => {
-  return true;
-  //   return (
-  //     props.product.createdAt.getTime() >
-  //     new Date().getTime() - 1000 * 60 * 60 * 24 * 30
-  //   );
+onMounted(() => {
+  if (outerDivRef.value) {
+    divWidth.value = outerDivRef.value.offsetWidth;
+    console.log("DivWidth", divWidth.value);
+  }
 });
+
 const isSale = computed(() => {
   return props.product.product_details.find((detail) => detail.sale > 0);
 });
+
+watch(
+  () => props.product,
+  () => {
+    selectedDetail.value = props.product.product_details[0];
+  },
+  {
+    deep: true,
+  }
+);
 
 function getProductDetailByColor(color: IColor) {
   selectedDetail.value =

@@ -1,9 +1,13 @@
-import type { IReqFilter } from "../../types/index";
+import type { IBrand } from "../../types/brand";
+import type { IReqFilter, IResponse } from "../../types/index";
+import type { IProduct } from "../../types/product";
 
 export const useProduct = () => {
   const { $api } = useNuxtApp();
 
-  const getProducts = async (payload: IReqFilter) => {
+  const getProducts = async (
+    payload: IReqFilter
+  ): Promise<IResponse<IProduct[]>> => {
     const res = await $api(`/products`, { params: payload });
     return res;
   };
@@ -15,7 +19,9 @@ export const useProduct = () => {
     return await $api(`/products/${payload.id}`, { params: payload.payload });
   };
 
-  const getBrands = async (payload: IReqFilter) => {
+  const getBrands = async (
+    payload: IReqFilter
+  ): Promise<IResponse<IBrand[]>> => {
     const res = await $api("/brands", { params: payload });
     return res;
   };

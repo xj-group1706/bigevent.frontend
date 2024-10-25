@@ -4448,13 +4448,13 @@ fieldset:disabled .btn {
   background-color: var(--bs-pagination-hover-bg);
   border-color: var(--bs-pagination-hover-border-color);
 }
-.page-link:focus {
+/* .page-link:focus {
   z-index: 3;
   color: var(--bs-pagination-focus-color);
   background-color: var(--bs-pagination-focus-bg);
   outline: 0;
   box-shadow: var(--bs-pagination-focus-box-shadow);
-}
+} */
 .active > .page-link,
 .page-link.active {
   z-index: 3;

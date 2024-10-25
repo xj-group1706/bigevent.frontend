@@ -10,7 +10,7 @@
                 :class="{ disable: data.page === 1 }"
                 @click="previousPage"
               >
-                <a class="page-link" href="javascript:void(0)">
+                <a class="page-link cursor-pointer">
                   <span aria-hidden="true">
                     <i class="fa fa-chevron-left" aria-hidden="true"></i>
                   </span>
@@ -23,8 +23,7 @@
                 :class="{ active: p == data.page }"
               >
                 <a
-                  class="page-link"
-                  href="javascript:void(0)"
+                  class="page-link cursor-pointer"
                   @click="emits('pageChange', p)"
                 >
                   {{ p }}
@@ -36,11 +35,7 @@
                   disable: data.page === data.pageCount,
                 }"
               >
-                <a
-                  class="page-link"
-                  href="javascript:void(0)"
-                  @click="nextPage"
-                >
+                <a class="page-link cursor-pointer" @click="nextPage">
                   <span aria-hidden="true">
                     <i class="fa fa-chevron-right" aria-hidden="true"></i>
                   </span>
@@ -53,7 +48,7 @@
                 :class="{ disable: data.page === 1 }"
                 @click="previousPage"
               >
-                <a class="page-link" href="javascript:void(0)">
+                <a class="page-link cursor-pointer">
                   <span aria-hidden="true">
                     <i class="fa fa-chevron-left" aria-hidden="true"></i>
                   </span>
@@ -64,25 +59,20 @@
                 class="page-item"
                 :class="{ active: 1 === data.page }"
               >
-                <a
-                  class="page-link"
-                  href="javascript:void(0)"
-                  @click="emits('pageChange', 1)"
-                >
+                <a class="page-link cursor-pointer" @click="changePage(1)">
                   {{ 1 }}
                 </a>
               </li>
               <li v-if="beginningPages.first > 2" class="page-item">
-                <a class="page-link" href="javascript:void(0)"> ... </a>
+                <a class="page-link cursor-pointer"> ... </a>
               </li>
               <li
                 class="page-item"
                 :class="{ active: beginningPages.first === data.page }"
               >
                 <a
-                  class="page-link"
-                  href="javascript:void(0)"
-                  @click="emits('pageChange', beginningPages.first)"
+                  class="page-link cursor-pointer"
+                  @click="changePage(beginningPages.first)"
                 >
                   {{ beginningPages.first }}
                 </a>
@@ -92,9 +82,8 @@
                 :class="{ active: beginningPages.second === data.page }"
               >
                 <a
-                  class="page-link"
-                  href="javascript:void(0)"
-                  @click="emits('pageChange', beginningPages.second)"
+                  class="page-link cursor-pointer"
+                  @click="changePage(beginningPages.second)"
                 >
                   {{ beginningPages.second }}
                 </a>
@@ -104,9 +93,8 @@
                 :class="{ active: beginningPages.third === data.page }"
               >
                 <a
-                  class="page-link"
-                  href="javascript:void(0)"
-                  @click="emits('pageChange', beginningPages.third)"
+                  class="page-link cursor-pointer"
+                  @click="changePage(beginningPages.third)"
                 >
                   {{ beginningPages.third }}
                 </a>
@@ -115,7 +103,7 @@
                 v-if="beginningPages.third < data.pageCount"
                 class="page-item"
               >
-                <a class="page-link" href="javascript:void(0)"> ... </a>
+                <a class="page-link cursor-pointer"> ... </a>
               </li>
               <li
                 v-if="beginningPages.third < data.pageCount"
@@ -123,9 +111,8 @@
                 :class="{ active: data.pageCount === data.page }"
               >
                 <a
-                  class="page-link"
-                  href="javascript:void(0)"
-                  @click="emits('pageChange', data.pageCount)"
+                  class="page-link cursor-pointer"
+                  @click="changePage(data.pageCount)"
                 >
                   {{ data.pageCount }}
                 </a>
@@ -136,11 +123,7 @@
                   disable: data.page === data.pageCount,
                 }"
               >
-                <a
-                  class="page-link"
-                  href="javascript:void(0)"
-                  @click="nextPage"
-                >
+                <a class="page-link cursor-pointer" @click="nextPage">
                   <span aria-hidden="true">
                     <i class="fa fa-chevron-right" aria-hidden="true"></i>
                   </span>
@@ -170,7 +153,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 import type { IPagination } from "../../types/index";
 
@@ -184,6 +167,26 @@ const beginningPages = ref({
   first: 2,
   second: 3,
   third: 4,
+});
+
+onMounted(() => {
+  if (props.data.pageCount > 5 && props.data.page > 3) {
+    if (props.data.page < props.data.pageCount) {
+      beginningPages.value = {
+        first: props.data.page - 1,
+        second: props.data.page,
+        third: props.data.page + 1,
+      };
+    }
+    if (props.data.page === props.data.pageCount) {
+      beginningPages.value = {
+        first: props.data.page - 2,
+        second: props.data.page - 1,
+        third: props.data.page,
+      };
+    }
+  }
+  console.log("Pagination", props.data);
 });
 
 function changePage(page: number) {
@@ -200,6 +203,7 @@ function changePage(page: number) {
     beginningPages.value.second = page;
     beginningPages.value.third = page + 1;
   }
+  console.log("onChange", beginningPages.value, page);
   emits("pageChange", page);
 }
 

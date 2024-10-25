@@ -6,7 +6,11 @@ import { useProduct } from "./../composables/api/product";
 import { GENDER } from "../utils/constants";
 
 import type { IProduct } from "./../types/product";
-import type { IPersistStrategy, IReqFilter } from "./../types/index";
+import type {
+  IPagination,
+  IPersistStrategy,
+  IReqFilter,
+} from "./../types/index";
 import type { IBrand } from "./../types/brand";
 import type { IColor } from "../types/color";
 import type { ISize } from "../types/size";
@@ -18,6 +22,12 @@ export const useProductsStore = defineStore(
   () => {
     const products = ref<IProduct[]>([]);
     const product = ref<IProduct>({} as IProduct);
+    const pagination = ref<IPagination>({
+      page: 1,
+      pageSize: 1,
+      pageCount: 0,
+      total: 0,
+    });
     const brands = ref<IBrand[]>([]);
     const colors = ref<IColor[]>([]);
     const sizes = ref<ISize[]>([]);
@@ -50,6 +60,7 @@ export const useProductsStore = defineStore(
           .getProducts(payload)
           .then((res) => {
             products.value = res.data;
+            pagination.value = res.meta.pagination;
             resolve(res.data);
           })
           .catch((err) => {
@@ -107,6 +118,7 @@ export const useProductsStore = defineStore(
     }
 
     return {
+      pagination,
       products,
       product,
       getProducts,

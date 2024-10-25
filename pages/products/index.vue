@@ -162,19 +162,14 @@
                               'col-span-12': typeView.listView === true,
                             }"
                           >
-                            <div class="product-box">
-                              <product :product="product" />
-                            </div>
+                            <product :product="product" />
                           </div>
                         </div>
                       </div>
                       <pagination
-                        :data="{
-                          page: 2,
-                          pageSize: 12,
-                          pageCount: 4,
-                          total: 40,
-                        }"
+                        v-if="productsStore.pagination.pageCount > 1"
+                        :data="productsStore.pagination"
+                        @pageChange="onPageChange"
                       />
                     </div>
                   </div>
@@ -198,12 +193,19 @@ import Product from "../../components/card/product.vue";
 import Pagination from "../../components/ui/pagination.vue";
 
 import type { IProductFilter } from "../../types/index";
+import { useRoute, useRouter } from "vue-router";
 
+const router = useRouter();
+const route = useRoute();
 const { t } = useI18n();
+const { locale } = useI18n();
+
 const productsStore = useProductsStore();
 const homeStore = useHomeStore();
 
-const { locale } = useI18n();
+interface IPayload {
+  page: number;
+}
 
 const filterParams = ref<IProductFilter>({
   brands: [],
@@ -215,17 +217,20 @@ const filterParams = ref<IProductFilter>({
 const typeView = ref({
   col2: false,
   col3: false,
-  col4: false,
-  col6: true,
+  col4: true,
+  col6: false,
   listView: false,
 });
-const listView = ref(false);
 
 onMounted(() => {
-  productsStore.getProducts({
-    populate:
-      "country.flag, direction, company, colors, product_details, product_details.color, product_details.media",
-  });
+  const payload: IPayload = {
+    page: productsStore.pagination.page,
+  };
+  if (route.query.page) {
+    payload.page = Number(route.query.page);
+  }
+  fetchProducts(payload);
+
   productsStore.getBrands();
   productsStore.getColors();
   productsStore.getSizes();
@@ -240,8 +245,26 @@ const totalFilterTags = computed(() => {
   return count;
 });
 
-function onFilterChange(e: IProductFilter) {
-  filterParams.value = e;
+async function fetchProducts(payload: IPayload) {
+  await router.replace({
+    query: {
+      page: payload.page,
+    },
+  });
+
+  productsStore.getProducts({
+    populate:
+      "country.flag, direction, company, colors, product_details, product_details.color, product_details.media",
+    sort: ["createdAt:desc"],
+    "pagination[page]": payload.page,
+    "pagination[pageSize]": productsStore.pagination.pageSize,
+  });
+}
+
+function onPageChange(page: number) {
+  fetchProducts({
+    page: page,
+  });
 }
 
 function removeFilter() {
