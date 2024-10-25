@@ -1,45 +1,28 @@
 <template>
   <div ref="outerDivRef" class="product-box">
-    <div v-if="selectedDetail.id" class="img-wrapper">
+    <div class="img-wrapper">
       <div class="label-block">
         <span class="label3">
           {{ $t("new") }}
         </span>
-        <span class="lable4" v-if="isSale">{{ $t("onSale") }}</span>
+        <span class="label4" v-if="isSale">{{ $t("onSale") }}</span>
       </div>
       <div class="front">
         <nuxt-link :to="localePath({ path: '/products/' + product.id })">
           <img
-            :src="
-              imageSrc
-                ? getImageUrl(imageSrc.url)
-                : getImageUrl(selectedDetail.media[0].url)
-            "
+            :src="getImageUrl(selectedImage().value.url)"
             class="img-fluid bg-img media"
-            :alt="imageSrc ? imageSrc.name : selectedDetail.media[0].name"
-          />
-        </nuxt-link>
-      </div>
-      <div class="back" v-if="selectedDetail.media.length > 1">
-        <nuxt-link :to="{ path: '/products/' + product.id }">
-          <img
-            :src="
-              imageSrc
-                ? getImageUrl(imageSrc.url)
-                : getImageUrl(selectedDetail.media[1].url)
-            "
-            :alt="imageSrc ? imageSrc.name : selectedDetail.media[1].name"
-            class="img-fluid m-auto media"
+            :alt="selectedImage().value.name"
           />
         </nuxt-link>
       </div>
       <ul class="product-thumb-list">
         <li
           class="grid_thumb_img"
-          :class="{ active: imageSrc && imageSrc.id === image.id }"
-          v-for="(image, index) in selectedDetail.media"
+          :class="{ active: selectedImage().value.id === image.id }"
+          v-for="(image, index) in selectedDetail().value.media"
           :key="index"
-          @click="productVariantChange(image)"
+          @click="selectedImage(image)"
         >
           <a href="javascript:void(0);">
             <img :src="getImageUrl(image.formats.small.url)" />
@@ -50,31 +33,31 @@
         <button
           data-toggle="modal"
           data-target="#modal-cart"
-          title="Add to cart"
-          @click="addToBasket(selectedDetail)"
+          :title="$t('addToCart')"
+          @click="addToBasket(selectedDetail().value)"
           variant="primary"
         >
           <i class="ti-shopping-cart"></i>
         </button>
-        <a href="javascript:void(0)" title="Wishlist">
-          <i
-            class="ti-heart"
-            aria-hidden="true"
-            @click="addToWishlist(product)"
-          ></i>
+        <a
+          href="javascript:void(0)"
+          :title="$t('wishlist')"
+          @click="addToWishlist(selectedDetail().value)"
+        >
+          <i class="ti-heart" aria-hidden="true" />
         </a>
         <a
           href="javascript:void(0)"
-          title="Quick View"
-          @click="showQuickview(product)"
+          :title="$t('quickView')"
+          @click="showQuickView(selectedDetail().value)"
           variant="primary"
         >
           <i class="ti-search" aria-hidden="true"></i>
         </a>
         <a
           href="javascript:void(0)"
-          title="Comapre"
-          @click.prevent="addToCompare(product)"
+          :title="$t('compare')"
+          @click.prevent="addToCompare(selectedDetail().value)"
           variant="primary"
         >
           <i class="ti-reload" aria-hidden="true"></i>
@@ -102,19 +85,19 @@
         </h6>
       </nuxt-link>
       <p>{{ product.description[$i18n.locale] }}</p>
-      <h4 v-if="selectedDetail.sale">
-        {{ selectedDetail.price }}
+      <h4 v-if="selectedDetail().value.sale">
+        {{ selectedDetail().value.price }}
 
-        <del>{{ selectedDetail.price }}</del>
+        <del>{{ selectedDetail().value.price }}</del>
       </h4>
       <h4 v-else>
-        {{ selectedDetail.price }}
+        {{ selectedDetail().value.price }}
       </h4>
       <ul class="color-variant" v-if="product.product_details.length > 0">
         <li v-for="(detail, ind) in product.product_details" :key="ind">
           <a
             class="border border-gray-700"
-            @click="getProductDetailByColor(detail.color)"
+            @click="selectedDetail(detail.color)"
             v-bind:style="{ 'background-color': `#${detail.color.code}` }"
           ></a>
         </li>
@@ -124,7 +107,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from "vue";
+import { computed, onMounted, ref, watch, type ComputedRef } from "vue";
 import { getImageUrl } from "../../utils/tools";
 
 import { useBasketStore } from "../../store/basket";
@@ -151,8 +134,7 @@ const localePath = useLocalePath();
 
 const basketStore = useBasketStore();
 
-// const selectedDetail = ref<IProductDetail>(props.product.product_details[0]);
-const selectedDetail = ref<IProductDetail>({} as IProductDetail);
+const detail = ref<IProductDetail>();
 const imageSrc = ref<IMedia>();
 const quickviewProduct = ref({});
 const compareProduct = ref({});
@@ -168,7 +150,6 @@ const outerDivRef = ref<HTMLDivElement | null>(null);
 onMounted(() => {
   if (outerDivRef.value) {
     divWidth.value = outerDivRef.value.offsetWidth;
-    console.log("DivWidth", divWidth.value);
   }
 });
 
@@ -176,23 +157,22 @@ const isSale = computed(() => {
   return props.product.product_details.find((detail) => detail.sale > 0);
 });
 
-watch(
-  () => props.product,
-  () => {
-    selectedDetail.value = props.product.product_details[0];
-  },
-  {
-    deep: true,
-  }
-);
-
-function getProductDetailByColor(color: IColor) {
-  selectedDetail.value =
-    props.product.product_details.find(
+const selectedDetail = (color?: IColor): ComputedRef<IProductDetail> => {
+  if (color) {
+    detail.value = props.product.product_details.find(
       (detail) => detail.color.id === color.id
-    ) || selectedDetail.value;
-  imageSrc.value = selectedDetail.value.media[0];
-}
+    );
+    return computed(() => detail.value || selectedDetail().value);
+  }
+  return computed(() => detail.value || props.product.product_details[0]);
+};
+const selectedImage = (img?: IMedia): ComputedRef<IMedia> => {
+  if (img) {
+    imageSrc.value = img;
+    return computed(() => img);
+  }
+  return computed(() => imageSrc.value || selectedDetail().value.media[0]);
+};
 
 function addToBasket(detail: IProductDetail) {
   emits("addToBasket", detail);
@@ -214,7 +194,7 @@ const addToWishlist = (product) => {
   });
   useProductStore().addToWishlist(product);
 };
-const showQuickview = (productData) => {
+const showQuickView = (productData) => {
   showquickview.value = true;
   quickviewProduct.value = productData;
   emits("openquickview", showquickview.value, quickviewProduct.value);
@@ -225,9 +205,5 @@ const addToCompare = (product) => {
   emits("showCompareModal", showCompareModal.value, compareProduct.value);
 
   useProductStore().addToCompare(product);
-};
-
-const productVariantChange = (img) => {
-  imageSrc.value = img;
 };
 </script>

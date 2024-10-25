@@ -48,6 +48,7 @@
   "companies": "",
   "company": "",
   "companyDetail": "",
+  "compare": "",
   "components": "",
   "connections": "",
   "content.en": "",
@@ -134,6 +135,7 @@
   "name.en": "",
   "name.ru": "",
   "name.uz": "",
+  "new": "",
   "newAddress": "",
   "newCard": "",
   "newTarget": "",
@@ -162,6 +164,7 @@
   "projects": "",
   "q": "",
   "quantity": "",
+  "quickView": "",
   "r": "",
   "rate": "",
   "region": "",
@@ -227,5 +230,6 @@
   "whyWeChoose": "",
   "widget": "",
   "widgets": "",
+  "wishlist": "",
   "womanSizes": ""
 }

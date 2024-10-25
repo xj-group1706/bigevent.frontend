@@ -24,7 +24,7 @@ export const useProductsStore = defineStore(
     const product = ref<IProduct>({} as IProduct);
     const pagination = ref<IPagination>({
       page: 1,
-      pageSize: 1,
+      pageSize: 12,
       pageCount: 0,
       total: 0,
     });

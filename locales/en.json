@@ -48,6 +48,7 @@
   "companies": "Companies",
   "company": "Company",
   "companyDetail": "Company detail",
+  "compare": "Compare",
   "components": "Components",
   "connections": "Connections",
   "content.en": "Content in English",
@@ -134,6 +135,7 @@
   "name.en": "Name in English",
   "name.ru": "Name in Russian",
   "name.uz": "Name in Uzbek",
+  "new": "New",
   "newAddress": "New address",
   "newCard": "New card",
   "newTarget": "New target",
@@ -162,6 +164,7 @@
   "projects": "Projects",
   "q": "Q",
   "quantity": "Quantity",
+  "quickView": "Quick View",
   "r": "R",
   "rate": "Rate",
   "region": "Region",
@@ -227,5 +230,6 @@
   "whyWeChoose": "Why we choose?",
   "widget": "Widget",
   "widgets": "Widgets",
+  "wishlist": "Wishlist",
   "womanSizes": "Woman sizes"
 }
