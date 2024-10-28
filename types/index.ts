@@ -1,5 +1,12 @@
 import type { IMedia } from "./media";
 
+export interface ITypeView {
+  col2: boolean;
+  col3: boolean;
+  col4: boolean;
+  col6: boolean;
+  listView: boolean;
+}
 export interface IProductFilter {
   brands: Number[];
   colors: Number[];

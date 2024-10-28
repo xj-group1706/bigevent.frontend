@@ -114,7 +114,7 @@
                       </li>
                     </ul>
                     <div class="collection-product-wrapper">
-                      <WidgetsTopFilter />
+                      <TopFilter @onChangeType="onChangeType" />
                       <div
                         class="product-wrapper-grid"
                         :class="{ 'list-view': typeView.listView === true }"
@@ -191,8 +191,9 @@ import { useHomeStore } from "../../store/home";
 
 import Product from "../../components/card/product.vue";
 import Pagination from "../../components/ui/pagination.vue";
+import TopFilter from "../../components/widgets/topFilter.vue";
 
-import type { IProductFilter } from "../../types/index";
+import type { IProductFilter, ITypeView } from "../../types/index";
 import { useRoute, useRouter } from "vue-router";
 
 const router = useRouter();
@@ -272,5 +273,9 @@ function removeFilter() {
   filterParams.value.brands = [];
   filterParams.value.colors = [];
   filterParams.value.sizes = [];
+}
+
+function onChangeType(type: ITypeView) {
+  typeView.value = type;
 }
 </script>

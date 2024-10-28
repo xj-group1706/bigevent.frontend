@@ -3,18 +3,32 @@
     <div class="row">
       <div class="col-12">
         <div class="product-filter-content">
-          <div class="search-count">
-            <h5>
-              Showing Products 1-12 of
-              {{ 30 }} Result
-            </h5>
-          </div>
           <div class="collection-view">
             <ul>
-              <li @click="view.type = VIEW_TYPE.GRID">
+              <li
+                @click="
+                  type = {
+                    col2: false,
+                    col3: false,
+                    col4: true,
+                    col6: false,
+                    listView: false,
+                  }
+                "
+              >
                 <i class="fa fa-th grid-layout-view"></i>
               </li>
-              <li @click="view.type = VIEW_TYPE.LIST">
+              <li
+                @click="
+                  type = {
+                    col2: false,
+                    col3: false,
+                    col4: false,
+                    col6: false,
+                    listView: true,
+                  }
+                "
+              >
                 <i class="fa fa-list-ul list-layout-view"></i>
               </li>
             </ul>
@@ -51,8 +65,8 @@
               </li>
             </ul>
           </div>
-          <div class="product-page-filter">
-            <select @change="onChangeSort()">
+          <!-- <div class="product-page-filter">
+            <select v-model="sorting" @change="onChangeSort">
               <option value="all">{{ t("sortingItems") }}</option>
               <option value="a-z">
                 {{ t("alphabeticallyAZ") }}
@@ -60,38 +74,85 @@
               <option value="z-a">
                 {{ t("alphabeticallyZA") }}
               </option>
-              <option value="low">
-                {{ t("priceLowToHigh") }}
-              </option>
-              <option value="high">
-                {{ t("priceHighToLow") }}
-              </option>
             </select>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch, onMounted } from "vue";
 import { useI18n } from "vue-i18n";
+import { STORAGE } from "../../utils/constants";
 
-const VIEW_TYPE = {
-  GRID: "grid",
-  LIST: "list",
-};
+import type { ITypeView } from "../../types/index";
 
 const { t } = useI18n();
 
-const view = ref({
-  type: VIEW_TYPE.GRID,
-  grid: 1,
+const emits = defineEmits(["onChangeType"]);
+
+const type = ref<ITypeView>({
+  col2: false,
+  col3: false,
+  col4: false,
+  col6: false,
+  listView: false,
+});
+// const sorting = ref<string>("all");
+
+onMounted(() => {
+  const storedTypeView = sessionStorage.getItem(STORAGE.TYPE_VIEW);
+  if (storedTypeView) {
+    type.value = JSON.parse(storedTypeView) as ITypeView;
+  }
 });
 
-function onChangeSort() {}
+watch(
+  () => type.value,
+  () => {
+    sessionStorage.setItem(STORAGE.TYPE_VIEW, JSON.stringify(type.value));
+    emits("onChangeType", type.value);
+  },
+  { deep: true }
+);
 
 function changeGrid(grid: number) {
-  view.value.grid = grid;
+  if (grid === 2) {
+    type.value = {
+      col2: true,
+      col3: false,
+      col4: false,
+      col6: false,
+      listView: false,
+    };
+  }
+  if (grid === 3) {
+    type.value = {
+      col2: false,
+      col3: true,
+      col4: false,
+      col6: false,
+      listView: false,
+    };
+  }
+  if (grid === 4) {
+    type.value = {
+      col2: false,
+      col3: false,
+      col4: true,
+      col6: false,
+      listView: false,
+    };
+  }
+  if (grid === 6) {
+    type.value = {
+      col2: false,
+      col3: false,
+      col4: false,
+      col6: true,
+      listView: false,
+    };
+  }
 }
 </script>
