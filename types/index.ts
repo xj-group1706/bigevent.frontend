@@ -8,7 +8,6 @@ export interface ITypeView {
   listView: boolean;
 }
 export interface IProductFilter {
-  brands: number[];
   colors: number[];
   sizes: number[];
   price: number;
