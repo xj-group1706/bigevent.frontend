@@ -1,0 +1,115 @@
+<template>
+  <div>
+    <WidgetsBreadcrumbs title="Login" />
+    <section class="login-page section-b-space">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <h3>{{ t("login") }}</h3>
+            <div class="theme-card">
+              <Form class="theme-form" @submit="onSubmit">
+                <Field
+                  name="phone"
+                  :rules="validationSchema.identifier"
+                  v-slot="{ field, errorMessage }"
+                >
+                  <div class="form-group">
+                    <label for="identifier">{{ t("phone") }}</label>
+                    <input
+                      v-bind="field"
+                      type="identifier"
+                      class="form-control"
+                      :class="errorMessage ? '!mb-1' : ''"
+                      id="identifier"
+                      v-model="user.identifier"
+                      placeholder="Enter phone number"
+                      name="identifier"
+                      v-mask="'(+998)##-###-##-##'"
+                    />
+                    <span class="validate-error" v-if="errorMessage">
+                      {{ errorMessage }}
+                    </span>
+                  </div>
+                </Field>
+                <Field
+                  name="password"
+                  :rules="validationSchema.password"
+                  v-slot="{ field, errorMessage }"
+                  class="form-group"
+                >
+                  <div class="form-group">
+                    <label for="password">{{ $t("password") }}</label>
+                    <input
+                      v-bind="field"
+                      type="password"
+                      class="form-control"
+                      :class="errorMessage ? '!mb-1' : ''"
+                      id="password"
+                      v-model="user.password"
+                      placeholder="Enter your password"
+                    />
+                    <span class="validate-error" v-if="errorMessage">
+                      {{ errorMessage }}
+                    </span>
+                  </div>
+                </Field>
+
+                <button type="submit" class="btn btn-solid">
+                  {{ t("login") }}
+                </button>
+              </Form>
+            </div>
+          </div>
+          <div class="col-lg-6 right-login">
+            <h3>{{ t("newCustomer") }}</h3>
+            <div class="theme-card authentication-right">
+              <h6 class="title-font">{{ t("createAnAccount") }}</h6>
+              <p>
+                {{ t("signUpDescription") }}
+              </p>
+              <nuxt-link
+                :to="localePath({ path: '/page/account/register' })"
+                class="btn btn-solid"
+              >
+                {{ t("createAnAccount") }}
+              </nuxt-link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</template>
+<script setup lang="ts">
+import { ref } from "vue";
+import { useI18n } from "vue-i18n";
+import { useForm, Field } from "vee-validate";
+import * as yup from "yup";
+
+const { t } = useI18n();
+const localePath = useLocalePath();
+
+const user = ref({
+  identifier: "",
+  password: "",
+});
+
+const validationSchema = {
+  identifier: yup
+    .string()
+    .required("Phone is required")
+    .matches(
+      /^\(\+998\)\d{2}-\d{3}-\d{2}-\d{2}$/,
+      "Phone number must be in the format (+998)XX-XXX-XX-XX"
+    ),
+  password: yup.string().required("Password is required"),
+};
+
+const { handleSubmit } = useForm({
+  validationSchema: yup.object(validationSchema),
+});
+
+const onSubmit = handleSubmit((values) => {
+  console.log("OnSubmit", values);
+});
+</script>

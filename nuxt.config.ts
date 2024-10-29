@@ -35,6 +35,7 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "@nuxt/image-edge",
     "@vueuse/nuxt",
+    "@vee-validate/nuxt",
     // 'vue-toastification/nuxt',
     [
       "@pinia/nuxt",
@@ -85,6 +86,7 @@ export default defineNuxtConfig({
     // {src: '~/node_modules/bootstrap/dist/js/bootstrap.js', mode: 'client'}
     // { src: "./plugins/useBootstrap.client.ts", mode: "client" },
     { src: "./plugins/showToast.client.js", mode: "client" },
+    { src: "./plugins/vue-the-mask.ts", mode: "client" },
     // { src: './plugins/paypal.client.js' }
     // { src: 'https://checkout.stripe.com/checkout.js'}
   ],
