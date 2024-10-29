@@ -8,7 +8,7 @@ export const useProduct = () => {
   const getProducts = async (
     payload: IReqFilter
   ): Promise<IResponse<IProduct[]>> => {
-    const res = await $api(`/products`, { params: payload });
+    const res = await $api.get(`/products`, payload);
     return res;
   };
 
@@ -16,23 +16,23 @@ export const useProduct = () => {
     id: string;
     payload: IReqFilter;
   }) => {
-    return await $api(`/products/${payload.id}`, { params: payload.payload });
+    return await $api.get(`/products/${payload.id}`, payload.payload);
   };
 
   const getBrands = async (
     payload: IReqFilter
   ): Promise<IResponse<IBrand[]>> => {
-    const res = await $api("/brands", { params: payload });
+    const res = await $api.get("/brands", payload);
     return res;
   };
 
   const getColors = async (payload: IReqFilter) => {
-    const res = await $api("/colors", { params: payload });
+    const res = await $api.get("/colors", payload);
     return res;
   };
 
   const getSizes = async (payload: IReqFilter) => {
-    const res = await $api("/sizes", { params: payload });
+    const res = await $api.get("/sizes", payload);
     return res;
   };
   return {

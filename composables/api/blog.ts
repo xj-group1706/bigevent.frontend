@@ -8,12 +8,12 @@ export const useBlog = () => {
     id: number | string;
     params: IReqFilter;
   }) => {
-    const res = await $api(`/blogs/${payload.id}`, { params: payload.params });
+    const res = await $api.get(`/blogs/${payload.id}`, payload.params);
     return res;
   };
 
   const getBlogs = async (payload: IReqFilter): Promise<IResponse<IBlog[]>> => {
-    const res = await $api("/blogs", { params: payload, method: "GET" });
+    const res = await $api.get("/blogs", payload);
     return res;
   };
 

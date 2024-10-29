@@ -4,7 +4,7 @@ export const useCompany = () => {
   const { $api } = useNuxtApp();
 
   const getCompanies = async (payload: IReqFilter) => {
-    const res = await $api(`/companies`, { params: payload });
+    const res = await $api.get(`/companies`, payload);
     return res;
   };
 

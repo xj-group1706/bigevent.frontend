@@ -6,7 +6,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-3">
-              <WidgetsSidebar v-model="filterParams" />
+              <Sidebar v-model="filterParams" />
               <!-- @allFilters="allfilter"
               @priceVal="pricefilterArray"
               @categoryfilter="getCategoryFilter" -->
@@ -42,16 +42,16 @@
                       </div>
                     </div>
                     <ul class="product-filter-tags">
-                      <li class="me-1" v-if="filterParams.category">
+                      <li class="me-1" v-if="filterParams.direction">
                         <a href="javascript:void(0)" class="filter_tag">
                           {{
                             homeStore.directions.find(
-                              (e) => e.id === filterParams.category
+                              (e) => e.id === filterParams.direction
                             )?.name[locale]
                           }}
                           <i
                             class="ti-close"
-                            @click="filterParams.category = 0"
+                            @click="filterParams.direction = 0"
                           ></i>
                         </a>
                       </li>
@@ -183,7 +183,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted, computed, watch } from "vue";
 import { useI18n } from "vue-i18n";
 
 import { useProductsStore } from "../../store/newProducts";
@@ -192,9 +192,11 @@ import { useHomeStore } from "../../store/home";
 import Product from "../../components/card/product.vue";
 import Pagination from "../../components/ui/pagination.vue";
 import TopFilter from "../../components/widgets/topFilter.vue";
+import Sidebar from "../../components/widgets/sidebar.vue";
 
 import type { IProductFilter, ITypeView } from "../../types/index";
 import { useRoute, useRouter } from "vue-router";
+import { removeBlankAttributes } from "../../utils/tools";
 
 const router = useRouter();
 const route = useRoute();
@@ -206,6 +208,11 @@ const homeStore = useHomeStore();
 
 interface IPayload {
   page: number;
+  direction: number | null;
+  brands?: number[];
+  colors?: number[];
+  sizes?: number[];
+  price?: number;
 }
 
 const filterParams = ref<IProductFilter>({
@@ -213,7 +220,7 @@ const filterParams = ref<IProductFilter>({
   colors: [],
   sizes: [],
   price: 0,
-  category: 0,
+  direction: 0,
 });
 const typeView = ref({
   col2: false,
@@ -222,15 +229,17 @@ const typeView = ref({
   col6: false,
   listView: false,
 });
+const payload = ref<IPayload>({
+  page: productsStore.pagination.page,
+  direction: null,
+});
 
 onMounted(() => {
-  const payload: IPayload = {
-    page: productsStore.pagination.page,
-  };
-  if (route.query.page) {
-    payload.page = Number(route.query.page);
-  }
-  fetchProducts(payload);
+  if (route.query.page) payload.value.page = Number(route.query.page);
+  if (route.query.direction)
+    payload.value.direction = Number(route.query.direction);
+
+  fetchProducts(payload.value);
 
   productsStore.getBrands();
   productsStore.getColors();
@@ -239,17 +248,29 @@ onMounted(() => {
 
 const totalFilterTags = computed(() => {
   let count = 0;
-  if (filterParams.value.category) count++;
+  if (filterParams.value.direction) count++;
   count += filterParams.value.brands.length;
   count += filterParams.value.sizes.length;
   count += filterParams.value.colors.length;
   return count;
 });
 
-async function fetchProducts(payload: IPayload) {
+watch(
+  () => filterParams.value,
+  async () => {
+    payload.value = {
+      ...payload.value,
+      ...filterParams.value,
+    };
+    fetchProducts(payload.value);
+  },
+  { deep: true }
+);
+
+async function fetchProducts(el: IPayload) {
   await router.replace({
     query: {
-      page: payload.page,
+      ...removeBlankAttributes({ ...route.query, ...el }),
     },
   });
 
@@ -257,19 +278,23 @@ async function fetchProducts(payload: IPayload) {
     populate:
       "country.flag, direction, company, colors, product_details, product_details.color, product_details.media",
     sort: ["createdAt:desc"],
-    "pagination[page]": payload.page,
-    "pagination[pageSize]": productsStore.pagination.pageSize,
+    pagination: {
+      page: el.page,
+      pageSize: productsStore.pagination.pageSize,
+    },
+    "filters[$and][0][direction][id][$eq]": el.direction,
   });
 }
 
 function onPageChange(page: number) {
   fetchProducts({
+    ...payload.value,
     page: page,
   });
 }
 
 function removeFilter() {
-  filterParams.value.category = 0;
+  filterParams.value.direction = 0;
   filterParams.value.brands = [];
   filterParams.value.colors = [];
   filterParams.value.sizes = [];

@@ -110,3 +110,17 @@ export function joinWithCamelCase(strings: string[]): string {
     })
     .join("");
 }
+
+export function removeBlankAttributes(obj, parentKey = "", result = {}) {
+  for (const key in obj) {
+    const newKey = parentKey ? `${parentKey}[${key}]` : key;
+    const value = obj[key];
+
+    if (value && typeof value === "object" && !Array.isArray(value)) {
+      removeBlankAttributes(value, newKey, result);
+    } else if (value) {
+      result[newKey] = value;
+    }
+  }
+  return result;
+}

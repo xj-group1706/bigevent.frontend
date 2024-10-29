@@ -32,7 +32,9 @@
             <div class="collection-brand-filter">
               <ul class="category-list">
                 <li class="cursor-pointer" @click="getCategoryFilter()">
-                  <div :class="filterParams.category === 0 ? 'text-color' : ''">
+                  <div
+                    :class="filterParams.direction === 0 ? 'text-color' : ''"
+                  >
                     {{ t("allProducts") }}
                   </div>
                 </li>
@@ -44,7 +46,9 @@
                 >
                   <div
                     :class="
-                      filterParams.category === direction.id ? 'text-color' : ''
+                      filterParams.direction === direction.id
+                        ? 'text-color'
+                        : ''
                     "
                   >
                     {{ direction.name[locale] }}
@@ -163,13 +167,16 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
+import { useRoute } from "vue-router";
 
 import { useHomeStore } from "../../store/home";
 import { useProductsStore } from "../../store/newProducts";
 
 import type { IProductFilter } from "../../types/index";
+
+const route = useRoute();
 
 const props = defineProps<{
   modelValue: IProductFilter;
@@ -185,11 +192,34 @@ const isCategoryList = ref(false);
 const isColorList = ref(false);
 const isBrandList = ref(false);
 const isSizeList = ref(false);
-const isPriceList = ref(false);
-const filterParams = ref<IProductFilter>(props.modelValue);
+const filterParams = ref<IProductFilter>({
+  brands: [],
+  colors: [],
+  sizes: [],
+  price: 0,
+  direction: 0,
+});
+
+onMounted(() => {
+  filterParams.value = {
+    ...filterParams.value,
+    direction: Number(route.query?.direction) || 0,
+  };
+});
+
+watch(
+  () => route.query,
+  () => {
+    filterParams.value = {
+      ...filterParams.value,
+      direction: Number(route.query?.direction) || 0,
+    };
+  },
+  { deep: true }
+);
 
 function getCategoryFilter(item?: number) {
-  filterParams.value.category = item ? item : 0;
+  filterParams.value.direction = item ? item : 0;
   onChange();
 }
 

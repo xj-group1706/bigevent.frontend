@@ -9,7 +9,7 @@ export const useDirection = () => {
   const getDirections = async (
     filter: IReqFilter
   ): Promise<IResponse<IDirection>> => {
-    return await $api(`/directions`, { params: filter });
+    return await $api.get(`/directions`, filter);
   };
 
   return {

@@ -8,11 +8,11 @@ export interface ITypeView {
   listView: boolean;
 }
 export interface IProductFilter {
-  brands: Number[];
-  colors: Number[];
-  sizes: Number[];
-  price: Number;
-  category: Number;
+  brands: number[];
+  colors: number[];
+  sizes: number[];
+  price: number;
+  direction: number;
 }
 
 export interface IPagination {
@@ -67,8 +67,11 @@ export interface IMeta {
 export interface IReqFilter {
   populate: string;
   sort?: Array<string>;
-  "pagination[page]"?: number;
-  "pagination[pageSize]"?: number;
+  pagination?: {
+    page: number;
+    pageSize: number;
+  };
+  [key: string]: any;
 }
 
 export interface IFashionBanner {

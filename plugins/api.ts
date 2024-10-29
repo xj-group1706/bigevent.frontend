@@ -1,3 +1,6 @@
+import qs from "qs";
+import { removeBlankAttributes } from "../utils/tools";
+
 export default defineNuxtPlugin((nuxtApp) => {
   const config = useRuntimeConfig();
   const token = useCookie("token");
@@ -22,10 +25,23 @@ export default defineNuxtPlugin((nuxtApp) => {
     },
   });
 
+  const get = async (url: string, params?: Record<string, any>) => {
+    if (params) {
+      const queryString = qs.stringify(removeBlankAttributes(params), {
+        encodeValuesOnly: true,
+      });
+      url += (url.includes("?") ? "&" : "?") + queryString; // Append query parameters
+    }
+    return await api(url); // Call the fetch instance directly
+  };
+
   // Expose to useNuxtApp().$api
   return {
     provide: {
-      api,
+      api: {
+        get,
+        ...api,
+      },
     },
   };
 });
