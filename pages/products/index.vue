@@ -57,22 +57,6 @@
                       </li>
                       <li
                         class="me-1"
-                        v-for="(brandId, index) in filterParams.brands"
-                        :key="index"
-                      >
-                        <a href="javascript:void(0)" class="filter_tag">
-                          {{
-                            productsStore.brands.find((e) => e.id === brandId)
-                              ?.name
-                          }}
-                          <i
-                            class="ti-close"
-                            @click="filterParams.brands.splice(index, 1)"
-                          ></i>
-                        </a>
-                      </li>
-                      <li
-                        class="me-1"
                         v-for="(colorId, index) in filterParams.colors"
                         :key="index"
                       >
@@ -209,14 +193,12 @@ const homeStore = useHomeStore();
 interface IPayload {
   page: number;
   direction: number | null;
-  brands?: number[];
   colors?: number[];
   sizes?: number[];
   price?: number;
 }
 
 const filterParams = ref<IProductFilter>({
-  brands: [],
   colors: [],
   sizes: [],
   price: 0,
@@ -241,7 +223,6 @@ onMounted(() => {
 
   fetchProducts(payload.value);
 
-  productsStore.getBrands();
   productsStore.getColors();
   productsStore.getSizes();
 });
@@ -249,7 +230,6 @@ onMounted(() => {
 const totalFilterTags = computed(() => {
   let count = 0;
   if (filterParams.value.direction) count++;
-  count += filterParams.value.brands.length;
   count += filterParams.value.sizes.length;
   count += filterParams.value.colors.length;
   return count;
@@ -295,7 +275,6 @@ function onPageChange(page: number) {
 
 function removeFilter() {
   filterParams.value.direction = 0;
-  filterParams.value.brands = [];
   filterParams.value.colors = [];
   filterParams.value.sizes = [];
 }

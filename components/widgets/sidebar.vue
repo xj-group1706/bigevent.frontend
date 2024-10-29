@@ -61,37 +61,6 @@
       </div>
       <!-- side-bar colleps block stat -->
       <div class="collection-filter-block">
-        <!-- brand filter start -->
-        <div class="collection-collapse-block open">
-          <h3 class="collapse-block-title" @click="isBrandList = !isBrandList">
-            {{ t("brand") }}
-          </h3>
-          <div
-            class="collection-collapse-block-content"
-            :style="{ display: isBrandList ? 'block' : 'none' }"
-          >
-            <div class="collection-brand-filter">
-              <div
-                class="form-check collection-filter-checkbox"
-                v-for="(brand, index) in productsStore.brands"
-                :key="index"
-              >
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  :value="brand.id"
-                  :id="`${brand.id}`"
-                  v-model="filterParams.brands"
-                  @change="onChange()"
-                />
-                <label class="form-check-label" v-bind:for="`${brand.id}`">{{
-                  brand.name
-                }}</label>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <!-- color filter start here -->
         <div class="collection-collapse-block open">
           <h3 class="collapse-block-title" @click="isColorList = !isColorList">
@@ -190,10 +159,8 @@ const productsStore = useProductsStore();
 const filter = ref(false);
 const isCategoryList = ref(false);
 const isColorList = ref(false);
-const isBrandList = ref(false);
 const isSizeList = ref(false);
 const filterParams = ref<IProductFilter>({
-  brands: [],
   colors: [],
   sizes: [],
   price: 0,
