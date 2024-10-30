@@ -7,6 +7,13 @@ export interface ITypeView {
   col6: boolean;
   listView: boolean;
 }
+
+export interface IError<T> {
+  data: T | null;
+  success: boolean;
+  code: number;
+  message: string;
+}
 export interface IProductFilter {
   colors: number[];
   sizes: number[];

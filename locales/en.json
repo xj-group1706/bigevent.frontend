@@ -118,6 +118,7 @@
   "imageMinWidthCanNotExceedPX": "The image must be more than {width}px in width",
   "imageWidthCanNotExceedPX": "The image should be {width}px in width",
   "inStock": "There are {number} in stock",
+  "invalidPhoneOrPassword": "Invalid phone or password",
   "inviteFriends": "Invite Friends",
   "l": "L",
   "language": "Language",

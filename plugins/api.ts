@@ -35,11 +35,19 @@ export default defineNuxtPlugin((nuxtApp) => {
     return await api(url); // Call the fetch instance directly
   };
 
+  const post = async (url: string, data: Record<string, any>) => {
+    return await api(url, {
+      method: "POST",
+      body: data,
+    });
+  };
+
   // Expose to useNuxtApp().$api
   return {
     provide: {
       api: {
         get,
+        post,
         ...api,
       },
     },

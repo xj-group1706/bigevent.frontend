@@ -118,6 +118,7 @@
   "imageMinWidthCanNotExceedPX": "",
   "imageWidthCanNotExceedPX": "",
   "inStock": "Есть {number} в наличии",
+  "invalidPhoneOrPassword": "",
   "inviteFriends": "",
   "l": "",
   "language": "",

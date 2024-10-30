@@ -7,7 +7,7 @@
           <div class="col-lg-6">
             <h3>{{ t("login") }}</h3>
             <div class="theme-card">
-              <Form class="theme-form" @submit="onSubmit">
+              <form class="theme-form" @submit.prevent="onSubmit">
                 <Field
                   name="phone"
                   :rules="validationSchema.identifier"
@@ -21,13 +21,16 @@
                       class="form-control"
                       :class="errorMessage ? '!mb-1' : ''"
                       id="identifier"
-                      v-model="user.identifier"
+                      v-model="login.identifier"
                       placeholder="Enter phone number"
                       name="identifier"
                       v-mask="'(+998)##-###-##-##'"
                     />
-                    <span class="validate-error" v-if="errorMessage">
-                      {{ errorMessage }}
+                    <span
+                      class="validate-error"
+                      v-if="errorMessage || authStore.error?.message"
+                    >
+                      {{ errorMessage || authStore.error?.message }}
                     </span>
                   </div>
                 </Field>
@@ -45,19 +48,22 @@
                       class="form-control"
                       :class="errorMessage ? '!mb-1' : ''"
                       id="password"
-                      v-model="user.password"
+                      v-model="login.password"
                       placeholder="Enter your password"
                     />
-                    <span class="validate-error" v-if="errorMessage">
-                      {{ errorMessage }}
+                    <span
+                      class="validate-error"
+                      v-if="errorMessage || authStore.error?.message"
+                    >
+                      {{ errorMessage || authStore.error?.message }}
                     </span>
                   </div>
                 </Field>
 
-                <button type="submit" class="btn btn-solid">
+                <button type="submit" class="btn btn-solid mt-4">
                   {{ t("login") }}
                 </button>
-              </Form>
+              </form>
             </div>
           </div>
           <div class="col-lg-6 right-login">
@@ -83,13 +89,16 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useI18n } from "vue-i18n";
-import { useForm, Field } from "vee-validate";
+import { Field } from "vee-validate";
 import * as yup from "yup";
+
+import { useAuthStore } from "../../store/auth";
 
 const { t } = useI18n();
 const localePath = useLocalePath();
+const authStore = useAuthStore();
 
-const user = ref({
+const login = ref({
   identifier: "",
   password: "",
 });
@@ -105,11 +114,17 @@ const validationSchema = {
   password: yup.string().required("Password is required"),
 };
 
-const { handleSubmit } = useForm({
-  validationSchema: yup.object(validationSchema),
-});
-
-const onSubmit = handleSubmit((values) => {
-  console.log("OnSubmit", values);
-});
+async function onSubmit(event: Event) {
+  event.preventDefault();
+  try {
+    await validationSchema.identifier.validate(login.value.identifier);
+    await validationSchema.password.validate(login.value.password);
+    authStore.fetchAuth({
+      identifier: `${login.value.identifier.replace(/\D/g, "")}@gmail.com`,
+      password: login.value.password,
+    });
+  } catch (error) {
+    console.log("Error", error);
+  }
+}
 </script>
