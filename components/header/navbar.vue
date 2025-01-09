@@ -141,7 +141,7 @@ const menu = ref<IMenu[]>([
     title: "home",
     type: "sub",
     active: false,
-    path: "",
+    path: "/",
   },
   {
     title: "products",
