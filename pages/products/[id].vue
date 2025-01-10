@@ -1,6 +1,6 @@
 <template>
   <div>
-    <WidgetsBreadcrumbs :title="productsStore.product.name?.[locale]" />
+    <breadcrumb :title="productsStore.product.name?.[locale]" />
     <section class="section-b-space">
       <div class="collection-wrapper">
         <div class="container">

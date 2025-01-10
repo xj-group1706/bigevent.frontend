@@ -8,7 +8,15 @@ export const useCompany = () => {
     return res;
   };
 
+  const getCompanyById = async (payload: {
+    id: string;
+    payload: IReqFilter;
+  }) => {
+    return await $api.get(`/companies/${payload.id}`, payload.payload);
+  };
+
   return {
     getCompanies,
+    getCompanyById,
   };
 };

@@ -17,17 +17,7 @@
                   v-for="(item, index) in homeStore.companies"
                   :key="index"
                 >
-                  <div>
-                    <div class="logo-block text-center">
-                      <a href="#">
-                        <nuxt-img
-                          :src="getImageUrl(item.logo.url)"
-                          :alt="item.logo.name"
-                          sizes="sm:50vw md:50vw lg:400px"
-                        />
-                      </a>
-                    </div>
-                  </div>
+                  <company :company="item" />
                 </swiper-slide>
               </swiper>
             </div>
@@ -46,7 +36,8 @@ import "swiper/css/free-mode";
 import { FreeMode } from "swiper";
 
 import { useHomeStore } from "../../store/home";
-import { getImageUrl } from "../../utils/tools";
+
+import company from "../card/company.vue";
 
 const homeStore = useHomeStore();
 
