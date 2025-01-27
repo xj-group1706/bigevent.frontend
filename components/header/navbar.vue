@@ -131,7 +131,7 @@ import { ref } from "vue";
 import type { IMenu } from "../../types/index";
 
 const props = defineProps<{
-  leftSidebarVal: boolean;
+  leftSidebarVal?: boolean;
 }>();
 
 const localePath = useLocalePath();

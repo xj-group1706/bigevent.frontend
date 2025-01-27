@@ -6,6 +6,7 @@ import { IDirection } from "./direction";
 
 export interface ICompany {
   id: number;
+  name: string;
   directions: IDirection[];
   logo: IMedia;
   rate: number;

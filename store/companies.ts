@@ -30,8 +30,7 @@ export const useCompaniesStore = defineStore(
           .getCompanyById({
             id: id,
             payload: {
-              populate:
-                "country.flag, direction, company, colors, company_details, product_details.color, product_details.media",
+              populate: "directions, logo, region, district, owner, banner",
             },
           })
           .then((res) => {
