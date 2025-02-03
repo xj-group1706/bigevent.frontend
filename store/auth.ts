@@ -11,6 +11,8 @@ const error = ref<IError<null | IUser>>();
 
 export const useAuthStore = defineStore(authStore, () => {
   const { t } = useI18n();
+  const isAuth = ref(false);
+
   function fetchAuth(item: { identifier: string; password: string }) {
     useAuth()
       .fetchAuth(item)
@@ -34,6 +36,7 @@ export const useAuthStore = defineStore(authStore, () => {
 
   return {
     error,
+    isAuth,
     fetchAuth,
   };
 });

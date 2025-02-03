@@ -308,7 +308,7 @@
               "type": "link"
             },
             {
-              "path": "/page/account/login",
+              "path": "/account/login",
               "title": "Login",
               "type": "link"
             },

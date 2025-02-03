@@ -303,7 +303,7 @@ export default {
 
       this.isLogin = useCookie("userlogin").value;
       if (!this.isLogin) {
-        this.$router.replace("/page/account/login");
+        this.$router.replace("/account/login");
       } else if (
         this.user.firstName.errormsg != "" &&
         this.user.lastName.errormsg != "" &&
@@ -406,7 +406,7 @@ export default {
     this.isLogin = useCookie("userlogin").value;
 
     if (!this.isLogin) {
-      this.$router.replace("/page/account/login");
+      this.$router.replace("/account/login");
     } else if (this.isLogin && this.cart.length == 0) {
       useNuxtApp().$showToast({ msg: "Cart is Empty.", type: "error" });
       this.$router.replace("/page/account/cart");

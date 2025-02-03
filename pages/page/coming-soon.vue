@@ -47,7 +47,7 @@
               <div id="footer" class="mt-4">
                 <div id="owner">
                   Are you the store owner?
-                  <nuxt-link to="/page/account/login">Log in here</nuxt-link> or
+                  <nuxt-link to="/account/login">Log in here</nuxt-link> or
                   <a href="#">change your password settings</a>
                 </div>
               </div>

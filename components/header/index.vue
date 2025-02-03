@@ -2,7 +2,7 @@
   <div>
     <header>
       <div class="mobile-fix-option"></div>
-      <WidgetsTopbar />
+      <top-bar />
       <div class="container">
         <div class="row">
           <div class="col-12">
@@ -42,6 +42,8 @@
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
+
+import topBar from "./topBar.vue";
 
 const localePath = useLocalePath();
 const leftSidebarVal = ref(false);
