@@ -1,5 +1,7 @@
 import { defineNuxtConfig } from "nuxt/config";
 
+console.log("process.env.VITE_API_URL", process.env);
+
 export default defineNuxtConfig({
   routeRules: {},
   devtools: {
@@ -24,19 +26,19 @@ export default defineNuxtConfig({
 
   imports: {
     autoImport: true,
-    dirs: ["composables"],
+    // dirs: ["composables"],
   },
 
   css: ["@/assets/scss/app.scss", "@/assets/css/tailwind.css"],
   ssr: true,
 
   modules: [
+    // "@sidebase/nuxt-auth",
     "@nuxtjs/i18n",
     "nuxt-icon",
     "@nuxt/image-edge",
     "@vueuse/nuxt",
     "@vee-validate/nuxt",
-    // 'vue-toastification/nuxt',
     [
       "@pinia/nuxt",
       {
@@ -45,6 +47,35 @@ export default defineNuxtConfig({
     ],
     "pinia-plugin-persistedstate/nuxt",
   ],
+
+  // auth: {
+  //   isEnabled: true,
+  //   disableServerSideAuth: false,
+  //   origin: "http://localhost:3000/", // Replace with your app's origin
+  //   provider: {
+  //     type: "local", // Use 'local' for custom backend or other providers like 'auth0'
+  //     endpoints: {
+  //       signIn: {
+  //         path: `${process.env.VITE_API_URL}/auth/local`,
+  //         method: "post",
+  //       },
+  //       signOut: { path: "/api/auth/logout", method: "post" },
+  //       getSession: false,
+  //     },
+  //     token: {
+  //       signInResponseTokenPointer: "/jwt", // Path to the token in the login response
+  //       type: "Bearer", // Token type
+  //     },
+  //     pages: {
+  //       login: "/account/login",
+  //     },
+  //   },
+  //   globalAppMiddleware: true, // Enable global middleware
+  //   session: {
+  //     strategy: "jwt",
+  //     storage: "cookie",
+  //   },
+  // },
 
   image: {
     domains: ["http://localhost:1337"],
@@ -83,21 +114,12 @@ export default defineNuxtConfig({
   pluginsIgnore: [/^ignored-plugin/, /another-ignored-plugin/],
 
   plugins: [
-    // {src: '~/node_modules/bootstrap/dist/js/bootstrap.js', mode: 'client'}
-    // { src: "./plugins/useBootstrap.client.ts", mode: "client" },
     { src: "./plugins/showToast.client.js", mode: "client" },
     { src: "./plugins/vue-the-mask.ts", mode: "client" },
-    // { src: './plugins/paypal.client.js' }
-    // { src: 'https://checkout.stripe.com/checkout.js'}
   ],
 
   build: {
     transpile: ["bootstrap"],
-    // loaders: {
-    //   scss: {
-    //     implementation: require("sass"),
-    //   },
-    // },
   },
 
   postcss: {

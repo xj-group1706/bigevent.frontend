@@ -9,7 +9,7 @@
                 <i class="fa fa-heart" aria-hidden="true"></i>
               </nuxt-link>
             </li>
-            <li v-if="authStore.isAuth" class="onhover-dropdown mobile-account">
+            <li v-if="authStore.token" class="onhover-dropdown mobile-account">
               <i class="fa fa-user" aria-hidden="true"></i>
               {{ $t("myAccount") }}
               <ul class="onhover-show-div">

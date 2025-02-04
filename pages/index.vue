@@ -42,6 +42,10 @@ import { useBlogStore } from "../store/blog";
 
 import type { IProduct } from "../types/product";
 
+definePageMeta({
+  auth: false,
+});
+
 const newProductStore = useProductsStore();
 const homeStore = useHomeStore();
 const blogStore = useBlogStore();

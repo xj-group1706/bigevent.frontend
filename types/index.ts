@@ -1,5 +1,10 @@
 import type { IMedia } from "./media";
+import type { IUser } from "./user";
 
+export interface IAuth {
+  jwt: string;
+  user: IUser;
+}
 export interface ITypeView {
   col2: boolean;
   col3: boolean;

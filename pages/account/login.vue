@@ -22,15 +22,12 @@
                       :class="errorMessage ? '!mb-1' : ''"
                       id="identifier"
                       v-model="login.identifier"
-                      placeholder="Enter phone number"
+                      :placeholder="t('enterYourPhone')"
                       name="identifier"
                       v-mask="'(+998)##-###-##-##'"
                     />
-                    <span
-                      class="validate-error"
-                      v-if="errorMessage || authStore.error?.message"
-                    >
-                      {{ errorMessage || authStore.error?.message }}
+                    <span class="validate-error" v-if="errorMessage">
+                      {{ errorMessage }}
                     </span>
                   </div>
                 </Field>
@@ -41,15 +38,15 @@
                   class="form-group"
                 >
                   <div class="form-group">
-                    <label for="password">{{ $t("password") }}</label>
+                    <label for="password">{{ t("password") }}</label>
                     <input
                       v-bind="field"
                       type="password"
                       class="form-control"
-                      :class="errorMessage ? '!mb-1' : ''"
+                      :class="errorMessage || errorText ? '!mb-1' : ''"
                       id="password"
                       v-model="login.password"
-                      placeholder="Enter your password"
+                      :placeholder="t('enterYourPassword')"
                     />
                     <span
                       class="validate-error"
@@ -95,6 +92,7 @@ import * as yup from "yup";
 import { useAuthStore } from "../../store/auth";
 
 const { t } = useI18n();
+
 const localePath = useLocalePath();
 const authStore = useAuthStore();
 
@@ -102,6 +100,7 @@ const login = ref({
   identifier: "",
   password: "",
 });
+const errorText = ref("");
 
 const validationSchema = {
   identifier: yup
@@ -119,10 +118,18 @@ async function onSubmit(event: Event) {
   try {
     await validationSchema.identifier.validate(login.value.identifier);
     await validationSchema.password.validate(login.value.password);
-    authStore.fetchAuth({
-      identifier: `${login.value.identifier.replace(/\D/g, "")}@gmail.com`,
-      password: login.value.password,
-    });
+    errorText.value = "";
+    authStore
+      .fetchAuth({
+        identifier: `${login.value.identifier.replace(/\D/g, "")}@gmail.com`,
+        password: login.value.password,
+      })
+      .then((res) => {
+        console.log("Res", res);
+      })
+      .catch(() => {
+        errorText.value = t("phoneOrPasswordIsIncorrect");
+      });
   } catch (error) {
     console.log("Error", error);
   }
