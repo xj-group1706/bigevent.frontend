@@ -182,10 +182,6 @@ import type { IProductFilter, ITypeView } from "../../types/index";
 import { useRoute, useRouter } from "vue-router";
 import { removeBlankAttributes } from "../../utils/tools";
 
-definePageMeta({
-  middleware: "auth",
-});
-
 const router = useRouter();
 const route = useRoute();
 const { t } = useI18n();

@@ -30,6 +30,7 @@
   </div>
 </template>
 <script setup lang="ts">
+import { ref } from "vue";
 import { useRoute } from "vue-router";
 import { useI18n } from "vue-i18n";
 
@@ -41,7 +42,8 @@ const route = useRoute();
 const { t } = useI18n();
 const localePath = useLocalePath();
 
-const routes = route.path.split("/");
-routes.splice(routes.length - 1, 1);
-console.log(routes);
+const routes = ref(route.path.split("/"));
+routes.value.splice(routes.value.length - 1, 1);
+if (routes.value[1] === "account") routes.value = [""];
+console.log(routes.value);
 </script>

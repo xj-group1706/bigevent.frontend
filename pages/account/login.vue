@@ -1,6 +1,6 @@
 <template>
   <div>
-    <WidgetsBreadcrumbs title="Login" />
+    <breadcrumb :title="t('login')" />
     <section class="login-page section-b-space">
       <div class="container">
         <div class="row">
@@ -125,7 +125,7 @@ async function onSubmit(event: Event) {
         password: login.value.password,
       })
       .then((res) => {
-        console.log("Res", res);
+        navigateTo(localePath("/"));
       })
       .catch(() => {
         errorText.value = t("phoneOrPasswordIsIncorrect");

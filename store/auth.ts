@@ -1,18 +1,17 @@
+import { ref } from "vue";
 import { defineStore } from "pinia";
-import { useI18n } from "vue-i18n";
-import { ref, computed } from "vue";
+import { navigateTo, useCookie } from "nuxt/app";
+
 import { useAuth } from "../composables/api/auth";
 
 import type { IAuth, IError } from "../types/index";
 import type { IUser } from "../types/user";
-import { useCookie } from "nuxt/app";
 
-const authStore = "AUTH_STORE";
+const AUTH_STORE = "authStore";
 
 export const useAuthStore = defineStore(
-  authStore,
+  AUTH_STORE,
   () => {
-    const { t } = useI18n();
     const isAuth = ref(false);
     const error = ref<IError<null | IUser>>();
 
@@ -26,6 +25,13 @@ export const useAuthStore = defineStore(
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
     });
+
+    async function logout() {
+      token.value = null;
+      user.value = null;
+      isAuth.value = false;
+      navigateTo("/");
+    }
 
     function fetchAuth(item: {
       identifier: string;
@@ -51,7 +57,7 @@ export const useAuthStore = defineStore(
               data: null,
               code: 404,
               success: false,
-              message: t("invalidPhoneOrPassword"),
+              message: "invalidPhoneOrPassword",
             };
             reject(err);
           });
@@ -78,6 +84,7 @@ export const useAuthStore = defineStore(
       user,
       isAuth,
       token,
+      logout,
       fetchAuth,
       fetchUserById,
     };
