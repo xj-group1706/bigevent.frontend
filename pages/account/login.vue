@@ -3,10 +3,10 @@
     <breadcrumb :title="t('login')" />
     <section class="login-page section-b-space">
       <div class="container">
-        <div class="row">
+        <div class="row g-4">
           <div class="col-lg-6">
             <h3>{{ t("login") }}</h3>
-            <div class="theme-card">
+            <div class="theme-card !h-[340px]">
               <form class="theme-form" @submit.prevent="onSubmit">
                 <Field
                   name="phone"
@@ -63,15 +63,17 @@
               </form>
             </div>
           </div>
-          <div class="col-lg-6 right-login">
+          <div class="col-lg-6">
             <h3>{{ t("newCustomer") }}</h3>
-            <div class="theme-card authentication-right">
+            <div
+              class="theme-right authentication-right px-4 py-5 border !h-[340px]"
+            >
               <h6 class="title-font">{{ t("createAnAccount") }}</h6>
               <p>
                 {{ t("signUpDescription") }}
               </p>
               <nuxt-link
-                :to="localePath({ path: '/page/account/register' })"
+                :to="localePath({ path: '/account/register' })"
                 class="btn btn-solid"
               >
                 {{ t("createAnAccount") }}

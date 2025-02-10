@@ -11,3 +11,11 @@ export interface IUser {
   avatar: IMedia;
   birthDate: string;
 }
+
+export interface IRegisterUser {
+  fullName: string;
+  email: string;
+  phone: string;
+  password: string;
+  username: string;
+}

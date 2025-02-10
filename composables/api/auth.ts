@@ -1,5 +1,5 @@
 import type { IAuth, IReqFilter } from "../../types/index";
-import type { IUser } from "../../types/user";
+import type { IRegisterUser, IUser } from "../../types/user";
 
 export const useAuth = () => {
   const { $api } = useNuxtApp();
@@ -24,8 +24,13 @@ export const useAuth = () => {
     return await $api.get(`/users/${params.id}`, params.payload);
   };
 
+  const registerUser = async (payload: IRegisterUser): Promise<IAuth> => {
+    return await $api.post("/auth/local/register", payload);
+  };
+
   return {
     fetchAuth,
     getUserById,
+    registerUser,
   };
 };
