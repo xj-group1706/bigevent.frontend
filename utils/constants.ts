@@ -6,3 +6,7 @@ export const GENDER = {
 export const STORAGE = {
   TYPE_VIEW: "typeView",
 };
+
+export const STATUS = {
+  CANCELLED: "Cancelled",
+};

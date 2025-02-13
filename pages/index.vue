@@ -1,7 +1,11 @@
 <template>
   <div>
     <HomeBanner />
-    <TopCollection v-if="topProducts.length > 0" :products="topProducts" />
+    <TopCollection
+      v-if="topProducts.length > 0"
+      :products="topProducts"
+      @openCart="openCart"
+    />
     <HomeFashionBanner v-if="homeStore.fashionBanner" />
     <HomeProductTab v-if="topProducts.length > 0" :products="topProducts" />
     <HomeBlog />
@@ -27,6 +31,11 @@
       :products="products"
     />
     <WidgetsNewsletterPopup /> -->
+    <cart
+      v-if="isCartModal"
+      v-model="isCartModal"
+      :product-detail="productDetail"
+    />
   </div>
 </template>
 <script setup lang="ts">
@@ -34,13 +43,13 @@ import { ref, onMounted } from "vue";
 import { useAsyncData, useFetch } from "nuxt/app";
 
 import TopCollection from "../components/home/topCollection.vue";
+import Cart from "../components/modals/cart.vue";
 
 import { useProductsStore } from "./../store/newProducts";
 import { useHomeStore } from "../store/home";
-import { useProductStore } from "../store/products";
 import { useBlogStore } from "../store/blog";
 
-import type { IProduct } from "../types/product";
+import type { IProduct, IProductDetail } from "../types/product";
 
 definePageMeta({
   auth: false,
@@ -49,9 +58,10 @@ definePageMeta({
 const newProductStore = useProductsStore();
 const homeStore = useHomeStore();
 const blogStore = useBlogStore();
-const productStore = useProductStore();
 
+const productDetail = ref<IProductDetail>();
 const topProducts = ref<IProduct[]>([]);
+const isCartModal = ref(false);
 
 useAsyncData("directions", () => homeStore.getDirections());
 useAsyncData("fashionBanner", () => homeStore.getFashionBanner());
@@ -69,73 +79,8 @@ onMounted(async () => {
   blogStore.getBlogs({ populate: "*" });
 });
 
-// export default {
-//   data() {
-//     return {
-//       blog: [],
-//       products: [],
-//       category: [],
-//       showquickviewmodel: false,
-//       showcomparemodal: false,
-//       showcartmodal: false,
-//       quickviewproduct: {},
-//       comapreproduct: {},
-//       cartproduct: {},
-//     };
-//   },
-//   computed: {
-//     ...mapState(useProductStore, {
-//       productslist: "productslist",
-//     }),
-//     ...mapState(useBlogStore, {
-//       bloglist: "bloglist",
-//     }),
-//   },
-
-//   methods: {
-//     productsArray: function () {
-//       this.productslist.map((item) => {
-//         if (item.type === "fashion") {
-//           this.products.push(item);
-//           item.collection.map((i) => {
-//             const index = this.category.indexOf(i);
-//             if (index === -1) this.category.push(i);
-//           });
-//         }
-//       });
-//     },
-//     blogArray: function () {
-//       this.bloglist.map((item) => {
-//         if (item.type === "fashion") {
-//           this.blog.push(item);
-//         }
-//       });
-//     },
-//     showQuickview(item, productData) {
-//       this.showquickviewmodel = item;
-//       this.quickviewproduct = productData;
-//     },
-//     showCoampre(item, productData) {
-//       this.showcomparemodal = item;
-//       this.comapreproduct = productData;
-//     },
-//     closeCompareModal(item) {
-//       this.showcomparemodal = item;
-//     },
-//     showCart(item, productData) {
-//       this.showcartmodal = item;
-//       this.cartproduct = productData;
-//     },
-//     closeCartModal(item) {
-//       this.showcartmodal = item;
-//     },
-//     closeViewModal(item) {
-//       this.showquickviewmodel = item;
-//     },
-//   },
-//   mounted() {
-//     this.productsArray();
-//     this.blogArray();
-//   },
-// };
+function openCart(e: IProductDetail) {
+  productDetail.value = e;
+  isCartModal.value = true;
+}
 </script>

@@ -20,14 +20,7 @@
                 :key="index"
               >
                 <div class="product-box">
-                  <CardProduct
-                    @opencartmodel="showCartModal"
-                    @showCompareModal="showcomparemodal"
-                    @openquickview="showquickview"
-                    @alertseconds="alert"
-                    :product="product"
-                    :index="index"
-                  />
+                  <product :product="product" @openCart="openCart" />
                 </div>
               </swiper-slide>
             </swiper>
@@ -44,12 +37,14 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/free-mode";
 
-import type { IProduct } from "../../types/product";
+import product from "../card/product.vue";
+
+import type { IProduct, IProductDetail } from "../../types/product";
 
 const props = defineProps<{
   products: IProduct[];
 }>();
-const emits = defineEmits(["openCart", "openQuickview", "openCompare"]);
+const emits = defineEmits(["openCart"]);
 
 const swiperOption = {
   freeMode: false,
@@ -67,30 +62,8 @@ const swiperOption = {
     },
   },
 };
-const showCart = ref(false);
-const showquickviewmodel = ref(false);
-const showcomapreModal = ref(false);
-const quickviewproduct = ref({});
-const comapreproduct = ref({});
-const cartproduct = ref({});
-const dismissCountDown = ref(0);
 
-const alert = (item) => {
-  dismissCountDown.value = item;
-};
-const showCartModal = (item, productData) => {
-  showCart.value = item;
-  cartproduct.value = productData;
-  emits("openCart", showCart, cartproduct.value);
-};
-const showquickview = (item, productData) => {
-  showquickviewmodel.value = item;
-  quickviewproduct.value = productData;
-  emits("openQuickview", showquickviewmodel, quickviewproduct);
-};
-const showcomparemodal = (item, productData) => {
-  showcomapreModal.value = item;
-  comapreproduct.value = productData;
-  emits("openCompare", showcomapreModal, comapreproduct);
-};
+function openCart(e: IProductDetail) {
+  emits("openCart", e);
+}
 </script>

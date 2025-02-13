@@ -11,7 +11,7 @@ interface BasketItem {
 const basketStore = "BASKET_STORE";
 
 export const useBasketStore = defineStore(basketStore, () => {
-  const productsData = ref<IProductDetail[]>([]);
+  const products = ref<IProductDetail[]>([]);
   const basket = ref<BasketItem[]>([]);
 
   const addToBasket = (payload: {
@@ -27,6 +27,7 @@ export const useBasketStore = defineStore(basketStore, () => {
       basketItem.quantity = qty;
     } else {
       basket.value.push({ product: payload.detail, quantity: qty });
+      products.value.push(payload.detail);
     }
   };
 
@@ -67,7 +68,7 @@ export const useBasketStore = defineStore(basketStore, () => {
   );
 
   return {
-    productsData,
+    products,
     basket,
     addToBasket,
     updateBasketQuantity,

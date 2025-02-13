@@ -37,7 +37,11 @@
           @click="addToBasket(selectedDetail().value)"
           variant="primary"
         >
-          <i class="ti-shopping-cart"></i>
+          <i
+            :class="
+              isBasketAdded ? 'ti-shopping-cart-full' : 'ti-shopping-cart'
+            "
+          ></i>
         </button>
         <a
           href="javascript:void(0)"
@@ -79,6 +83,7 @@
         :active-color="'#ffa200'"
         :inactive-color="'#eaeaea'"
       />
+      {{ isBasketAdded }}
       <nuxt-link :to="{ path: '/products/' + product.id }">
         <h6 :class="`w-[${divWidth - 10}px] truncate`">
           {{ product.name[$i18n.locale] }}
@@ -108,11 +113,11 @@
 
 <script setup lang="ts">
 import { computed, onMounted, ref, watch, type ComputedRef } from "vue";
+
 import { getImageUrl } from "../../utils/tools";
 
 import { useBasketStore } from "../../store/basket";
 import { useProductStore } from "../../store/products";
-import { useCartStore } from "../../store/cart";
 
 import type { IProduct, IProductDetail } from "../../types/product";
 import type { IColor } from "../../types/color";
@@ -122,13 +127,7 @@ const props = defineProps<{
   product: IProduct;
 }>();
 
-const emits = defineEmits([
-  "addToBasket",
-  " opencartmodel",
-  "openquickview",
-  "alertseconds",
-  "showCompareModal",
-]);
+const emits = defineEmits(["openCart"]);
 
 const localePath = useLocalePath();
 
@@ -138,10 +137,8 @@ const detail = ref<IProductDetail>();
 const imageSrc = ref<IMedia>();
 const quickviewProduct = ref({});
 const compareProduct = ref({});
-const cartProduct = ref({});
 const showquickview = ref(false);
 const showCompareModal = ref(false);
-const cartval = ref(false);
 const dismissSecs = ref(5);
 const dismissCountDown = ref(0);
 const divWidth = ref(0);
@@ -157,6 +154,13 @@ const isSale = computed(() => {
   return props.product.product_details.find((detail) => detail.sale > 0);
 });
 
+const isBasketAdded = computed(() => {
+  const foundProductInd = basketStore.products.findIndex(
+    (el) => el.id === props.product.id
+  );
+  return foundProductInd > -1 ? true : false;
+});
+
 const selectedDetail = (color?: IColor): ComputedRef<IProductDetail> => {
   if (color) {
     detail.value = props.product.product_details.find(
@@ -166,6 +170,7 @@ const selectedDetail = (color?: IColor): ComputedRef<IProductDetail> => {
   }
   return computed(() => detail.value || props.product.product_details[0]);
 };
+
 const selectedImage = (img?: IMedia): ComputedRef<IMedia> => {
   if (img) {
     imageSrc.value = img;
@@ -175,17 +180,12 @@ const selectedImage = (img?: IMedia): ComputedRef<IMedia> => {
 };
 
 function addToBasket(detail: IProductDetail) {
-  emits("addToBasket", detail);
-  basketStore.addToBasket({ detail });
+  emits("openCart", detail);
+  // if (!isBasketAdded.value) {
+  //   basketStore.addToBasket({ detail });
+  // }
 }
 
-const addToCart = (product) => {
-  cartval.value = true;
-  cartProduct.value = product;
-  emits("opencartmodel", cartval.value, cartProduct.value);
-
-  useCartStore().addToCart(product);
-};
 const addToWishlist = (product) => {
   dismissCountDown.value = dismissSecs.value;
   useNuxtApp().$showToast({
@@ -194,16 +194,15 @@ const addToWishlist = (product) => {
   });
   useProductStore().addToWishlist(product);
 };
+
 const showQuickView = (productData) => {
   showquickview.value = true;
   quickviewProduct.value = productData;
-  emits("openquickview", showquickview.value, quickviewProduct.value);
 };
+
 const addToCompare = (product) => {
   showCompareModal.value = true;
   compareProduct.value = product;
-  emits("showCompareModal", showCompareModal.value, compareProduct.value);
-
   useProductStore().addToCompare(product);
 };
 </script>
