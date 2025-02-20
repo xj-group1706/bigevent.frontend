@@ -34,7 +34,8 @@
     <cart
       v-if="isCartModal"
       v-model="isCartModal"
-      :product-detail="productDetail"
+      :product="selectedProduct"
+      @onClose="closedModalCart"
     />
   </div>
 </template>
@@ -49,7 +50,7 @@ import { useProductsStore } from "./../store/newProducts";
 import { useHomeStore } from "../store/home";
 import { useBlogStore } from "../store/blog";
 
-import type { IProduct, IProductDetail } from "../types/product";
+import type { IProduct } from "../types/product";
 
 definePageMeta({
   auth: false,
@@ -59,7 +60,7 @@ const newProductStore = useProductsStore();
 const homeStore = useHomeStore();
 const blogStore = useBlogStore();
 
-const productDetail = ref<IProductDetail>();
+const selectedProduct = ref<IProduct>();
 const topProducts = ref<IProduct[]>([]);
 const isCartModal = ref(false);
 
@@ -79,8 +80,12 @@ onMounted(async () => {
   blogStore.getBlogs({ populate: "*" });
 });
 
-function openCart(e: IProductDetail) {
-  productDetail.value = e;
+function openCart(e: IProduct) {
+  selectedProduct.value = e;
   isCartModal.value = true;
+}
+
+function closedModalCart(e) {
+  console.log("Closed Modal Cart", e);
 }
 </script>

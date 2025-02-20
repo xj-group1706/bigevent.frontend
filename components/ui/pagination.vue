@@ -186,7 +186,6 @@ onMounted(() => {
       };
     }
   }
-  console.log("Pagination", props.data);
 });
 
 function changePage(page: number) {
@@ -203,7 +202,6 @@ function changePage(page: number) {
     beginningPages.value.second = page;
     beginningPages.value.third = page + 1;
   }
-  console.log("onChange", beginningPages.value, page);
   emits("pageChange", page);
 }
 

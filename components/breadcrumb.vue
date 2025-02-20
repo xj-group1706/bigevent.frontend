@@ -45,5 +45,4 @@ const localePath = useLocalePath();
 const routes = ref(route.path.split("/"));
 routes.value.splice(routes.value.length - 1, 1);
 if (routes.value[1] === "account") routes.value = [""];
-console.log(routes.value);
 </script>

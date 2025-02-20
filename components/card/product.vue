@@ -34,7 +34,7 @@
           data-toggle="modal"
           data-target="#modal-cart"
           :title="$t('addToCart')"
-          @click="addToBasket(selectedDetail().value)"
+          @click="addToBasket()"
           variant="primary"
         >
           <i
@@ -179,11 +179,8 @@ const selectedImage = (img?: IMedia): ComputedRef<IMedia> => {
   return computed(() => imageSrc.value || selectedDetail().value.media[0]);
 };
 
-function addToBasket(detail: IProductDetail) {
-  emits("openCart", detail);
-  // if (!isBasketAdded.value) {
-  //   basketStore.addToBasket({ detail });
-  // }
+function addToBasket() {
+  emits("openCart", props.product);
 }
 
 const addToWishlist = (product) => {

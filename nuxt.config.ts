@@ -1,7 +1,5 @@
 import { defineNuxtConfig } from "nuxt/config";
 
-console.log("process.env.VITE_API_URL", process.env);
-
 export default defineNuxtConfig({
   routeRules: {},
   devtools: {

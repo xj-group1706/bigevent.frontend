@@ -39,7 +39,7 @@ import "swiper/css/free-mode";
 
 import product from "../card/product.vue";
 
-import type { IProduct, IProductDetail } from "../../types/product";
+import type { IProduct } from "../../types/product";
 
 const props = defineProps<{
   products: IProduct[];
@@ -63,7 +63,7 @@ const swiperOption = {
   },
 };
 
-function openCart(e: IProductDetail) {
+function openCart(e: IProduct) {
   emits("openCart", e);
 }
 </script>

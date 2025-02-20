@@ -11,3 +11,8 @@ export interface ISize {
   direction: IDirection;
   gender: IGender;
 }
+
+export interface ISizeBody {
+  quantity: number;
+  size: ISize;
+}

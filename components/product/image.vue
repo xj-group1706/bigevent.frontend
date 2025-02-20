@@ -3,7 +3,7 @@
     <swiper
       :slidesPerView="1"
       :spaceBetween="20"
-      class="swiper-wrapper h-auto"
+      class="swiper-wrapper h-auto mb-4"
       @swiper="onSwiper"
     >
       <swiper-slide
